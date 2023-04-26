@@ -22,9 +22,16 @@ type Security = {isGranted: (acl: string) => boolean};
 
 type Translate = (id: string, placeholders?: {[name: string]: string | number}, count?: number) => string;
 
+type User = {
+  timezone: string;
+  ui_locale_decimal_separator: string;
+  uiLocale: string;
+  catalogLocale: string;
+  catalogScope: string;
+};
 type UserContext = {
-  get: (data: string) => string;
-  set: (key: string, value: string, options: {}) => void;
+  get: <K extends keyof User>(key: K) => User[K];
+  set: <K extends keyof User>(key: K, value: User[K], options: {}) => void;
 };
 
 type View = {
