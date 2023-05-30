@@ -6,6 +6,11 @@ use Akeneo\Pim\Enrichment\Component\Product\Builder\ProductBuilderInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Comparator\Filter\FilterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Converter\ConverterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Localization\Localizer\AttributeConverterInterface;
+use Akeneo\Pim\Enrichment\Product\API\Command\Exception\LegacyViolationsException;
+use Akeneo\Pim\Enrichment\Product\API\Command\Exception\ViolationsException;
+use Akeneo\Pim\Enrichment\Product\API\Command\UpsertProductCommand;
+use Akeneo\Pim\Enrichment\Product\API\Query\GetUserIntentsFromStandardFormat;
+use Akeneo\Pim\Enrichment\Product\API\ValueObject\ProductIdentifier;
 use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
 use Akeneo\Tool\Component\StorageUtils\Updater\ObjectUpdaterInterface;
 use Akeneo\UserManagement\Bundle\Context\UserContext;
@@ -13,6 +18,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -54,15 +61,17 @@ class ValuesController
     protected $unchangedValuesFilter;
 
     public function __construct(
-        ProductBuilderInterface $productBuilder,
-        UserContext $userContext,
-        ConverterInterface $productValueConverter,
-        AttributeConverterInterface $localizedConverter,
-        ObjectUpdaterInterface $productUpdater,
-        ValidatorInterface $productValidator,
-        AttributeRepositoryInterface $attributeRepository,
-        NormalizerInterface $constraintViolationNormalizer,
-        FilterInterface $emptyValuesFilter
+        ProductBuilderInterface              $productBuilder,
+        UserContext                          $userContext,
+        ConverterInterface                   $productValueConverter,
+        AttributeConverterInterface          $localizedConverter,
+        ObjectUpdaterInterface               $productUpdater,
+        ValidatorInterface                   $productValidator,
+        AttributeRepositoryInterface         $attributeRepository,
+        NormalizerInterface                  $constraintViolationNormalizer,
+        FilterInterface                      $emptyValuesFilter,
+        private readonly MessageBusInterface $queryMessageBus,
+        private readonly MessageBusInterface $commandMessageBus,
     ) {
         $this->productBuilder = $productBuilder;
         $this->userContext = $userContext;
@@ -98,9 +107,25 @@ class ValuesController
         $product = $this->productBuilder->createProduct('FAKE_SKU_FOR_MASS_EDIT_VALIDATION_' . microtime());
         $data = $this->unchangedValuesFilter->filter($product, $data);
 
-        $this->productUpdater->update($product, $data);
-        $violations = $this->productValidator->validate($product);
-        $violations->addAll($this->localizedConverter->getViolations());
+        $localizedViolations = \iterator_to_array($this->localizedConverter->getViolations());
+
+        $userId = $this->userContext->getUser()?->getId();
+        $envelope = $this->queryMessageBus->dispatch(new GetUserIntentsFromStandardFormat($data));
+        $handledStamp = $envelope->last(HandledStamp::class);
+        $userIntents = $handledStamp->getResult();
+
+        $violations = $localizedViolations;
+        try {
+            $productIdentifier = ProductIdentifier::fromIdentifier('FAKE_SKU_FOR_MASS_EDIT_VALIDATION_' . microtime());
+            $command = UpsertProductCommand::createWithIdentifierDryRun(
+                $userId,
+                $productIdentifier,
+                $userIntents
+            );
+            $this->commandMessageBus->dispatch($command);
+        } catch (ViolationsException | LegacyViolationsException $e) {
+            $violations = $e->violations();
+        }
 
         $violations = $this->removeIdentifierViolations($violations);
 

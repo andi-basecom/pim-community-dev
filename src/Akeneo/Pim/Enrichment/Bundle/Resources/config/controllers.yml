@@ -305,6 +305,8 @@ services:
             - '@pim_catalog.repository.attribute'
             - '@pim_enrich.normalizer.product_violation'
             - '@pim_catalog.comparator.filter.product'
+            - '@pim_enrich.product.query_message_bus'
+            - '@pim_enrich.product.message_bus'
 
     pim_enrich.controller.rest.mass_edit:
         public: true

@@ -18,6 +18,7 @@ use Akeneo\Pim\Enrichment\Product\Application\Applier\UserIntentApplierRegistry;
 use Akeneo\Tool\Component\StorageUtils\Exception\PropertyException;
 use Akeneo\Tool\Component\StorageUtils\Saver\SaverInterface;
 use Akeneo\UserManagement\Component\Model\UserInterface;
+use Doctrine\DBAL\Connection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\ConstraintViolation;
@@ -39,7 +40,7 @@ final class UpsertProductHandler
         private ValidatorInterface $productValidator,
         private EventDispatcherInterface $eventDispatcher,
         private UserIntentApplierRegistry $applierRegistry,
-        private TokenStorageInterface $tokenStorage
+        private TokenStorageInterface $tokenStorage,
     ) {
     }
 
@@ -72,6 +73,10 @@ final class UpsertProductHandler
         $violations = $this->productValidator->validate($product);
         if (0 < $violations->count()) {
             throw new LegacyViolationsException($violations);
+        }
+
+        if ($command->dryRun()) {
+            return;
         }
 
         $isUpdate = $product->isDirty();
