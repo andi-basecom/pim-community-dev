@@ -86,6 +86,8 @@
 - PIM-11013 : Fix edit user profile without password changes
 - PIM-11012 : Add helper if selected UI language is not sufficiently supported
 - PIM-11023 : Fix product search containing underscores
+- PIM-11018: Fix view on Connected App permissions if manage or not
+
 
 ## Improvements
 
