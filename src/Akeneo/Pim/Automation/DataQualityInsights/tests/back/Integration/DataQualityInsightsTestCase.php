@@ -8,6 +8,7 @@ use Akeneo\Channel\Infrastructure\Component\Model\ChannelInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Application\Clock;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\AttributeGroupActivation;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\AttributeGroupCode;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductUuid;
 use Akeneo\Pim\Automation\DataQualityInsights\Infrastructure\Persistence\Repository\AttributeGroupActivationRepository;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface;
@@ -372,6 +373,40 @@ SQL
 TRUNCATE TABLE pim_data_quality_insights_product_model_score;
 SQL
         );
+    }
+
+    protected function assertProductScoreIsEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): void {
+        self::assertTrue(
+            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            \sprintf('Product evaluation does not exist. Product uuid: %s', $productUuid->__toString())
+        );
+    }
+
+    protected function assertProductScoreIsNotEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): void {
+        self::assertFalse(
+            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            \sprintf('Product evaluation exists, it should not. Product uuid: %s', $productUuid->__toString())
+        );
+    }
+
+    private function isProductScoreEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): bool {
+        return (bool) $this->get('database_connection')->executeQuery(
+            <<<SQL
+                SELECT product_uuid
+                FROM pim_data_quality_insights_product_score
+                WHERE product_uuid = :product_uuid AND evaluated_at = :evaluated_at
+            SQL,
+            ['product_uuid' => $productUuid->toBytes(), 'evaluated_at' => $evaluatedAt->format('Y-m-d')]
+        )->fetchOne();
     }
 
     private function formatValidationErrorMessage(string $mainMessage, ConstraintViolationListInterface $errors): string

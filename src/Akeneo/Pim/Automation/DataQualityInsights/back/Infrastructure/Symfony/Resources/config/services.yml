@@ -229,6 +229,7 @@ services:
     Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluation\EvaluateProducts:
         arguments:
             - '@akeneo.pim.automation.data_quality_insights.evaluate_products_pending_criteria'
+            - '@akeneo.pim.automation.data_quality_insights.evaluate_product_criteria'
             - '@Akeneo\Pim\Automation\DataQualityInsights\Application\Consolidation\ConsolidateProductScores'
             - '@event_dispatcher'
 
@@ -271,3 +272,12 @@ services:
     Akeneo\Pim\Automation\DataQualityInsights\Infrastructure\Persistence\Hydrator\hydrateCriterionEvaluationResult:
         arguments:
             - '@Akeneo\Pim\Automation\DataQualityInsights\Infrastructure\Persistence\Transformation\TransformCriterionEvaluationResultIds'
+
+    akeneo.pim.automation.data_quality_insights.evaluate_product_criteria:
+        class: Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluation\EvaluateCriteria
+        arguments:
+            - '@akeneo.pim.automation.data_quality_insights.product_criteria_evaluation_registry'
+            - '@akeneo.pim.automation.data_quality_insights.query.get_evaluable_product_values'
+            - '@akeneo.pim.automation.data_quality_insights.product_criteria_by_feature_registry'
+            - '@Akeneo\Pim\Automation\DataQualityInsights\Application\ProductUuidFactory'
+            - '@logger'

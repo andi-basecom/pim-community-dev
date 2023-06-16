@@ -87,7 +87,7 @@ final class EvaluateAllProductsCommand extends Command
         do {
             $evaluationCount = 0;
             foreach ($this->getProductIdsToEvaluateQuery->execute(self::LIMIT_PER_LOOP, $bulkSize) as $productIds) {
-                ($this->evaluateProducts)($productIds);
+                $this->evaluateProducts->forPendingCriteria($productIds);
 
                 $countProductIds = count($productIds);
                 $progressBar->advance($countProductIds);

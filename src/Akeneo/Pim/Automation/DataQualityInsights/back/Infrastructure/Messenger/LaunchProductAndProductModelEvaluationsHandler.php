@@ -20,9 +20,7 @@ use Psr\Log\LoggerInterface;
 final class LaunchProductAndProductModelEvaluationsHandler
 {
     public function __construct(
-        private readonly CriteriaByFeatureRegistry $productCriteriaRegistry,
         private readonly CriteriaByFeatureRegistry $productModelCriteriaRegistry,
-        private readonly CreateCriteriaEvaluations $createProductCriteriaEvaluations,
         private readonly CreateCriteriaEvaluations $createProductModelCriteriaEvaluations,
         private readonly EvaluateProducts $evaluateProducts,
         private readonly EvaluateProductModels $evaluateProductModels,
@@ -45,19 +43,21 @@ final class LaunchProductAndProductModelEvaluationsHandler
 
     private function evaluateProducts(LaunchProductAndProductModelEvaluationsMessage $message): void
     {
-        $productUuidsToEvaluate = ($this->getOutdatedProductUuids)($message->productUuids, $message->datetime, $message->criteriaToEvaluate);
-
+        $productUuidsToEvaluate = ($this->getOutdatedProductUuids)(
+            $message->productUuids,
+            $message->datetime,
+            $message->criteriaToEvaluate
+        );
         if ($productUuidsToEvaluate->isEmpty()) {
             $this->logger->debug('DQI - All products have already been evaluated');
             return;
         }
 
-        $criteriaToEvaluate = empty($message->criteriaToEvaluate)
-            ? $this->productCriteriaRegistry->getAllCriterionCodes()
-            : \array_map(fn (string $criterionCode) => new CriterionCode($criterionCode), $message->criteriaToEvaluate);
-
-        $this->createProductCriteriaEvaluations->create($criteriaToEvaluate, $productUuidsToEvaluate);
-        ($this->evaluateProducts)($productUuidsToEvaluate);
+        $criteriaToEvaluate = \array_map(
+            static fn (string $criterionCode): CriterionCode => new CriterionCode($criterionCode),
+            $message->criteriaToEvaluate
+        );
+        $this->evaluateProducts->forCriteria($productUuidsToEvaluate, $criteriaToEvaluate);
 
         $this->logger->debug(sprintf('DQI - Evaluation of %d products done', $productUuidsToEvaluate->count()));
     }

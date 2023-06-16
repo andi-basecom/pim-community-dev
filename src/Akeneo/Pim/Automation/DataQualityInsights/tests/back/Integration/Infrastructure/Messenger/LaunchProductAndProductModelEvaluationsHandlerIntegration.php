@@ -67,7 +67,9 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
         $productModelToEvaluateId2 = new ProductModelId($productModelToEvaluate2->getId());
         $whateverProductModelId = new ProductModelId($whateverProductModel->getId());
 
-        $this->assertProductsAreNotEvaluated(ProductUuidCollection::fromProductUuids([$productToEvaluateUuid1, $productToEvaluateUuid2, $whateverProductUuid]));
+        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid1);
+        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid2);
+        $this->assertProductScoreIsNotEvaluated($whateverProductUuid);
         $this->assertProductModelsAreNotEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId1, $productModelToEvaluateId2, $whateverProductModelId]));
 
         $message = new LaunchProductAndProductModelEvaluationsMessage(
@@ -79,7 +81,9 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
 
         ($this->get(LaunchProductAndProductModelEvaluationsHandler::class))($message);
 
-        $this->assertProductsAreEvaluated($message->productUuids);
+        $this->assertProductScoreIsEvaluated($productToEvaluateUuid1);
+        $this->assertProductScoreIsEvaluated($productToEvaluateUuid2);
+        $this->assertProductScoreIsNotEvaluated($whateverProductUuid);
         $this->assertProductModelsAreEvaluated($message->productModelIds);
     }
 
@@ -97,6 +101,8 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
         $productModelThatNotExistId = new ProductModelId($productModelToEvaluate->getId() + 42);
 
         $this->assertProductsAreNotEvaluated(ProductUuidCollection::fromProductUuids([$productToEvaluateUuid, $productThatNotExist]));
+        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid);
+        $this->assertProductScoreIsNotEvaluated($productThatNotExist);
         $this->assertProductModelsAreNotEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId, $productModelThatNotExistId]));
 
         $message = new LaunchProductAndProductModelEvaluationsMessage(
@@ -108,7 +114,7 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
 
         ($this->get(LaunchProductAndProductModelEvaluationsHandler::class))($message);
 
-        $this->assertProductsAreEvaluated(ProductUuidCollection::fromProductUuid($productToEvaluateUuid));
+        $this->assertProductScoreIsEvaluated($productToEvaluateUuid);
         $this->assertProductModelsAreEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId]));
     }
 

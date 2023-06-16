@@ -100,10 +100,10 @@ final class LaunchProductAndProductModelEvaluationsHandlerSpec extends ObjectBeh
         $getOutdatedProductModelIds->__invoke($productModelIds, $message->datetime, [])->willReturn($outDatedProductModelIds);
 
         $createProductCriteriaEvaluations->create($productCriteria, $outDatedProductUuids)->shouldBeCalledOnce();
-        $evaluateProducts->__invoke($outDatedProductUuids)->shouldBeCalledOnce();
+        $evaluateProducts->forPendingCriteria($outDatedProductUuids)->shouldBeCalledOnce();
 
         $createProductModelCriteriaEvaluations->create($productModelCriteria, $outDatedProductModelIds)->shouldBeCalledOnce();
-        $evaluateProductModels->__invoke($outDatedProductModelIds)->shouldBeCalledOnce();
+        $evaluateProductModels->forPendingCriteria($outDatedProductModelIds)->shouldBeCalledOnce();
 
         $this->__invoke($message);
     }
@@ -145,10 +145,10 @@ final class LaunchProductAndProductModelEvaluationsHandlerSpec extends ObjectBeh
         $getOutdatedProductModelIds->__invoke($productModelIds, $message->datetime, $message->criteriaToEvaluate)->willReturn($productModelIds);
 
         $createProductCriteriaEvaluations->create($criteriaToEvaluate, $productUuids)->shouldBeCalledOnce();
-        $evaluateProducts->__invoke($productUuids)->shouldBeCalledOnce();
+        $evaluateProducts->forPendingCriteria($productUuids)->shouldBeCalledOnce();
 
         $createProductModelCriteriaEvaluations->create($criteriaToEvaluate, $productModelIds)->shouldBeCalledOnce();
-        $evaluateProductModels->__invoke($productModelIds)->shouldBeCalledOnce();
+        $evaluateProductModels->forPendingCriteria($productModelIds)->shouldBeCalledOnce();
 
         $this->__invoke($message);
     }
@@ -187,7 +187,7 @@ final class LaunchProductAndProductModelEvaluationsHandlerSpec extends ObjectBeh
             ->willReturn(ProductModelIdCollection::fromProductModelIds([]));
 
         $createProductCriteriaEvaluations->create(Argument::cetera())->shouldNotBeCalled();
-        $evaluateProducts->__invoke(Argument::any())->shouldNotBeCalled();
+        $evaluateProducts->forPendingCriteria(Argument::any())->shouldNotBeCalled();
 
         $createProductModelCriteriaEvaluations->create(Argument::cetera())->shouldNotBeCalled();
         $evaluateProductModels->__invoke(Argument::any())->shouldNotBeCalled();

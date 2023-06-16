@@ -6,7 +6,7 @@ namespace Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluatio
 
 use Akeneo\Pim\Automation\DataQualityInsights\Application\Consolidation\ConsolidateProductScores;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Event\ProductsEvaluated;
-use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductEntityIdCollection;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionCode;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductUuidCollection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -17,15 +17,30 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class EvaluateProducts
 {
     public function __construct(
-        private EvaluatePendingCriteria  $evaluatePendingProductCriteria,
+        private EvaluatePendingCriteria $evaluatePendingProductCriteria,
+        private EvaluateCriteria $evaluateCriteria,
         private ConsolidateProductScores $consolidateProductScores,
         private EventDispatcherInterface $eventDispatcher
     ) {
     }
 
-    public function __invoke(ProductUuidCollection $productUuidCollection): void
+    /**
+     * @deprecated use forCriteria() instead
+     * Pending criteria are fetched from the database (legacy). New way to evaluate products is done by events
+     */
+    public function forPendingCriteria(ProductUuidCollection $productUuidCollection): void
     {
         $this->evaluatePendingProductCriteria->evaluateAllCriteria($productUuidCollection);
+        $this->consolidateProductScores->consolidate($productUuidCollection);
+        $this->eventDispatcher->dispatch(new ProductsEvaluated($productUuidCollection));
+    }
+
+    /**
+     * @param CriterionCode[] $productCriterionCodes
+     */
+    public function forCriteria(ProductUuidCollection $productUuidCollection, array $productCriterionCodes): void
+    {
+        $this->evaluateCriteria->forEntityIds($productUuidCollection, $productCriterionCodes);
         $this->consolidateProductScores->consolidate($productUuidCollection);
         $this->eventDispatcher->dispatch(new ProductsEvaluated($productUuidCollection));
     }
