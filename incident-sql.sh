@@ -11,6 +11,7 @@ while ! docker exec -i -e MYSQL_PWD=root pim-community-dev_mysql_1 mysql --user=
 done
 #
 docker exec -i -e MYSQL_PWD=root pim-community-dev_mysql_1 mysql --user=root akeneo_pim_test < ./mysql-slow.log
+docker container inspect -f '{{.State.Running}}' pim-community-dev_mysql_1
 #
 #docker exec -i -e MYSQL_PWD=root pim-community-dev_mysql_1 mysql --user=root akeneo_pim_test <<< "UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME = 'events_statements_history_long'"
 #
