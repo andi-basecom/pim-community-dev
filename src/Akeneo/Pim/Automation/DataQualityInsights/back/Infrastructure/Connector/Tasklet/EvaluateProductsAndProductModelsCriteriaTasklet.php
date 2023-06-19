@@ -103,7 +103,7 @@ final class EvaluateProductsAndProductModelsCriteriaTasklet implements TaskletIn
         $evaluationCount = 0;
         foreach ($this->getProductModelsIdsToEvaluateQuery->execute($this->limitPerLoop, $this->bulkSize) as $productModelIdCollection) {
             Assert::isInstanceOf($productModelIdCollection, ProductModelIdCollection::class);
-            ($this->evaluateProductModels)($productModelIdCollection);
+            $this->evaluateProductModels->forPendingCriteria($productModelIdCollection);
 
             $evaluationCount += count($productModelIdCollection);
             $this->stepExecution->setWriteCount($this->stepExecution->getWriteCount() + count($productModelIdCollection));

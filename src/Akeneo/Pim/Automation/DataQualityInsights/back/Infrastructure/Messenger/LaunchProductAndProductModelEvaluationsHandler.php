@@ -20,8 +20,6 @@ use Psr\Log\LoggerInterface;
 final class LaunchProductAndProductModelEvaluationsHandler
 {
     public function __construct(
-        private readonly CriteriaByFeatureRegistry $productModelCriteriaRegistry,
-        private readonly CreateCriteriaEvaluations $createProductModelCriteriaEvaluations,
         private readonly EvaluateProducts $evaluateProducts,
         private readonly EvaluateProductModels $evaluateProductModels,
         private readonly GetOutdatedProductUuidsByDateAndCriteriaQueryInterface $getOutdatedProductUuids,
@@ -43,6 +41,7 @@ final class LaunchProductAndProductModelEvaluationsHandler
 
     private function evaluateProducts(LaunchProductAndProductModelEvaluationsMessage $message): void
     {
+        // @TODO: change that, we can't use this table because we don't use it anymore!
         $productUuidsToEvaluate = ($this->getOutdatedProductUuids)(
             $message->productUuids,
             $message->datetime,
@@ -64,19 +63,23 @@ final class LaunchProductAndProductModelEvaluationsHandler
 
     private function evaluateProductModels(LaunchProductAndProductModelEvaluationsMessage $message): void
     {
-        $productModelIdsToEvaluate = ($this->getOutdatedProductModelIds)($message->productModelIds, $message->datetime, $message->criteriaToEvaluate);
+        // @TODO: change that, we can't use this table because we don't use it anymore!
+        $productModelIdsToEvaluate = ($this->getOutdatedProductModelIds)(
+            $message->productModelIds,
+            $message->datetime,
+            $message->criteriaToEvaluate
+        );
 
         if ($productModelIdsToEvaluate->isEmpty()) {
             $this->logger->debug('DQI - All product-models have already been evaluated');
             return;
         }
 
-        $criteriaToEvaluate = empty($message->criteriaToEvaluate)
-            ? $this->productModelCriteriaRegistry->getAllCriterionCodes()
-            : \array_map(fn (string $criterionCode) => new CriterionCode($criterionCode), $message->criteriaToEvaluate);
-
-        $this->createProductModelCriteriaEvaluations->create($criteriaToEvaluate, $productModelIdsToEvaluate);
-        ($this->evaluateProductModels)($productModelIdsToEvaluate);
+        $criteriaToEvaluate = \array_map(
+            static fn (string $criterionCode): CriterionCode => new CriterionCode($criterionCode),
+            $message->criteriaToEvaluate
+        );
+        $this->evaluateProductModels->forCriteria($productModelIdsToEvaluate, $criteriaToEvaluate);
 
         $this->logger->debug(sprintf('DQI - Evaluation of %d product-models done', $productModelIdsToEvaluate->count()));
     }
