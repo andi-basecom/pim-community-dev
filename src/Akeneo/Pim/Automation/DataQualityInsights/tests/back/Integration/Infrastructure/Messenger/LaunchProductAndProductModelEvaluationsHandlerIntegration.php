@@ -100,7 +100,6 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
         // A non-existing id can be simply defined from the last created product-model
         $productModelThatNotExistId = new ProductModelId($productModelToEvaluate->getId() + 42);
 
-        $this->assertProductsAreNotEvaluated(ProductUuidCollection::fromProductUuids([$productToEvaluateUuid, $productThatNotExist]));
         $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid);
         $this->assertProductScoreIsNotEvaluated($productThatNotExist);
         $this->assertProductModelsAreNotEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId, $productModelThatNotExistId]));
@@ -116,24 +115,6 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
 
         $this->assertProductScoreIsEvaluated($productToEvaluateUuid);
         $this->assertProductModelsAreEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId]));
-    }
-
-    private function assertProductsAreNotEvaluated(ProductUuidCollection $productUuids): void
-    {
-        $query = <<<SQL
-SELECT 1
-FROM pim_data_quality_insights_product_criteria_evaluation
-WHERE product_uuid IN (:product_uuids) AND evaluated_at IS NOT NULL
-LIMIT 1;
-SQL;
-
-        $result = $this->dbConnection->executeQuery(
-            $query,
-            ['product_uuids' => $productUuids->toArrayBytes()],
-            ['product_uuids' => Connection::PARAM_STR_ARRAY]
-        )->fetchOne();
-
-        Assert::assertFalse($result, 'Some products are evaluated');
     }
 
     private function assertProductModelsAreNotEvaluated(ProductModelIdCollection $productModelIds): void
@@ -152,35 +133,6 @@ SQL;
         )->fetchOne();
 
         Assert::assertFalse($result, 'Some product models are evaluated');
-    }
-
-    private function assertProductsAreEvaluated(ProductUuidCollection $productUuids): void
-    {
-        $query = <<<SQL
-SELECT BIN_TO_UUID(product_uuid) AS product_uuid, COUNT(*) AS nb_evaluated_criteria
-FROM pim_data_quality_insights_product_criteria_evaluation
-WHERE product_uuid IN (:product_uuids) AND evaluated_at IS NOT NULL
-GROUP BY product_uuid;
-SQL;
-
-        $stmt = $this->dbConnection->executeQuery(
-            $query,
-            ['product_uuids' => $productUuids->toArrayBytes()],
-            ['product_uuids' => Connection::PARAM_STR_ARRAY]
-        );
-
-        $nbEvaluationsByProduct = [];
-        while ($row = $stmt->fetchAssociative()) {
-            $nbEvaluationsByProduct[$row['product_uuid']] = (int) $row['nb_evaluated_criteria'];
-        }
-
-        $nbCriteria = \count($this->get('akeneo.pim.automation.data_quality_insights.product_criteria_by_feature_registry')->getAllCriterionCodes());
-
-        /** @var ProductUuid $productUuid */
-        foreach ($productUuids as $productUuid) {
-            Assert::assertArrayHasKey((string) $productUuid, $nbEvaluationsByProduct, sprintf('The product %s should have evaluations', $productUuid));
-            Assert::assertSame($nbCriteria, $nbEvaluationsByProduct[(string) $productUuid], sprintf('All the %d criteria should be evaluated for the product %s', $nbCriteria, $productUuid));
-        }
     }
 
     private function assertProductModelsAreEvaluated(ProductModelIdCollection $productModelIds): void
@@ -210,5 +162,39 @@ SQL;
             Assert::assertArrayHasKey((string) $productModelId, $nbEvaluationsByProductModel, sprintf('The product model %s should have evaluations', $productModelId));
             Assert::assertSame($nbCriteria, $nbEvaluationsByProductModel[(string) $productModelId], sprintf('All the %d criteria should be evaluated for the product model %s', $nbCriteria, $productModelId));
         }
+    }
+
+    protected function assertProductScoreIsEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): void {
+        self::assertTrue(
+            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            \sprintf('Product evaluation does not exist. Product uuid: %s', $productUuid->__toString())
+        );
+    }
+
+    protected function assertProductScoreIsNotEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): void {
+        self::assertFalse(
+            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            \sprintf('Product evaluation exists, it should not. Product uuid: %s', $productUuid->__toString())
+        );
+    }
+
+    private function isProductScoreEvaluated(
+        ProductUuid $productUuid,
+        \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
+    ): bool {
+        return (bool) $this->get('database_connection')->executeQuery(
+            <<<SQL
+                SELECT product_uuid
+                FROM pim_data_quality_insights_product_score
+                WHERE product_uuid = :product_uuid AND evaluated_at = :evaluated_at
+            SQL,
+            ['product_uuid' => $productUuid->toBytes(), 'evaluated_at' => $evaluatedAt->format('Y-m-d')]
+        )->fetchOne();
     }
 }

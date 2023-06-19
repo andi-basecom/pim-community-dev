@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluation;
 
-use Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEntityIdFactoryInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\ProductValuesCollection;
-use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluation;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Query\ProductEnrichment\GetEvaluableProductValuesQueryInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionCode;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionEvaluationStatus;
@@ -23,7 +22,6 @@ class EvaluateCriteria
         private CriteriaEvaluationRegistry $evaluationRegistry,
         private GetEvaluableProductValuesQueryInterface $getEvaluableProductValuesQuery,
         private CriteriaByFeatureRegistry $criteriaByFeatureRegistry,
-        private ProductEntityIdFactoryInterface $idFactory,
         private LoggerInterface $logger,
     ) {
     }
@@ -32,33 +30,32 @@ class EvaluateCriteria
      * @param CriterionCode[] $productCriterionCodes If empty all criteria are evaluated
      * @return void
      */
-    public function forEntityIds(ProductEntityIdCollection $productIdCollection, array $productCriterionCodes): void
+    public function forEntityIds(ProductEntityIdCollection $entityIdCollection, array $productCriterionCodes): void
     {
         if ([] === $productCriterionCodes) {
             $productCriterionCodes = $this->criteriaByFeatureRegistry->getAllCriterionCodes();
         }
 
-        foreach ($productIdCollection as $productId) {
-            $productValues = $this->getEvaluableProductValuesQuery->byProductId(
-                $this->idFactory->create((string) $productId)
-            );
+        foreach ($entityIdCollection as $entityId) {
+            $entityValues = $this->getEvaluableProductValuesQuery->byProductId($entityId);
+
             foreach ($productCriterionCodes as $productCriterionCode) {
-                $productCriterion = new Write\CriterionEvaluation(
+                $productCriterion = new CriterionEvaluation(
                     $productCriterionCode,
-                    $productId,
+                    $entityId,
                     CriterionEvaluationStatus::pending()
                 );
-                $this->evaluateCriterion($productCriterion, $productValues);
+                $this->evaluateCriterion($productCriterion, $entityValues);
             }
         }
     }
 
-    private function evaluateCriterion(Write\CriterionEvaluation $criterionEvaluation, ProductValuesCollection $productValues): void
+    private function evaluateCriterion(CriterionEvaluation $criterionEvaluation, ProductValuesCollection $entityValues): void
     {
         try {
             $evaluationService = $this->evaluationRegistry->get($criterionEvaluation->getCriterionCode());
             $criterionEvaluation->start();
-            $result = $evaluationService->evaluate($criterionEvaluation, $productValues);
+            $result = $evaluationService->evaluate($criterionEvaluation, $entityValues);
             $criterionEvaluation->end($result);
         } catch (\Exception $exception) {
             $this->logger->error(

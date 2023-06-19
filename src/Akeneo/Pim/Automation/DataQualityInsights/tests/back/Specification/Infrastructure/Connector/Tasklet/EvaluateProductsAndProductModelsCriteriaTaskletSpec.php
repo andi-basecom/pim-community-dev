@@ -47,8 +47,8 @@ class EvaluateProductsAndProductModelsCriteriaTaskletSpec extends ObjectBehavior
 
         $productModelIds = [ProductModelIdCollection::fromStrings(['4', '5']), ProductModelIdCollection::fromStrings(['6', '7'])];
         $getProductModelsIdsToEvaluateQuery->execute(1000, 2)->willReturn(new \ArrayIterator($productModelIds));
-        $evaluateProductModels->forPendingCriteria($productModelIds[0])->shouldBeCalled();
-        $evaluateProductModels->forPendingCriteria($productModelIds[1])->shouldBeCalled();
+        $evaluateProductModels->__invoke($productModelIds[0])->shouldBeCalled();
+        $evaluateProductModels->__invoke($productModelIds[1])->shouldBeCalled();
 
         $this->execute();
 
