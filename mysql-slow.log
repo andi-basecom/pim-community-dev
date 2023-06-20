@@ -2682,7 +2682,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('€Î+ÿF(ê?9ı4@˜') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('€Î+ÿF(ê?9ı4@˜') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'product_variant_create_with_identifier' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '€Î+ÿF(ê?9ı4@˜';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -2859,7 +2858,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('IVh/±ÚMMµ+|í/ÒG¢') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('IVh/±ÚMMµ+|í/ÒG¢') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'product_create_without_identifier' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'IVh/±ÚMMµ+|í/ÒG¢';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3320,7 +3318,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '˘_Ó•Jù¶°w.î';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3476,7 +3473,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '«å öt¿EØÉùùgù˛H';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3632,7 +3628,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ä\r¶ˆ∂kFªá%≥‡nΩ';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3788,7 +3783,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'zò‘V‹bCjàü—4µ3';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'zò‘V‹bCjàü—4µ3';
@@ -3812,7 +3806,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('zò‘V‹bCjàü—4µ3') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('zò‘V‹bCjàü—4µ3') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'zò‘V‹bCjàü—4µ3';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3968,7 +3961,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'Ü+mHBA6Å€Îé[ª!';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'Ü+mHBA6Å€Îé[ª!';
@@ -3992,7 +3984,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('Ü+mHBA6Å€Îé[ª!') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('Ü+mHBA6Å€Îé[ª!') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'Ü+mHBA6Å€Îé[ª!';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -4148,7 +4139,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'O¨›ÇèLLºygbl⁄∞';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'O¨›ÇèLLºygbl⁄∞';
@@ -4174,7 +4164,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('O¨›ÇèLLºygbl⁄∞') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('O¨›ÇèLLºygbl⁄∞') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'O¨›ÇèLLºygbl⁄∞';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -4330,7 +4319,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
@@ -4355,7 +4343,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('hÅ≈`¨®I˘±5¬´ä\\P') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('hÅ≈`¨®I˘±5¬´ä\\P') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -4510,7 +4497,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
@@ -4544,11 +4530,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('ØŸiÙ.I∞ì>Wy\r^”5') AND e.criterion_code = 'enrichment_image';
 SELECT BIN_TO_UUID(uuid) as uuid from pim_catalog_product where identifier = 'apollon_optionb_false';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('afd9697f-f42e-49b0-933e-57790d5ed335') AND a.association_type_id = '5' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('afd9697f-f42e-49b0-933e-57790d5ed335') AND a.association_type_id = '6' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('afd9697f-f42e-49b0-933e-57790d5ed335') AND a.association_type_id = '7' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('afd9697f-f42e-49b0-933e-57790d5ed335') AND a.association_type_id = '8' ORDER BY p_uuid;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -4703,7 +4684,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
@@ -4733,11 +4713,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('\n«ù¯HaIûÖ€Âî≈ü|') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('\n«ù¯HaIûÖ€Âî≈ü|') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('0ac79df8-4861-499e-85db-e51094c59f7c') AND a.association_type_id = '5' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('0ac79df8-4861-499e-85db-e51094c59f7c') AND a.association_type_id = '6' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('0ac79df8-4861-499e-85db-e51094c59f7c') AND a.association_type_id = '7' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('0ac79df8-4861-499e-85db-e51094c59f7c') AND a.association_type_id = '8' ORDER BY p_uuid;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -4892,7 +4867,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'Iò|%NVÄ¢]-VövŒ';
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
@@ -4922,11 +4896,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('Iò|%NVÄ¢]-VövŒ') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('Iò|%NVÄ¢]-VövŒ') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'Iò|%NVÄ¢]-VövŒ';
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('130b4998-7c25-4e56-80a2-5d2d569a76ce') AND a.association_type_id = '5' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('130b4998-7c25-4e56-80a2-5d2d569a76ce') AND a.association_type_id = '6' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('130b4998-7c25-4e56-80a2-5d2d569a76ce') AND a.association_type_id = '7' ORDER BY p_uuid;
-SELECT DISTINCT(BIN_TO_UUID(p.uuid)) as uuid, p.uuid AS p_uuid FROM pim_catalog_association a     INNER JOIN pim_catalog_association_product ap ON a.id = ap.association_id     INNER JOIN pim_catalog_product p ON p.uuid = ap.product_uuid WHERE a.owner_uuid = UUID_TO_BIN('130b4998-7c25-4e56-80a2-5d2d569a76ce') AND a.association_type_id = '8' ORDER BY p_uuid;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5082,7 +5051,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
@@ -5109,7 +5077,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('\'©Wm[%FÊ¢Ö´ÛCxVà') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('\'©Wm[%FÊ¢Ö´ÛCxVà') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5265,7 +5232,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
@@ -5290,7 +5256,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('|πˇµ∞GTõõ˛[Ì ˇ®') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('|πˇµ∞GTõõ˛[Ì ˇ®') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5446,7 +5411,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ò”¿MÅë¥U”f–ß';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5611,7 +5575,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
@@ -5636,7 +5599,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('∫mÛ%Ø‚A⁄åô?‡,wN') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('∫mÛ%Ø‚A⁄åô?‡,wN') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5801,7 +5763,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'f8n€Ø¡Kë ó≠X∂fk';
@@ -5826,7 +5787,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('f8n€Ø¡Kë ó≠X∂fk') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('f8n€Ø¡Kë ó≠X∂fk') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5982,9 +5942,7 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ÏMÑ™´ÇM ØôtﬂL¡y›';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ÏMÑ™´ÇM ØôtﬂL¡y›';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
@@ -6141,7 +6099,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'õŸVøÁ¯Gæ´´dX´€Bê';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -6297,7 +6254,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ZDçâÊNARº≈P…„t';
 SELECT     BIN_TO_UUID(uuid) AS uuid,     pim_catalog_identifier_generator.code,     conditions,     structure,     labels,     options,     pim_catalog_attribute.code AS target FROM pim_catalog_identifier_generator INNER JOIN pim_catalog_attribute ON pim_catalog_identifier_generator.target_id=pim_catalog_attribute.id ORDER BY pim_catalog_identifier_generator.sort_order ASC;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'ZDçâÊNARº≈P…„t';
@@ -6322,7 +6278,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('ZDçâÊNARº≈P…„t') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('ZDçâÊNARº≈P…„t') AND e.criterion_code = 'enrichment_image';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = 'ZDçâÊNARº≈P…„t';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -6478,7 +6433,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
-SELECT t0.id AS id_1, t0.association_type_id AS association_type_id_2, t0.owner_uuid AS owner_uuid_3 FROM pim_catalog_association t0 WHERE t0.owner_uuid = '·GaπÓŒJ”üÉÅ‹˚ G';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
