@@ -2449,11 +2449,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:07', '2023-06-19 14:37:07', NULL, '◊#˙º+BjæJ˘n€ç', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '◊#˙º+BjæJ˘n€ç';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '◊#˙º+BjæJ˘n€ç', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('◊#˙º+BjæJ˘n€ç', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('◊#˙º+BjæJ˘n€ç', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '◊#˙º+BjæJ˘n€ç';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('◊#˙º+BjæJ˘n€ç', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('◊#˙º+BjæJ˘n€ç');
 COMMIT;
@@ -2472,9 +2470,7 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'product_variant_create_with_identifier';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'product_variant_create_with_identifier', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"product_variant_create_with_identifier\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:08', '2023-06-19 14:37:08', NULL, '€Î+ÿF(ê?9ı4@˜', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '€Î+ÿF(ê?9ı4@˜';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('product_variant_create_with_identifier', '€Î+ÿF(ê?9ı4@˜', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '€Î+ÿF(ê?9ı4@˜';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('€Î+ÿF(ê?9ı4@˜', '[\"sku#product_variant_create_with_identifier\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('€Î+ÿF(ê?9ı4@˜');
 COMMIT;
@@ -2584,11 +2580,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:09', '2023-06-19 14:37:09', NULL, 'è”\0Î<Oìòè~U¿7û', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'è”\0Î<Oìòè~U¿7û';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'è”\0Î<Oìòè~U¿7û', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('è”\0Î<Oìòè~U¿7û', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('è”\0Î<Oìòè~U¿7û', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'è”\0Î<Oìòè~U¿7û';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('è”\0Î<Oìòè~U¿7û', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('è”\0Î<Oìòè~U¿7û');
 COMMIT;
@@ -2606,9 +2600,7 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'product_create_without_identifier';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'product_create_without_identifier', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"product_create_without_identifier\"}}}', '2023-06-19 14:37:09', '2023-06-19 14:37:09', NULL, 'IVh/±ÚMMµ+|í/ÒG¢', NULL, NULL, NULL);
-SELECT id FROM pim_catalog_product WHERE uuid = 'IVh/±ÚMMµ+|í/ÒG¢';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('product_create_without_identifier', 'IVh/±ÚMMµ+|í/ÒG¢', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'IVh/±ÚMMµ+|í/ÒG¢';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('IVh/±ÚMMµ+|í/ÒG¢', '[\"sku#product_create_without_identifier\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('IVh/±ÚMMµ+|í/ÒG¢');
 COMMIT;
@@ -2715,11 +2707,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:10', '2023-06-19 14:37:10', NULL, 'ˇY©ﬁ‹N›ß\0Å⁄=)K', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ˇY©ﬁ‹N›ß\0Å⁄=)K';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ˇY©ﬁ‹N›ß\0Å⁄=)K', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ˇY©ﬁ‹N›ß\0Å⁄=)K', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ˇY©ﬁ‹N›ß\0Å⁄=)K', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ˇY©ﬁ‹N›ß\0Å⁄=)K';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ˇY©ﬁ‹N›ß\0Å⁄=)K', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ˇY©ﬁ‹N›ß\0Å⁄=)K');
 COMMIT;
@@ -2834,11 +2824,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:11', '2023-06-19 14:37:11', NULL, '00‡[ù˝O¶ÆZ¯o:í', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '00‡[ù˝O¶ÆZ¯o:í';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '00‡[ù˝O¶ÆZ¯o:í', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('00‡[ù˝O¶ÆZ¯o:í', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('00‡[ù˝O¶ÆZ¯o:í', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '00‡[ù˝O¶ÆZ¯o:í';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('00‡[ù˝O¶ÆZ¯o:í', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('00‡[ù˝O¶ÆZ¯o:í');
 COMMIT;
@@ -2952,11 +2940,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:12', '2023-06-19 14:37:12', NULL, '˘_Ó•Jù¶°w.î', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '˘_Ó•Jù¶°w.î';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '˘_Ó•Jù¶°w.î', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('˘_Ó•Jù¶°w.î', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('˘_Ó•Jù¶°w.î', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '˘_Ó•Jù¶°w.î';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('˘_Ó•Jù¶°w.î', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('˘_Ó•Jù¶°w.î');
 COMMIT;
@@ -3072,11 +3058,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:13', '2023-06-19 14:37:13', NULL, '«å öt¿EØÉùùgù˛H', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '«å öt¿EØÉùùgù˛H';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '«å öt¿EØÉùùgù˛H', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('«å öt¿EØÉùùgù˛H', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('«å öt¿EØÉùùgù˛H', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '«å öt¿EØÉùùgù˛H';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('«å öt¿EØÉùùgù˛H', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('«å öt¿EØÉùùgù˛H');
 COMMIT;
@@ -3192,11 +3176,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:14', '2023-06-19 14:37:14', NULL, 'ä\r¶ˆ∂kFªá%≥‡nΩ', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ä\r¶ˆ∂kFªá%≥‡nΩ';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ä\r¶ˆ∂kFªá%≥‡nΩ', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ä\r¶ˆ∂kFªá%≥‡nΩ', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ä\r¶ˆ∂kFªá%≥‡nΩ', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ä\r¶ˆ∂kFªá%≥‡nΩ';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ä\r¶ˆ∂kFªá%≥‡nΩ', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ä\r¶ˆ∂kFªá%≥‡nΩ');
 COMMIT;
@@ -3312,11 +3294,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:14', '2023-06-19 14:37:14', NULL, 'zò‘V‹bCjàü—4µ3', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'zò‘V‹bCjàü—4µ3';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'zò‘V‹bCjàü—4µ3', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('zò‘V‹bCjàü—4µ3', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('zò‘V‹bCjàü—4µ3', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'zò‘V‹bCjàü—4µ3';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('zò‘V‹bCjàü—4µ3', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('zò‘V‹bCjàü—4µ3');
 COMMIT;
@@ -3335,7 +3315,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'zò‘V‹bCjàü—4µ3';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('zò‘V‹bCjàü—4µ3', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'zò‘V‹bCjàü—4µ3';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('zò‘V‹bCjàü—4µ3', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('zò‘V‹bCjàü—4µ3');
 COMMIT;
@@ -3445,11 +3424,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:15', '2023-06-19 14:37:15', NULL, 'Ü+mHBA6Å€Îé[ª!', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'Ü+mHBA6Å€Îé[ª!';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'Ü+mHBA6Å€Îé[ª!', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('Ü+mHBA6Å€Îé[ª!', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('Ü+mHBA6Å€Îé[ª!', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'Ü+mHBA6Å€Îé[ª!';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('Ü+mHBA6Å€Îé[ª!', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('Ü+mHBA6Å€Îé[ª!');
 COMMIT;
@@ -3468,7 +3445,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'Ü+mHBA6Å€Îé[ª!';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'Ü+mHBA6Å€Îé[ª!' AND group_id = 1;
-SELECT id FROM pim_catalog_product WHERE uuid = 'Ü+mHBA6Å€Îé[ª!';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('Ü+mHBA6Å€Îé[ª!', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('Ü+mHBA6Å€Îé[ª!');
 COMMIT;
@@ -3578,11 +3554,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:17', '2023-06-19 14:37:17', NULL, 'O¨›ÇèLLºygbl⁄∞', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'O¨›ÇèLLºygbl⁄∞';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'O¨›ÇèLLºygbl⁄∞', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('O¨›ÇèLLºygbl⁄∞', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('O¨›ÇèLLºygbl⁄∞', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'O¨›ÇèLLºygbl⁄∞';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('O¨›ÇèLLºygbl⁄∞', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('O¨›ÇèLLºygbl⁄∞');
 COMMIT;
@@ -3603,7 +3577,6 @@ SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'O¨›ÇèLLºygbl⁄∞' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = 'O¨›ÇèLLºygbl⁄∞' AND category_id = 2;
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('O¨›ÇèLLºygbl⁄∞', 3);
-SELECT id FROM pim_catalog_product WHERE uuid = 'O¨›ÇèLLºygbl⁄∞';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('O¨›ÇèLLºygbl⁄∞', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('O¨›ÇèLLºygbl⁄∞');
 COMMIT;
@@ -3713,11 +3686,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:18', '2023-06-19 14:37:18', NULL, 'hÅ≈`¨®I˘±5¬´ä\\P', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'hÅ≈`¨®I˘±5¬´ä\\P', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('hÅ≈`¨®I˘±5¬´ä\\P', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('hÅ≈`¨®I˘±5¬´ä\\P', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('hÅ≈`¨®I˘±5¬´ä\\P', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('hÅ≈`¨®I˘±5¬´ä\\P');
 COMMIT;
@@ -3737,7 +3708,6 @@ START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('hÅ≈`¨®I˘±5¬´ä\\P', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('hÅ≈`¨®I˘±5¬´ä\\P');
 COMMIT;
@@ -3847,11 +3817,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:19', '2023-06-19 14:37:19', NULL, 'ØŸiÙ.I∞ì>Wy\r^”5', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ØŸiÙ.I∞ì>Wy\r^”5', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ØŸiÙ.I∞ì>Wy\r^”5', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ØŸiÙ.I∞ì>Wy\r^”5', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ØŸiÙ.I∞ì>Wy\r^”5', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ØŸiÙ.I∞ì>Wy\r^”5');
 COMMIT;
@@ -3878,7 +3846,6 @@ INSERT INTO pim_catalog_association_group (association_id, group_id) VALUES (4, 
 INSERT INTO pim_catalog_association_product (association_id, product_uuid) VALUES (4, 'ØŸiÙ.I∞ì>Wy\r^”5');
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'ØŸiÙ.I∞ì>Wy\r^”5' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = 'ØŸiÙ.I∞ì>Wy\r^”5' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ØŸiÙ.I∞ì>Wy\r^”5', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ØŸiÙ.I∞ì>Wy\r^”5');
 COMMIT;
@@ -3989,11 +3956,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:20', '2023-06-19 14:37:20', NULL, '\n«ù¯HaIûÖ€Âî≈ü|', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '\n«ù¯HaIûÖ€Âî≈ü|', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('\n«ù¯HaIûÖ€Âî≈ü|', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('\n«ù¯HaIûÖ€Âî≈ü|', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('\n«ù¯HaIûÖ€Âî≈ü|', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('\n«ù¯HaIûÖ€Âî≈ü|');
 COMMIT;
@@ -4017,7 +3982,6 @@ INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (7,
 INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (8, '\n«ù¯HaIûÖ€Âî≈ü|');
 DELETE FROM pim_catalog_group_product WHERE product_uuid = '\n«ù¯HaIûÖ€Âî≈ü|' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = '\n«ù¯HaIûÖ€Âî≈ü|' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('\n«ù¯HaIûÖ€Âî≈ü|', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('\n«ù¯HaIûÖ€Âî≈ü|');
 COMMIT;
@@ -4127,11 +4091,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:21', '2023-06-19 14:37:21', NULL, 'Iò|%NVÄ¢]-VövŒ', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'Iò|%NVÄ¢]-VövŒ';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'Iò|%NVÄ¢]-VövŒ', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('Iò|%NVÄ¢]-VövŒ', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('Iò|%NVÄ¢]-VövŒ', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'Iò|%NVÄ¢]-VövŒ';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('Iò|%NVÄ¢]-VövŒ', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('Iò|%NVÄ¢]-VövŒ');
 COMMIT;
@@ -4155,7 +4117,6 @@ INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (7,
 INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (8, 'Iò|%NVÄ¢]-VövŒ');
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'Iò|%NVÄ¢]-VövŒ' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = 'Iò|%NVÄ¢]-VövŒ' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = 'Iò|%NVÄ¢]-VövŒ';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('Iò|%NVÄ¢]-VövŒ', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('Iò|%NVÄ¢]-VövŒ');
 COMMIT;
@@ -4265,11 +4226,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:22', '2023-06-19 14:37:22', NULL, '\'©Wm[%FÊ¢Ö´ÛCxVà', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '\'©Wm[%FÊ¢Ö´ÛCxVà', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('\'©Wm[%FÊ¢Ö´ÛCxVà', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('\'©Wm[%FÊ¢Ö´ÛCxVà', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('\'©Wm[%FÊ¢Ö´ÛCxVà', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('\'©Wm[%FÊ¢Ö´ÛCxVà');
 COMMIT;
@@ -4287,10 +4246,8 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
-SELECT id FROM pim_catalog_product WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('\'©Wm[%FÊ¢Ö´ÛCxVà', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('\'©Wm[%FÊ¢Ö´ÛCxVà');
 COMMIT;
@@ -4400,11 +4357,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:23', '2023-06-19 14:37:23', NULL, '|πˇµ∞GTõõ˛[Ì ˇ®', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '|πˇµ∞GTõõ˛[Ì ˇ®', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('|πˇµ∞GTõõ˛[Ì ˇ®', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('|πˇµ∞GTõõ˛[Ì ˇ®', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('|πˇµ∞GTõõ˛[Ì ˇ®', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('|πˇµ∞GTõõ˛[Ì ˇ®');
 COMMIT;
@@ -4424,7 +4379,6 @@ START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®' AND group_id = 1;
 DELETE FROM pim_catalog_category_product WHERE product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®' AND category_id = 2;
-SELECT id FROM pim_catalog_product WHERE uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('|πˇµ∞GTõõ˛[Ì ˇ®', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('|πˇµ∞GTõõ˛[Ì ˇ®');
 COMMIT;
@@ -4534,11 +4488,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:24', '2023-06-19 14:37:24', NULL, 'ò”¿MÅë¥U”f–ß', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ò”¿MÅë¥U”f–ß';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ò”¿MÅë¥U”f–ß', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ò”¿MÅë¥U”f–ß', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ò”¿MÅë¥U”f–ß', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ò”¿MÅë¥U”f–ß';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ò”¿MÅë¥U”f–ß', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ò”¿MÅë¥U”f–ß');
 COMMIT;
@@ -4654,11 +4606,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:25', '2023-06-19 14:37:25', NULL, '∫mÛ%Ø‚A⁄åô?‡,wN', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '∫mÛ%Ø‚A⁄åô?‡,wN', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('∫mÛ%Ø‚A⁄åô?‡,wN');
 COMMIT;
@@ -4684,7 +4634,6 @@ START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', 2);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', 3);
-SELECT id FROM pim_catalog_product WHERE uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('∫mÛ%Ø‚A⁄åô?‡,wN');
 COMMIT;
@@ -4794,11 +4743,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:26', '2023-06-19 14:37:26', NULL, 'f8n€Ø¡Kë ó≠X∂fk', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'f8n€Ø¡Kë ó≠X∂fk', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('f8n€Ø¡Kë ó≠X∂fk', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('f8n€Ø¡Kë ó≠X∂fk', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('f8n€Ø¡Kë ó≠X∂fk', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('f8n€Ø¡Kë ó≠X∂fk');
 COMMIT;
@@ -4824,7 +4771,6 @@ START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('f8n€Ø¡Kë ó≠X∂fk', 2);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('f8n€Ø¡Kë ó≠X∂fk', 3);
-SELECT id FROM pim_catalog_product WHERE uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('f8n€Ø¡Kë ó≠X∂fk', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('f8n€Ø¡Kë ó≠X∂fk');
 COMMIT;
@@ -4934,11 +4880,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:27', '2023-06-19 14:37:27', NULL, 'ÏMÑ™´ÇM ØôtﬂL¡y›', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ÏMÑ™´ÇM ØôtﬂL¡y›';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ÏMÑ™´ÇM ØôtﬂL¡y›', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ÏMÑ™´ÇM ØôtﬂL¡y›', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ÏMÑ™´ÇM ØôtﬂL¡y›', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ÏMÑ™´ÇM ØôtﬂL¡y›';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ÏMÑ™´ÇM ØôtﬂL¡y›', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ÏMÑ™´ÇM ØôtﬂL¡y›');
 COMMIT;
@@ -5056,11 +5000,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:28', '2023-06-19 14:37:28', NULL, 'õŸVøÁ¯Gæ´´dX´€Bê', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'õŸVøÁ¯Gæ´´dX´€Bê';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'õŸVøÁ¯Gæ´´dX´€Bê', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('õŸVøÁ¯Gæ´´dX´€Bê', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('õŸVøÁ¯Gæ´´dX´€Bê', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'õŸVøÁ¯Gæ´´dX´€Bê';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('õŸVøÁ¯Gæ´´dX´€Bê', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('õŸVøÁ¯Gæ´´dX´€Bê');
 COMMIT;
@@ -5176,11 +5118,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:29', '2023-06-19 14:37:29', NULL, 'ZDçâÊNARº≈P…„t', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ZDçâÊNARº≈P…„t';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', 'ZDçâÊNARº≈P…„t', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('ZDçâÊNARº≈P…„t', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('ZDçâÊNARº≈P…„t', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = 'ZDçâÊNARº≈P…„t';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ZDçâÊNARº≈P…„t', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ZDçâÊNARº≈P…„t');
 COMMIT;
@@ -5198,8 +5138,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'ZDçâÊNARº≈P…„t';
-SELECT id FROM pim_catalog_product WHERE uuid = 'ZDçâÊNARº≈P…„t';
-SELECT id FROM pim_catalog_product WHERE uuid = 'ZDçâÊNARº≈P…„t';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('ZDçâÊNARº≈P…„t', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('ZDçâÊNARº≈P…„t');
 COMMIT;
@@ -5309,11 +5247,9 @@ SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE iden
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:30', '2023-06-19 14:37:30', NULL, '·GaπÓŒJ”üÉÅ‹˚ G', 1, 2, 1);
-SELECT id FROM pim_catalog_product WHERE uuid = '·GaπÓŒJ”üÉÅ‹˚ G';
 INSERT INTO pim_catalog_product_unique_data (raw_data, product_uuid, attribute_id) VALUES ('apollon_optionb_false', '·GaπÓŒJ”üÉÅ‹˚ G', 2);
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('·GaπÓŒJ”üÉÅ‹˚ G', 1);
 INSERT INTO pim_catalog_category_product (product_uuid, category_id) VALUES ('·GaπÓŒJ”üÉÅ‹˚ G', 2);
-SELECT id FROM pim_catalog_product WHERE uuid = '·GaπÓŒJ”üÉÅ‹˚ G';
 INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('·GaπÓŒJ”üÉÅ‹˚ G', '[\"sku#apollon_optionb_false\"]') ON DUPLICATE KEY UPDATE identifiers = VALUES(identifiers);
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('·GaπÓŒJ”üÉÅ‹˚ G');
 COMMIT;
