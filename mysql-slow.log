@@ -2441,7 +2441,6 @@ START TRANSACTION;
 INSERT INTO pim_catalog_product_model (code, raw_values, created, updated, quantified_associations, parent_id, family_variant_id) VALUES ('test', '{\"a_price\":{\"<all_channels>\":{\"<all_locales>\":[{\"amount\":\"50.00\",\"currency\":\"EUR\"}]}},\"a_number_float\":{\"<all_channels>\":{\"<all_locales>\":\"12.5000\"}},\"a_localized_and_scopable_text_area\":{\"ecommerce\":{\"en_US\":\"my pink tshirt\"}}}', '2023-06-19 14:37:07', '2023-06-19 14:37:07', NULL, NULL, 1);
 COMMIT;
 START TRANSACTION;
-UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:07' WHERE id = 1;
 COMMIT;
 START TRANSACTION;
 INSERT INTO pim_catalog_product_model (code, raw_values, created, updated, quantified_associations, parent_id, family_variant_id) VALUES ('amor', '{\"a_simple_select\":{\"<all_channels>\":{\"<all_locales>\":\"optionB\"}}}', '2023-06-19 14:37:07', '2023-06-19 14:37:07', NULL, 1, 1);
