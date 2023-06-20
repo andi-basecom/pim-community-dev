@@ -24,8 +24,8 @@ class EvaluateProductModels
     }
 
     /**
-     * @deprecated use forCriteria() instead
-     * Pending criteria are fetched from the database (legacy). New way to evaluate product models is by events
+     * Pending criteria are fetched from the database (legacy). New way to evaluate products is by events.
+     * Use forCriteria instead.
      */
     public function forPendingCriteria(ProductModelIdCollection $productModelIdCollection): void
     {
