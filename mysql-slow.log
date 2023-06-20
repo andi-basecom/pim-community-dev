@@ -2769,15 +2769,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('5tfvo5vkabggs44w8sok0cc80gc0ocs00s0occ8o8gkg40swkc', 'a:0:{}', '3ekb7bmx7lkw0gc4ckk4o4w8c8k48kscsck84g4cowwsk4csco', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'product_variant_create_with_identifier' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'product_variant_create_with_identifier' LIMIT 1;
@@ -2969,15 +2961,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('30wdvl2rfqwwggkcsggsggswcks0g0ok0gwgc0wkg0sgw0s8wo', 'a:0:{}', '4hg7610p2iw4k4ogogs0kwogkgw4wo0s8ssk8g8swk80c4oks4', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'product_create_without_identifier' LIMIT 1;
 SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'product_create_without_identifier';
@@ -3165,15 +3149,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('7p6dspvhpbk880cg00owcoo4wogkwsc0oo8s0s84gso40k4wo', 'a:0:{}', '5gw1pe0akcwsso84wkg08c0o8gwc0wcc0kg0cw84c80ow0scsc', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'foo' LIMIT 1;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -3337,15 +3313,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2cgnhbchsgpwsss4swcssc48w4w444s4k488c8c0wg4wk84ssk', 'a:0:{}', '29x960747se88sgcg4cso8048s80g84gs04w4w8gowk884kkos', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
@@ -3508,15 +3476,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('5kizijrq4ds8s8kg8cowkkgwogwkcc4wgcsos4w4oggssw0wgw', 'a:0:{}', '3aqeeiepy2kgsccog8swgwc4gc8cgk8w08go4sc0w488g04gws', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -3683,15 +3643,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2lwf94d6dick08w4kgkgs8cwg84wsk4o88o0kk48gcso0w88kc', 'a:0:{}', '3rdfstzgrm2os8c08go84ss4sggg448wckw8ssw8c8k00kg4cs', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -3858,15 +3810,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('10rhai0gb240sogkcso04gccww8oo4ccgcw48wo840gcwk4gow', 'a:0:{}', '25yw9n4rdfxckwccgw4k844884cgcc0w4oc4o04wogc8ccww80', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -4033,15 +3977,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('497bpd9nbxusgwwkc80g4og0kwwow8cwc4wc4kcc4g40www0kc', 'a:0:{}', '8eieathu2bwookkgo4c8ggko4sswwk0kwksosggo4kwkkgwow', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -4232,15 +4168,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('599w6ogubs84cokkww4cs40wkg4g8ks0gok4c8o0440w4go0s8', 'a:0:{}', '3ps60f6puqioo8ws8kwo4w40wk444ogk88wsw4kk4cc8cww40k', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -4431,15 +4359,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('4obny4io8zy80sw8sc0os4s840kkw4owksosw0oocwwcwkkosk', 'a:0:{}', '6aejjrbyyv400kogsgwck4k4w08888o4csskos8s848o8g8ccs', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -4632,15 +4552,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2nrwclaxexk4w4c8w4csowogk08k4wg8ok8s0kcw4kgs0o8s4k', 'a:0:{}', '46ht34ruqzsw4g0g4s80gkkgck8gw0cwk8cw8ks8gogk0o4ggc', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -4832,15 +4744,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('1zs1eco9u6e8k4c8swsw00sw4004o0gsgs00ow08k8so0s4wg8', 'a:0:{}', '3abx0rbw7tc0wkwkoo0cckkksow8k0kcwoggkkk84gsssckw0s', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -5045,15 +4949,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('6c35lidim3k0cog8sokogc8cc0g8w8s8kwgg84ccocg0oscosc', 'a:0:{}', 'ep9606idecooc88gww8cs8c0kw8ks0co08gss8sgokcggscwc', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -5253,15 +5149,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2dmrm6ow3jms0cwo8ws888ss0w8sso4ko8o0ogcwwog80c0cg8', 'a:0:{}', '6b1e0bahu04kkoo40os44sc0oc4og4cgoks8gog44k80wk48w4', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -5461,15 +5349,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('4apmv9065cqo4c4s0sg0sg0ksgwgwcog0so8ssocg40wowg4w0', 'a:0:{}', '1pzt81uo7pi8kwkkckcosccs0s0440gkck88gsooc8g8c4kgw4', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -5663,15 +5543,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2srbetc9pwcgggswgo0g0owc8ww00g8wk8gsooc0gc0c44scso', 'a:0:{}', '2rmjw0qn5fuosg04gc484co4k0cc4oco0ck8gckcgkwkwgskgs', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -5863,15 +5735,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2uwfs6lvp8o4gw4gc0s8w8o44g080cso4sgco8k4oo0gc804g8', 'a:0:{}', '1qvqun58u4pww8k4k84woko4wgg04owwswgwo840w04o8gkc8k', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -6038,15 +5902,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('15kjsrt0y5b4ckg4kk880gk0w80k444gwckkc00s4sg8g0ws80', 'a:0:{}', '3dt4d0hvbce8so40ko0gw8skkogww0ookg8oog84gw0wg4o044', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 START TRANSACTION;
 INSERT INTO akeneo_file_storage_file_info (file_key, original_filename, mime_type, size, extension, hash, storage) VALUES ('8/5/2/a/852a6ce8a3cc47e3fa8086b0afd15dba0f7bb92f_akeneo.pdf', 'akeneo.pdf', 'application/pdf', 11342, 'pdf', '93993b2bc873ade09677261da3b60fdf7504b126', 'catalogStorage');
@@ -6247,15 +6103,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('1iz7x8lwdxgk8o480kkccsw4osswgggk8oo4osokkwwg8gskgc', 'a:0:{}', '49x8pq1wcce8444080sco4k0okog484wgcocgw88ookksg40k4', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 START TRANSACTION;
 INSERT INTO akeneo_file_storage_file_info (file_key, original_filename, mime_type, size, extension, hash, storage) VALUES ('6/b/6/6/6b668503a0fdf5bc3a5fd07264ac6cf64b9d6f1c_akeneo.pdf', 'akeneo.pdf', 'application/pdf', 11342, 'pdf', '93993b2bc873ade09677261da3b60fdf7504b126', 'catalogStorage');
@@ -6456,15 +6304,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2oisudh7yr8kcwwkks844ggok48os048g8w4cgcko4g0w8gwow', 'a:0:{}', '4xk6a8rbd44kkco800swk84s8gs0gc04s80o8000wgs4o0004w', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -6634,15 +6474,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('41xngheb53y8wss4c8scwkck048gc84sc88wkc0cksoc8wc88c', 'a:0:{}', '3o9hlk8qufy8w8o4s04k0o4kkcgkk8w0o0wcs008ww4s48k00c', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -6809,15 +6641,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('2rgcfbivnhesow4sskw40os48go4kgccogc0oco0gcowkk8wwc', 'a:0:{}', '3pgovbkmpbsw0ksskwoso80sgwk0s8ww0okcg4o80c0ko0gc0o', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -7009,15 +6833,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS r
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('w1gg0uk52sgk4cs48800ckc4040s4g88ww4o4gog4wwgo4sgg', 'a:0:{}', '4kjkzwhpad4w4o0csc0cskow80ggw8ocs0gogscoksk0sgw8wc', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
@@ -7144,15 +6960,7 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('íyŒóN9î\Zk*O’{¢', '‹M[j≠DúÉyp¨2ò“I', 'øêL’»<A˛µπ@ÏÁI|“', '*øÇÅäKˆÅ\n\Zı˘KßG', ',é,˛ypD@ñmôâeÉ™', 'ã¨\nï¬ÁC∂öÂ]¶-‚A‡', 'W?◊îŒEzë-Â9#6\rÑ', 's¯i;0I◊´ˇ@Bç”r1', '•ÉSªD;Æ´Í=◊Oò$', 'ïà√-!HKü€ù*Ö\r9«', ')Ï‘Ku¡Kä§<„ƒ&<', 'ÏvÈﬂAπÑ˘XwRWÅ', '7W∞ôπXOˇõ_`^1b|‡', '+–ÂÕ‡C‡ì¸Ú%8¿Ñ', '#l\ZZ@\"â√:Ê‹%6Y', 'è,¸N∆àÕ◊…ˆñ•', '4)ñ ”@Ní⁄ºWjuK', '§ü.PõBFÖ¥èÚÍ(§Ñr', 'VŸl„VŒICñíÊÂ‡ˆ', '‡ÚJR%@ùû◊«\"', '‘`cÀúH±qZè¬Ò', '{OÅí—ûFíq(§–ØàÖ', 'ö1–p®ÅDPâˆ!Æµ≥', 'ÉrJsmxEóØì\0ÎÃ4Ò', 'U\r⁄√Nﬁ@ê∏ïü;´qÓ', 'Lˇ∑?eM⁄ê$~líVÆ{', '–ŸÅTIHëeﬂ◊ñ£/¯', '*„®8…O“¨óxD\n¥r', 'w¸\ZÇFıôa:œå´', 'LîêNN!@$ûÛIæiµ8', '˚Æ}–CJ≤R¨>W	', '\\Ì˙Ÿ‚>Fbµø) Ì\\ ', 'U◊Ó]N/ø©Ω-2\ZRt', '5Iﬂ€Ω≥B√àì=…Ñ≈{', '¬”ì?÷AùÉÅF˙W™^¸', '~.a{êßGÏ•}»˜∂≤µ', '¬é<<R&N∞ÇB¥j\'∞„', '~Ω{õsÛAOá™X?Ï!ÿë', '◊é⁄ˇG≤í™Ùa,ÈÊ“', 'Gµ]¶“Iﬂè^µﬂ˘ıö`', 'ö\0ÁD‹AH°≥VıRC}ï', '¸\n˚O˜KÃú%ãÓÂzı', 'Aoª˚±KFâæ“Ê˘', '\Zò˘⁄¬E@pô˚sV*»à', '°ÁázäCÌòø∑˚c', 'z\Z∆ÿÓDmÇ£?tû7Ë', 'É[Ä†uM‹úŸΩCƒ^1', '®cS§@;ù$Ÿ˘‹TD', '¯ÁÅyÈ¨AﬁïpN#u£é', '–Ò©aÌMñ©\'å∆úµ', '\réµËíOIüA)g{', 'Öãd?FgΩT\'Ö“zª∞', '§ovœÄA€™|Ì93©v', '&|≠ßöH.ÅfNâ€∏–', 'Ä`-NÇN?ûíê\\ìf', '-«P9¬¿D0∏ß ÂÍµ•X', 'éÙYf∫ÈGëlTü¿ÇÜ', 'œ¶,0}TO¬õ˛Q#˝6Øπ', '…ªSØÒˆAá∑{aˆàù@¿', 'ÿ`\n∏]CwóVY‰M≈D÷', 'N~ ıvEK®Ê‡⁄@AáÈ', ';:—ãDIÆ•≤Y;µíºô', '|P\r¬F∆ø\nç:û·L', 'h˛}†qsN	º@‘º≠\'ºÎ', 'c´íï¢LÍùyùŒö•!', 'uBNR–J¨êö1uÚ˚Ñ', 'A,›±@]≤sêx4ú§è', '9±\"˚&KJÅòdI«˙≤°', '0c—ûoCC™›\0Ö6‡¿µ', 'Q]∏+*Ez¢◊˘I˝∏lˇ', 'û¨‚-óÿK⁄µ¥åg¡-çm', '—s÷˘uN∑@?Jóú«j', '^¨∞¿{M™µ8âs±)¯Ê', 'Âd**oLwÑt2µÃ', 'Â†\0güBQµJ≤˛?V_5', 'ÌPª˛ö‰E@ÅL¡˛ãÌ', 'µåKÂ,KMçãbˆO¥’o', 'q\',ú’’MX®ñ·ÛrU$P', 'Ø®£°»ıES∫ævc%sÅ', 'ÖπOF¡ A¯åÄ.Å(û', '·≠·‘8vG)É••Ûû`R0', 'RhtlÔMõüG\r«—˘', 'R‚ﬂò>åBﬂπC—ë·>É-', 'äø_/ŸB\r°øêæ$Ú', '_[^Ÿe%OÁ¢–ZE≠∞U', '¥‚Z∂\"\"N\r°b|ΩcOïq', 'Z–}Û‡EàÇ®o_›Eí', 'at™B/9HW∏áìñ4˘', '‡Ñ’L‘æOk†îﬂ·ˇ‹πÛ', 'z\"%Bv*MŒñ÷Îãjb˛k', 'Ç`:2¿âEª\'≠®xåÿ5', '¡V\Z£N`∞Ò‘O–Còñ', 'T$Ñ-5Iòá∫·öë]9ˆ', 'ê–sÆªîD`πDtØÖˆ', 'gG¢÷‡O;Çß¥tËÙ', ') ∏Ç:LªïÄ¯∑Ê±{', 'j|Wñ<ZGÀØ‚1ƒÂ?7k', '§ÍÖ˝2H∑§!GŸ3Èu', '‘„¡´∆@Üã+êa¡%Ô', '‘	Fq+¿HqõÖ©Ht⁄©', 'K;íõM‡îd˛J=s≤', ' û˙_ßA∞©àåﬁr,', 'WEbZrxJ¶£~HXüÀ', 's*nZ˚C®yËlı.ˇ', 'ÃÎÆ∑*0O≠B≥~Ê‘', 'ÔbzpN◊î`|\rªå\\O', ' ÍØÕ°ÅKô∞°r˘±s#|', 'Å…àÏe±K(Ç¡»\0\nhIn', '‡à§@¶®æ\'kE<a', 'ÕØ©ÿÀG´ûïœKä|D', '±≤Ï)›”JîGÈ`=Á˛T', 'p¨Â(&aO⁄´µü‚á¿Ô', '3‚\"¨·ÈFàƒf<ˇd', '4ÕùrÖCK™FÆ>ùÆ	å', '®ß;ñÂïH:†∫ÛÌôr_z', '‘>LUºrFy¨Æì•∂<', '-åw›‰E≈ÅC3:˛ıw', 'QIîÌXO]áß‰∏0Æ[É', '¿ºÖ√ÕKD∑\nK˜£éH4', '¨Å¿‚ÿKÂß∫∫)qP»', 'i„6<QDÜè»«îF·æÈ', '{ã4ÂRJç≠Ú…≥I’YÛ', '± ’¯L,Joç9œpˆ	K', 'ˇÒJ\"îN≤∑◊Îﬂº/', 'Yc∑G¢Ì”ÅåÉ¥', ';-øsd´N?î^5êP*à', 'ÀÒ≤1ÅÅMÖ¸˜Ö˘', '◊	,óS\nN-ôdI -Qu', '>Ä˘%pD„≥jf;Öüty', 'Ù#æùJöæƒÖÚ∑ÕIÕ', 'ºSNûÛ¶Ov®wrGG81', 'Á∆ºX]ûFRµ≈6D2›', ' UsÕóOAò èïLÌù\0', 'Àà\r‹Ü+@>ö—>ydig÷', '™µÒ0@OénÕ©AHi', 'u%uê¨+@qÖ¸˚PsNU', 'P∏e¶ÿvMQòOÅò\nn@', '3\"\\≈¶Gqí†•ê;ﬂok', '`´vA,I∏ñ‚°\Z N', 'OTbâz\rOçªK„ ≠ˆÅ≥', '∆+`∞ôD⁄π\'mÂiñ', 'Ã\ríH*EÌÖ?Æ¢hˇ≠≤', 'bVº∂vO«òOËÈ@ˆ(', 'CüØ}N–õm·$âÒ≠¢', 'n§¸ ì@í∞—U3zÃ', 'ˇtNéØM<à∫w®HgÔ«', 'ÒòëzåE–†åŒﬁâp', '—•´@“Æ<@W´˝sï', '\"œ<=°óI;öÅD≤$Ñ†', '?ÂQ±/ÍE\0¨H√”Áç]', 'Â\'Úmû\rJäü¢jço’ï', 'HqÚ°òDEj†;ŒcπW∫', 'ı∑~ÁN,ØÚ‚˜º®ñÓ', 'º˝÷(\"Dúôo ˆPT', 'ÌÏœ™]C∆ßK·˜Ñ·ôÊ', '˛¸;œ6Gâó^…õZat}', '3_RÒD≈üb‰¢ö˝˛A', ':zl^F åjW\r,§êÉ', '/kÙ¬ÑÅFX¨˚≥«Ì˙:†', '\'Ñ\Z\Zß@ö≥ú˛ïÛBÈñ', '˙Ï%[îgJ¨9k\"o›W’', 'Ìó≤2zπF≤ÅbéUû', 'Ö~˜AG·î›M¶]ßC', '¢Àπ\'øØMPºèEh>L\r„', ';∆E0ØöB_ñ:ó7È\'’j', '˝”®Ä_ÊD—´n∑Ï¸…\Z', '≠∆\0˝ãœG5ñ˝ÈÈ¢ V', 'Á\ZçT_MãHƒòéå', 'y=ËÇ¸\\L\n§ÃvôvAaı', 'u√“ËåHJ†ØãÛîÌÑ ', '>µ◊∏R¨C-ù5\nDs=W', '≥øà∫≠ÿL\'¥.ÏŒ°˛', '^?π¢∑0Bú@˜ã+C…', 'e÷@ÇCm§™·ı\r‘¥˛', 'Gﬁ·oµF¥Û©o»Kñ¨', 'JÊSsƒ,Ff£ﬂ›ØÏ¯çß', '≤≥ÈÙBr§©∫ˆ∞’Œπ', 'Á˛ÿ-ÕDÌô˘“+éf»˘', 's^|{OJê\0ÁıÚûtw', 'Û‡(ç£íK≈®Ú)õGµ', 'Ç$~‰D4¶@≤%uû≤', '7oN±iïHB†‘·Á∫v·', '[‹Aª”!HØT“:_k›', ' Å :ØN5ùÙ˙·ò◊á»', 'ó	Ù˛ÄNéRÈßq.Ò', '_[^[\ZL=ç@´≠–ﬂ', '¥ª—˘âC&òß¨ó‘P®', '4Z ›ì\rIJÑØü∫ó/Lõ', 'πØ¥`}L9å±w◊\ZÒ', 'ò≥÷6¬RC∞x0™»‡Én', '˝|SÆûÜJ8ÅÁN;èˇÏ–', 'Û-+\Z|ó@Ç£—	⁄∫', 'ÀÈÖê*®E\Z§?Ñ˙˝8', '≠ﬁ˙†¨N¨ø≤y\Z„·|', 'ˇŸ\'-≤B5•é\'1jMò', '_∏≈sÏÔILã»æD|950', 'N=ÿ®VÈG\rö<õª*‚†\0', ')Z∑¥±H˝≤ˆ f∏‹?', 'GÍ,ï¿Dä(Õ!íC', 'úÔêCä∂nHÑ5/§Ò', 'ô:èÚuqKÅ\rQn˜,k', 'π‘©Æ˝m@	®h´”¥1Ë‹', 'îÃ6\r„áCñòü1V»Tq', 'í7Åc@EbÄ\Zı∫kﬂ\Z∂', 'Îë‡Ö\ndIöæ	ISF®æ', ' ~Tí%C£pôuÈ', '}–÷éÃôB¿Ñ∏Ω1Êqå#', '¥u=`CˇHœÄu$«fÿ“J', '‹0◊0dD˜Æ‡Ê‘ÒΩè', 'ÖÎÏÕò≈C|îáz€ﬁMá€', 'Ã§R±\'TA†äs+£ì(≥', '\r‡+\nˆuA’©O©GŸó6', 'Pâ{°˙ΩBuÇâ`^†ºœA', 'âÙïªﬂNdòÆõQÈ?', 'ñ8_·\"†FéºãÑˇU|ıU', '˛ºVRB´åhZå¸ßO/', '∑¥z^ ‡Dƒ©9©|¢0™', '¶m¿\'&F=®BrÛ#€', 'Ëã6≠NRû“TÜ˛ $⁄', '5hhâÎÛMìè∞~(Ò˘YŸ', 'ÉˇZÜúãC¬°^Í”©ƒáê', 'Ò’4ÆˆÊD)ó øÁLé}¿', '~eÛe◊F@#¢çÏåq˜A', 'Ì=†\'NL\Z≤∂àkÖ~', '¸hÏ◊œyBB¢…©îí;‹`', '9ú⁄Ë(,EhÄÉ‰≠ [', 'πfƒn∏LÜÅ®ëDq ', '!Ω∞ÉYÚM üΩÀí¸Ei<', '\nQ≥-µiBD£gÆ¥2zÛ', '”bÌ;„L9ªùısR', 'I)l£VåN]üÇsÌÂLn', '\0Ö) çâ@,ò≈GîCJK)', 'ü¢Aal√LB¢b8\'Ä', 'ûU5MèB ªÖôÅß^£˜', 'π	82<ªOäè˝àÒvoü', 'qæÌ¥`\rD;†ÛD¸Ä…Y', '™î9ª@É¶D;b-XPπ', '{2e[©F…Ö8M•Œ$', '^Äú∆ÎœN™ó´≤ƒﬁ~', 'dü^ÑpC^ï+•◊‹\"2', '◊qÉŸ8LÊÉ§î‹ÚÔn', '¢®{¶FI¢≥äìnGR') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('íyŒóN9î\Zk*O’{¢', '‹M[j≠DúÉyp¨2ò“I', 'øêL’»<A˛µπ@ÏÁI|“', '*øÇÅäKˆÅ\n\Zı˘KßG', ',é,˛ypD@ñmôâeÉ™', 'ã¨\nï¬ÁC∂öÂ]¶-‚A‡', 'W?◊îŒEzë-Â9#6\rÑ', 's¯i;0I◊´ˇ@Bç”r1', '•ÉSªD;Æ´Í=◊Oò$', 'ïà√-!HKü€ù*Ö\r9«', ')Ï‘Ku¡Kä§<„ƒ&<', 'ÏvÈﬂAπÑ˘XwRWÅ', '7W∞ôπXOˇõ_`^1b|‡', '+–ÂÕ‡C‡ì¸Ú%8¿Ñ', '#l\ZZ@\"â√:Ê‹%6Y', 'è,¸N∆àÕ◊…ˆñ•', '4)ñ ”@Ní⁄ºWjuK', '§ü.PõBFÖ¥èÚÍ(§Ñr', 'VŸl„VŒICñíÊÂ‡ˆ', '‡ÚJR%@ùû◊«\"', '‘`cÀúH±qZè¬Ò', '{OÅí—ûFíq(§–ØàÖ', 'ö1–p®ÅDPâˆ!Æµ≥', 'ÉrJsmxEóØì\0ÎÃ4Ò', 'U\r⁄√Nﬁ@ê∏ïü;´qÓ', 'Lˇ∑?eM⁄ê$~líVÆ{', '–ŸÅTIHëeﬂ◊ñ£/¯', '*„®8…O“¨óxD\n¥r', 'w¸\ZÇFıôa:œå´', 'LîêNN!@$ûÛIæiµ8', '˚Æ}–CJ≤R¨>W	', '\\Ì˙Ÿ‚>Fbµø) Ì\\ ', 'U◊Ó]N/ø©Ω-2\ZRt', '5Iﬂ€Ω≥B√àì=…Ñ≈{', '¬”ì?÷AùÉÅF˙W™^¸', '~.a{êßGÏ•}»˜∂≤µ', '¬é<<R&N∞ÇB¥j\'∞„', '~Ω{õsÛAOá™X?Ï!ÿë', '◊é⁄ˇG≤í™Ùa,ÈÊ“', 'Gµ]¶“Iﬂè^µﬂ˘ıö`', 'ö\0ÁD‹AH°≥VıRC}ï', '¸\n˚O˜KÃú%ãÓÂzı', 'Aoª˚±KFâæ“Ê˘', '\Zò˘⁄¬E@pô˚sV*»à', '°ÁázäCÌòø∑˚c', 'z\Z∆ÿÓDmÇ£?tû7Ë', 'É[Ä†uM‹úŸΩCƒ^1', '®cS§@;ù$Ÿ˘‹TD', '¯ÁÅyÈ¨AﬁïpN#u£é', '–Ò©aÌMñ©\'å∆úµ', '\réµËíOIüA)g{', 'Öãd?FgΩT\'Ö“zª∞', '§ovœÄA€™|Ì93©v', '&|≠ßöH.ÅfNâ€∏–', 'Ä`-NÇN?ûíê\\ìf', '-«P9¬¿D0∏ß ÂÍµ•X', 'éÙYf∫ÈGëlTü¿ÇÜ', 'œ¶,0}TO¬õ˛Q#˝6Øπ', '…ªSØÒˆAá∑{aˆàù@¿', 'ÿ`\n∏]CwóVY‰M≈D÷', 'N~ ıvEK®Ê‡⁄@AáÈ', ';:—ãDIÆ•≤Y;µíºô', '|P\r¬F∆ø\nç:û·L', 'h˛}†qsN	º@‘º≠\'ºÎ', 'c´íï¢LÍùyùŒö•!', 'uBNR–J¨êö1uÚ˚Ñ', 'A,›±@]≤sêx4ú§è', '9±\"˚&KJÅòdI«˙≤°', '0c—ûoCC™›\0Ö6‡¿µ', 'Q]∏+*Ez¢◊˘I˝∏lˇ', 'û¨‚-óÿK⁄µ¥åg¡-çm', '—s÷˘uN∑@?Jóú«j', '^¨∞¿{M™µ8âs±)¯Ê', 'Âd**oLwÑt2µÃ', 'Â†\0güBQµJ≤˛?V_5', 'ÌPª˛ö‰E@ÅL¡˛ãÌ', 'µåKÂ,KMçãbˆO¥’o', 'q\',ú’’MX®ñ·ÛrU$P', 'Ø®£°»ıES∫ævc%sÅ', 'ÖπOF¡ A¯åÄ.Å(û', '·≠·‘8vG)É••Ûû`R0', 'RhtlÔMõüG\r«—˘', 'R‚ﬂò>åBﬂπC—ë·>É-', 'äø_/ŸB\r°øêæ$Ú', '_[^Ÿe%OÁ¢–ZE≠∞U', '¥‚Z∂\"\"N\r°b|ΩcOïq', 'Z–}Û‡EàÇ®o_›Eí', 'at™B/9HW∏áìñ4˘', '‡Ñ’L‘æOk†îﬂ·ˇ‹πÛ', 'z\"%Bv*MŒñ÷Îãjb˛k', 'Ç`:2¿âEª\'≠®xåÿ5', '¡V\Z£N`∞Ò‘O–Còñ', 'T$Ñ-5Iòá∫·öë]9ˆ', 'ê–sÆªîD`πDtØÖˆ', 'gG¢÷‡O;Çß¥tËÙ', ') ∏Ç:LªïÄ¯∑Ê±{', 'j|Wñ<ZGÀØ‚1ƒÂ?7k', '§ÍÖ˝2H∑§!GŸ3Èu', '‘„¡´∆@Üã+êa¡%Ô', '‘	Fq+¿HqõÖ©Ht⁄©', 'K;íõM‡îd˛J=s≤', ' û˙_ßA∞©àåﬁr,', 'WEbZrxJ¶£~HXüÀ', 's*nZ˚C®yËlı.ˇ', 'ÃÎÆ∑*0O≠B≥~Ê‘', 'ÔbzpN◊î`|\rªå\\O', ' ÍØÕ°ÅKô∞°r˘±s#|', 'Å…àÏe±K(Ç¡»\0\nhIn', '‡à§@¶®æ\'kE<a', 'ÕØ©ÿÀG´ûïœKä|D', '±≤Ï)›”JîGÈ`=Á˛T', 'p¨Â(&aO⁄´µü‚á¿Ô', '3‚\"¨·ÈFàƒf<ˇd', '4ÕùrÖCK™FÆ>ùÆ	å', '®ß;ñÂïH:†∫ÛÌôr_z', '‘>LUºrFy¨Æì•∂<', '-åw›‰E≈ÅC3:˛ıw', 'QIîÌXO]áß‰∏0Æ[É', '¿ºÖ√ÕKD∑\nK˜£éH4', '¨Å¿‚ÿKÂß∫∫)qP»', 'i„6<QDÜè»«îF·æÈ', '{ã4ÂRJç≠Ú…≥I’YÛ', '± ’¯L,Joç9œpˆ	K', 'ˇÒJ\"îN≤∑◊Îﬂº/', 'Yc∑G¢Ì”ÅåÉ¥', ';-øsd´N?î^5êP*à', 'ÀÒ≤1ÅÅMÖ¸˜Ö˘', '◊	,óS\nN-ôdI -Qu', '>Ä˘%pD„≥jf;Öüty', 'Ù#æùJöæƒÖÚ∑ÕIÕ', 'ºSNûÛ¶Ov®wrGG81', 'Á∆ºX]ûFRµ≈6D2›', ' UsÕóOAò èïLÌù\0', 'Àà\r‹Ü+@>ö—>ydig÷', '™µÒ0@OénÕ©AHi', 'u%uê¨+@qÖ¸˚PsNU', 'P∏e¶ÿvMQòOÅò\nn@', '3\"\\≈¶Gqí†•ê;ﬂok', '`´vA,I∏ñ‚°\Z N', 'OTbâz\rOçªK„ ≠ˆÅ≥', '∆+`∞ôD⁄π\'mÂiñ', 'Ã\ríH*EÌÖ?Æ¢hˇ≠≤', 'bVº∂vO«òOËÈ@ˆ(', 'CüØ}N–õm·$âÒ≠¢', 'n§¸ ì@í∞—U3zÃ', 'ˇtNéØM<à∫w®HgÔ«', 'ÒòëzåE–†åŒﬁâp', '—•´@“Æ<@W´˝sï', '\"œ<=°óI;öÅD≤$Ñ†', '?ÂQ±/ÍE\0¨H√”Áç]', 'Â\'Úmû\rJäü¢jço’ï', 'HqÚ°òDEj†;ŒcπW∫', 'ı∑~ÁN,ØÚ‚˜º®ñÓ', 'º˝÷(\"Dúôo ˆPT', 'ÌÏœ™]C∆ßK·˜Ñ·ôÊ', '˛¸;œ6Gâó^…õZat}', '3_RÒD≈üb‰¢ö˝˛A', ':zl^F åjW\r,§êÉ', '/kÙ¬ÑÅFX¨˚≥«Ì˙:†', '\'Ñ\Z\Zß@ö≥ú˛ïÛBÈñ', '˙Ï%[îgJ¨9k\"o›W’', 'Ìó≤2zπF≤ÅbéUû', 'Ö~˜AG·î›M¶]ßC', '¢Àπ\'øØMPºèEh>L\r„', ';∆E0ØöB_ñ:ó7È\'’j', '˝”®Ä_ÊD—´n∑Ï¸…\Z', '≠∆\0˝ãœG5ñ˝ÈÈ¢ V', 'Á\ZçT_MãHƒòéå', 'y=ËÇ¸\\L\n§ÃvôvAaı', 'u√“ËåHJ†ØãÛîÌÑ ', '>µ◊∏R¨C-ù5\nDs=W', '≥øà∫≠ÿL\'¥.ÏŒ°˛', '^?π¢∑0Bú@˜ã+C…', 'e÷@ÇCm§™·ı\r‘¥˛', 'Gﬁ·oµF¥Û©o»Kñ¨', 'JÊSsƒ,Ff£ﬂ›ØÏ¯çß', '≤≥ÈÙBr§©∫ˆ∞’Œπ', 'Á˛ÿ-ÕDÌô˘“+éf»˘', 's^|{OJê\0ÁıÚûtw', 'Û‡(ç£íK≈®Ú)õGµ', 'Ç$~‰D4¶@≤%uû≤', '7oN±iïHB†‘·Á∫v·', '[‹Aª”!HØT“:_k›', ' Å :ØN5ùÙ˙·ò◊á»', 'ó	Ù˛ÄNéRÈßq.Ò', '_[^[\ZL=ç@´≠–ﬂ', '¥ª—˘âC&òß¨ó‘P®', '4Z ›ì\rIJÑØü∫ó/Lõ', 'πØ¥`}L9å±w◊\ZÒ', 'ò≥÷6¬RC∞x0™»‡Én', '˝|SÆûÜJ8ÅÁN;èˇÏ–', 'Û-+\Z|ó@Ç£—	⁄∫', 'ÀÈÖê*®E\Z§?Ñ˙˝8', '≠ﬁ˙†¨N¨ø≤y\Z„·|', 'ˇŸ\'-≤B5•é\'1jMò', '_∏≈sÏÔILã»æD|950', 'N=ÿ®VÈG\rö<õª*‚†\0', ')Z∑¥±H˝≤ˆ f∏‹?', 'GÍ,ï¿Dä(Õ!íC', 'úÔêCä∂nHÑ5/§Ò', 'ô:èÚuqKÅ\rQn˜,k', 'π‘©Æ˝m@	®h´”¥1Ë‹', 'îÃ6\r„áCñòü1V»Tq', 'í7Åc@EbÄ\Zı∫kﬂ\Z∂', 'Îë‡Ö\ndIöæ	ISF®æ', ' ~Tí%C£pôuÈ', '}–÷éÃôB¿Ñ∏Ω1Êqå#', '¥u=`CˇHœÄu$«fÿ“J', '‹0◊0dD˜Æ‡Ê‘ÒΩè', 'ÖÎÏÕò≈C|îáz€ﬁMá€', 'Ã§R±\'TA†äs+£ì(≥', '\r‡+\nˆuA’©O©GŸó6', 'Pâ{°˙ΩBuÇâ`^†ºœA', 'âÙïªﬂNdòÆõQÈ?', 'ñ8_·\"†FéºãÑˇU|ıU', '˛ºVRB´åhZå¸ßO/', '∑¥z^ ‡Dƒ©9©|¢0™', '¶m¿\'&F=®BrÛ#€', 'Ëã6≠NRû“TÜ˛ $⁄', '5hhâÎÛMìè∞~(Ò˘YŸ', 'ÉˇZÜúãC¬°^Í”©ƒáê', 'Ò’4ÆˆÊD)ó øÁLé}¿', '~eÛe◊F@#¢çÏåq˜A', 'Ì=†\'NL\Z≤∂àkÖ~', '¸hÏ◊œyBB¢…©îí;‹`', '9ú⁄Ë(,EhÄÉ‰≠ [', 'πfƒn∏LÜÅ®ëDq ', '!Ω∞ÉYÚM üΩÀí¸Ei<', '\nQ≥-µiBD£gÆ¥2zÛ', '”bÌ;„L9ªùısR', 'I)l£VåN]üÇsÌÂLn', '\0Ö) çâ@,ò≈GîCJK)', 'ü¢Aal√LB¢b8\'Ä', 'ûU5MèB ªÖôÅß^£˜', 'π	82<ªOäè˝àÒvoü', 'qæÌ¥`\rD;†ÛD¸Ä…Y', '™î9ª@É¶D;b-XPπ', '{2e[©F…Ö8M•Œ$', '^Äú∆ÎœN™ó´≤ƒﬁ~', 'dü^ÑpC^ï+•◊‹\"2', '◊qÉŸ8LÊÉ§î‹ÚÔn', '¢®{¶FI¢≥äìnGR') AND e.criterion_code = 'enrichment_image';
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_types, label, marketplace_public_app_id) VALUES ('5ccn1xc3wykgwo8osco04oow4o484k8c880kgocggo4og44ow0', 'a:0:{}', '1wi6mefr8lpckk4c880ookwso0g08sw4o8kws4w0kog80sc44s', 'a:2:{i:0;s:8:\"password\";i:1;s:13:\"refresh_token\";}', 'API_Test', NULL);
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'biker-jacket-leather-xxs' LIMIT 1;
