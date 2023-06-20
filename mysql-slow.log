@@ -650,8 +650,6 @@ UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:34' WHERE id
 UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:34' WHERE id = 4;
 COMMIT;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'action', 1);
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_ADMINISTRATOR', 0);
@@ -1515,8 +1513,6 @@ UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:50' WHERE id
 UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:50' WHERE id = 2;
 UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:50' WHERE id = 3;
 UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:36:50' WHERE id = 4;
-COMMIT;
-START TRANSACTION;
 COMMIT;
 START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
@@ -2389,8 +2385,6 @@ UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:37:03' WHERE id
 UPDATE pim_catalog_association_type SET updated = '2023-06-19 14:37:03' WHERE id = 4;
 COMMIT;
 START TRANSACTION;
-COMMIT;
-START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'action', 1);
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_ADMINISTRATOR', 0);
@@ -2699,8 +2693,6 @@ INSERT INTO pim_catalog_product_identifiers(product_uuid, identifiers) VALUES ('
 DELETE FROM pim_catalog_identifier_generator_prefixes WHERE product_uuid IN ('IVh/±ÚMMµ+|í/ÒG¢');
 COMMIT;
 INSERT INTO pim_catalog_product_completeness (product_uuid, completeness)       VALUES ('IVh/±ÚMMµ+|í/ÒG¢', '[]')       ON DUPLICATE KEY UPDATE completeness = VALUES(completeness);
-START TRANSACTION;
-COMMIT;
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('IVh/±ÚMMµ+|í/ÒG¢') AND e.criterion_code = 'completeness_of_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('IVh/±ÚMMµ+|í/ÒG¢') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('IVh/±ÚMMµ+|í/ÒG¢') AND e.criterion_code = 'enrichment_image';
