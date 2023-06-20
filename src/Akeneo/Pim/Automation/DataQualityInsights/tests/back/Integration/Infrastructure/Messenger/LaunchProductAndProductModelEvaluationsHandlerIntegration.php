@@ -67,12 +67,14 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
         $productModelToEvaluateId2 = new ProductModelId($productModelToEvaluate2->getId());
         $whateverProductModelId = new ProductModelId($whateverProductModel->getId());
 
-        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid1);
-        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid2);
-        $this->assertProductScoreIsNotEvaluated($whateverProductUuid);
-        $this->assertProductModelScoreIsNotEvaluated($productModelToEvaluateId1);
-        $this->assertProductModelScoreIsNotEvaluated($productModelToEvaluateId2);
-        $this->assertProductModelScoreIsNotEvaluated($whateverProductModelId);
+        $this->assertProductsAreNotEvaluated(ProductUuidCollection::fromProductUuids([$productToEvaluateUuid1, $productToEvaluateUuid2, $whateverProductUuid]));
+        $this->assertProductScoreIsNotComputed($productToEvaluateUuid1);
+        $this->assertProductScoreIsNotComputed($productToEvaluateUuid2);
+        $this->assertProductScoreIsNotComputed($whateverProductUuid);
+        $this->assertProductModelsAreNotEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId1, $productModelToEvaluateId2, $whateverProductModelId]));
+        $this->assertProductModelScoreIsNotComputed($productModelToEvaluateId1);
+        $this->assertProductModelScoreIsNotComputed($productModelToEvaluateId2);
+        $this->assertProductModelScoreIsNotComputed($whateverProductModelId);
 
         $message = new LaunchProductAndProductModelEvaluationsMessage(
             $this->clock->fromString('2023-03-16 14:46:32'),
@@ -83,12 +85,14 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
 
         ($this->get(LaunchProductAndProductModelEvaluationsHandler::class))($message);
 
-        $this->assertProductScoreIsEvaluated($productToEvaluateUuid1);
-        $this->assertProductScoreIsEvaluated($productToEvaluateUuid2);
-        $this->assertProductScoreIsNotEvaluated($whateverProductUuid);
-        $this->assertProductModelScoreIsEvaluated($productModelToEvaluateId1);
-        $this->assertProductModelScoreIsEvaluated($productModelToEvaluateId2);
-        $this->assertProductModelScoreIsNotEvaluated($whateverProductModelId);
+        $this->assertProductsAreEvaluated($message->productUuids);
+        $this->assertProductScoreIsComputed($productToEvaluateUuid1);
+        $this->assertProductScoreIsComputed($productToEvaluateUuid2);
+        $this->assertProductScoreIsNotComputed($whateverProductUuid);
+        $this->assertProductModelsAreEvaluated($message->productModelIds);
+        $this->assertProductModelScoreIsComputed($productModelToEvaluateId1);
+        $this->assertProductModelScoreIsComputed($productModelToEvaluateId2);
+        $this->assertProductModelScoreIsNotComputed($whateverProductModelId);
     }
 
     public function test_it_does_not_trigger_error_when_product_or_product_model_does_not_exist_anymore(): void
@@ -104,10 +108,12 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
         // A non-existing id can be simply defined from the last created product-model
         $productModelThatNotExistId = new ProductModelId($productModelToEvaluate->getId() + 42);
 
-        $this->assertProductScoreIsNotEvaluated($productToEvaluateUuid);
-        $this->assertProductScoreIsNotEvaluated($productThatNotExist);
-        $this->assertProductModelScoreIsNotEvaluated($productModelToEvaluateId);
-        $this->assertProductModelScoreIsNotEvaluated($productModelThatNotExistId);
+        $this->assertProductsAreNotEvaluated(ProductUuidCollection::fromProductUuids([$productToEvaluateUuid, $productThatNotExist]));
+        $this->assertProductScoreIsNotComputed($productToEvaluateUuid);
+        $this->assertProductScoreIsNotComputed($productThatNotExist);
+        $this->assertProductModelsAreNotEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId, $productModelThatNotExistId]));
+        $this->assertProductModelScoreIsNotComputed($productModelToEvaluateId);
+        $this->assertProductModelScoreIsNotComputed($productModelThatNotExistId);
 
         $message = new LaunchProductAndProductModelEvaluationsMessage(
             $this->clock->fromString('2023-03-16 14:46:32'),
@@ -118,9 +124,29 @@ final class LaunchProductAndProductModelEvaluationsHandlerIntegration extends Da
 
         ($this->get(LaunchProductAndProductModelEvaluationsHandler::class))($message);
 
-        $this->assertProductScoreIsEvaluated($productToEvaluateUuid);
-        $this->assertProductModelScoreIsEvaluated($productModelToEvaluateId);
-        $this->assertProductModelScoreIsNotEvaluated($productModelThatNotExistId);
+        $this->assertProductsAreEvaluated(ProductUuidCollection::fromProductUuid($productToEvaluateUuid));
+        $this->assertProductScoreIsComputed($productToEvaluateUuid);
+        $this->assertProductModelsAreEvaluated(ProductModelIdCollection::fromProductModelIds([$productModelToEvaluateId]));
+        $this->assertProductModelScoreIsComputed($productModelToEvaluateId);
+        $this->assertProductModelScoreIsNotComputed($productModelThatNotExistId);
+    }
+
+    private function assertProductsAreNotEvaluated(ProductUuidCollection $productUuids): void
+    {
+        $query = <<<SQL
+SELECT 1
+FROM pim_data_quality_insights_product_criteria_evaluation
+WHERE product_uuid IN (:product_uuids) AND evaluated_at IS NOT NULL
+LIMIT 1;
+SQL;
+
+        $result = $this->dbConnection->executeQuery(
+            $query,
+            ['product_uuids' => $productUuids->toArrayBytes()],
+            ['product_uuids' => Connection::PARAM_STR_ARRAY]
+        )->fetchOne();
+
+        Assert::assertFalse($result, 'Some products are evaluated');
     }
 
     private function assertProductModelsAreNotEvaluated(ProductModelIdCollection $productModelIds): void
@@ -170,27 +196,56 @@ SQL;
         }
     }
 
-    protected function assertProductScoreIsEvaluated(
+    private function assertProductsAreEvaluated(ProductUuidCollection $productUuids): void
+    {
+        $query = <<<SQL
+SELECT BIN_TO_UUID(product_uuid) AS product_uuid, COUNT(*) AS nb_evaluated_criteria
+FROM pim_data_quality_insights_product_criteria_evaluation
+WHERE product_uuid IN (:product_uuids) AND evaluated_at IS NOT NULL
+GROUP BY product_uuid;
+SQL;
+
+        $stmt = $this->dbConnection->executeQuery(
+            $query,
+            ['product_uuids' => $productUuids->toArrayBytes()],
+            ['product_uuids' => Connection::PARAM_STR_ARRAY]
+        );
+
+        $nbEvaluationsByProduct = [];
+        while ($row = $stmt->fetchAssociative()) {
+            $nbEvaluationsByProduct[$row['product_uuid']] = (int) $row['nb_evaluated_criteria'];
+        }
+
+        $nbCriteria = \count($this->get('akeneo.pim.automation.data_quality_insights.product_criteria_by_feature_registry')->getAllCriterionCodes());
+
+        /** @var ProductUuid $productUuid */
+        foreach ($productUuids as $productUuid) {
+            Assert::assertArrayHasKey((string) $productUuid, $nbEvaluationsByProduct, sprintf('The product %s should have evaluations', $productUuid));
+            Assert::assertSame($nbCriteria, $nbEvaluationsByProduct[(string) $productUuid], sprintf('All the %d criteria should be evaluated for the product %s', $nbCriteria, $productUuid));
+        }
+    }
+
+    protected function assertProductScoreIsComputed(
         ProductUuid $productUuid,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): void {
         self::assertTrue(
-            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            $this->isProductScoreComputed($productUuid, $evaluatedAt),
             \sprintf('Product evaluation does not exist. Product uuid: %s', $productUuid->__toString())
         );
     }
 
-    protected function assertProductScoreIsNotEvaluated(
+    protected function assertProductScoreIsNotComputed(
         ProductUuid $productUuid,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): void {
         self::assertFalse(
-            $this->isProductScoreEvaluated($productUuid, $evaluatedAt),
+            $this->isProductScoreComputed($productUuid, $evaluatedAt),
             \sprintf('Product evaluation exists, it should not. Product uuid: %s', $productUuid->__toString())
         );
     }
 
-    private function isProductScoreEvaluated(
+    private function isProductScoreComputed(
         ProductUuid $productUuid,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): bool {
@@ -204,27 +259,27 @@ SQL;
         )->fetchOne();
     }
 
-    protected function assertProductModelScoreIsEvaluated(
+    protected function assertProductModelScoreIsComputed(
         ProductModelId $productModelId,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): void {
         self::assertTrue(
-            $this->isProductModelScoreEvaluated($productModelId, $evaluatedAt),
+            $this->isProductModelScoreComputed($productModelId, $evaluatedAt),
             \sprintf('Product model evaluation does not exist. Product uuid: %s', $productModelId->__toString())
         );
     }
 
-    protected function assertProductModelScoreIsNotEvaluated(
+    protected function assertProductModelScoreIsNotComputed(
         ProductModelId $productModelId,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): void {
         self::assertFalse(
-            $this->isProductModelScoreEvaluated($productModelId, $evaluatedAt),
+            $this->isProductModelScoreComputed($productModelId, $evaluatedAt),
             \sprintf('Product model evaluation exists, it should not. Product model id: %s', $productModelId->__toString())
         );
     }
 
-    private function isProductModelScoreEvaluated(
+    private function isProductModelScoreComputed(
         ProductModelId $productModelId,
         \DateTimeImmutable $evaluatedAt = new \DateTimeImmutable('now')
     ): bool {

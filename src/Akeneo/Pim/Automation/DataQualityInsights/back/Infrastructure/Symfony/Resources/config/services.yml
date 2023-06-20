@@ -280,6 +280,7 @@ services:
             - '@akeneo.pim.automation.data_quality_insights.product_criteria_evaluation_registry'
             - '@akeneo.pim.automation.data_quality_insights.query.get_evaluable_product_values'
             - '@akeneo.pim.automation.data_quality_insights.product_criteria_by_feature_registry'
+            - '@akeneo.pim.automation.data_quality_insights.repository.product_criterion_evaluation'
             - '@logger'
 
     akeneo.pim.automation.data_quality_insights.evaluate_product_model_criteria:
@@ -288,4 +289,5 @@ services:
             - '@akeneo.pim.automation.data_quality_insights.product_model_criteria_evaluation_registry'
             - '@akeneo.pim.automation.data_quality_insights.query.get_evaluable_product_model_values'
             - '@akeneo.pim.automation.data_quality_insights.product_model_criteria_by_feature_registry'
+            - '@akeneo.pim.automation.data_quality_insights.repository.product_model_criterion_evaluation'
             - '@logger'

@@ -6,7 +6,9 @@ namespace Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluatio
 
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\ProductValuesCollection;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluation;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluationCollection;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Query\ProductEnrichment\GetEvaluableProductValuesQueryInterface;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\Repository\CriterionEvaluationRepositoryInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionCode;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionEvaluationStatus;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductEntityIdCollection;
@@ -22,6 +24,7 @@ class EvaluateCriteria
         private CriteriaEvaluationRegistry $evaluationRegistry,
         private GetEvaluableProductValuesQueryInterface $getEvaluableProductValuesQuery,
         private CriteriaByFeatureRegistry $criteriaByFeatureRegistry,
+        private CriterionEvaluationRepositoryInterface $criterionEvaluationRepository,
         private LoggerInterface $logger,
     ) {
     }
@@ -39,6 +42,7 @@ class EvaluateCriteria
         foreach ($entityIdCollection as $entityId) {
             $entityValues = $this->getEvaluableProductValuesQuery->byProductId($entityId);
 
+            $criteriaEvaluationCollection = new CriterionEvaluationCollection();
             foreach ($productCriterionCodes as $productCriterionCode) {
                 $productCriterion = new CriterionEvaluation(
                     $productCriterionCode,
@@ -46,7 +50,12 @@ class EvaluateCriteria
                     CriterionEvaluationStatus::pending()
                 );
                 $this->evaluateCriterion($productCriterion, $entityValues);
+                $criteriaEvaluationCollection->add($productCriterion);
             }
+
+            // Updating the evaluation is needed to have the exact datetime of the evaluation.
+            // So the GetOutdatedXXXUuidsByDateAndCriteriaQuery can work next time we have to launch evaluations
+            $this->criterionEvaluationRepository->update($criteriaEvaluationCollection);
         }
     }
 

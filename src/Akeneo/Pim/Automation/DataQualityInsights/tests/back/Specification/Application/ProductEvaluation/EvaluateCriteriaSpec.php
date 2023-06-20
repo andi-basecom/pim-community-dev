@@ -10,13 +10,16 @@ use Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluation\Eval
 use Akeneo\Pim\Automation\DataQualityInsights\Application\ProductEvaluation\EvaluateCriterionInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\ProductValuesCollection;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluation;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluationCollection;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Model\Write\CriterionEvaluationResult;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\Query\ProductEnrichment\GetEvaluableProductValuesQueryInterface;
+use Akeneo\Pim\Automation\DataQualityInsights\Domain\Repository\CriterionEvaluationRepositoryInterface;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionCode;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\CriterionEvaluationStatus;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductUuid;
 use Akeneo\Pim\Automation\DataQualityInsights\Domain\ValueObject\ProductUuidCollection;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 
@@ -30,12 +33,14 @@ final class EvaluateCriteriaSpec extends ObjectBehavior
         CriteriaEvaluationRegistry $evaluationRegistry,
         GetEvaluableProductValuesQueryInterface $getEvaluableProductValuesQuery,
         CriteriaByFeatureRegistry $criteriaByFeatureRegistry,
+        CriterionEvaluationRepositoryInterface $criterionEvaluationRepository,
         LoggerInterface $logger,
     ) {
         $this->beConstructedWith(
             $evaluationRegistry,
             $getEvaluableProductValuesQuery,
             $criteriaByFeatureRegistry,
+            $criterionEvaluationRepository,
             $logger
         );
     }
@@ -49,6 +54,7 @@ final class EvaluateCriteriaSpec extends ObjectBehavior
         CriteriaEvaluationRegistry $evaluationRegistry,
         GetEvaluableProductValuesQueryInterface $getEvaluableProductValuesQuery,
         EvaluateCriterionInterface $evaluateService,
+        CriterionEvaluationRepositoryInterface $criterionEvaluationRepository
     ) {
         $productUuid1 = ProductUuid::fromUuid(Uuid::uuid4());
         $productUuid2 = ProductUuid::fromUuid(Uuid::uuid4());
@@ -74,6 +80,8 @@ final class EvaluateCriteriaSpec extends ObjectBehavior
             ->shouldBeCalledOnce()
             ->willReturn($result)
         ;
+        $criterionEvaluationRepository->update(Argument::type(CriterionEvaluationCollection::class))
+            ->shouldBeCalledTimes(2);
 
         $this->forEntityIds(ProductUuidCollection::fromProductUuids([$productUuid1, $productUuid2]), [$criterionCode]);
     }
@@ -82,8 +90,9 @@ final class EvaluateCriteriaSpec extends ObjectBehavior
         CriteriaEvaluationRegistry $evaluationRegistry,
         GetEvaluableProductValuesQueryInterface $getEvaluableProductValuesQuery,
         CriteriaByFeatureRegistry $criteriaByFeatureRegistry,
+        CriterionEvaluationRepositoryInterface $criterionEvaluationRepository,
         EvaluateCriterionInterface $evaluateService1,
-        EvaluateCriterionInterface $evaluateService2,
+        EvaluateCriterionInterface $evaluateService2
     ) {
         $productUuid = ProductUuid::fromUuid(Uuid::uuid4());
         $criterionCode1 = new CriterionCode('criteria1');
@@ -110,6 +119,9 @@ final class EvaluateCriteriaSpec extends ObjectBehavior
             ->shouldBeCalledOnce()
             ->willReturn($result)
         ;
+
+        $criterionEvaluationRepository->update(Argument::type(CriterionEvaluationCollection::class))
+            ->shouldBeCalledOnce();
 
         $this->forEntityIds(ProductUuidCollection::fromProductUuids([$productUuid]), []);
     }
