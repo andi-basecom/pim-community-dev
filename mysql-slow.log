@@ -2543,7 +2543,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:07' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:07', '2023-06-19 14:37:07', NULL, '◊#˙º+BjæJ˘n€ç', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '◊#˙º+BjæJ˘n€ç';
@@ -2696,7 +2695,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:09' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:09', '2023-06-19 14:37:09', NULL, 'è”\0Î<Oìòè~U¿7û', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'è”\0Î<Oìòè~U¿7û';
@@ -2847,7 +2845,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:10' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:10', '2023-06-19 14:37:10', NULL, 'ˇY©ﬁ‹N›ß\0Å⁄=)K', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ˇY©ﬁ‹N›ß\0Å⁄=)K';
@@ -2981,7 +2978,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:11' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:11', '2023-06-19 14:37:11', NULL, '00‡[ù˝O¶ÆZ¯o:í', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '00‡[ù˝O¶ÆZ¯o:í';
@@ -3114,7 +3110,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:12' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:12', '2023-06-19 14:37:12', NULL, '˘_Ó•Jù¶°w.î', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '˘_Ó•Jù¶°w.î';
@@ -3140,7 +3135,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3250,7 +3244,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:13' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:13', '2023-06-19 14:37:13', NULL, '«å öt¿EØÉùùgù˛H', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '«å öt¿EØÉùùgù˛H';
@@ -3276,7 +3269,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3386,7 +3378,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:13' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:14', '2023-06-19 14:37:14', NULL, 'ä\r¶ˆ∂kFªá%≥‡nΩ', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ä\r¶ˆ∂kFªá%≥‡nΩ';
@@ -3412,7 +3403,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -3522,7 +3512,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:14' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:14', '2023-06-19 14:37:14', NULL, 'zò‘V‹bCjàü—4µ3', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'zò‘V‹bCjàü—4µ3';
@@ -3548,7 +3537,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'zò‘V‹bCjàü—4µ3';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('zò‘V‹bCjàü—4µ3', 2);
@@ -3674,7 +3662,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:15' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:15', '2023-06-19 14:37:15', NULL, 'Ü+mHBA6Å€Îé[ª!', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'Ü+mHBA6Å€Îé[ª!';
@@ -3700,7 +3687,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'Ü+mHBA6Å€Îé[ª!';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'Ü+mHBA6Å€Îé[ª!' AND group_id = 1;
@@ -3826,7 +3812,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:16' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:17', '2023-06-19 14:37:17', NULL, 'O¨›ÇèLLºygbl⁄∞', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'O¨›ÇèLLºygbl⁄∞';
@@ -3852,7 +3837,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'O¨›ÇèLLºygbl⁄∞';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'O¨›ÇèLLºygbl⁄∞' AND group_id = 1;
@@ -3980,7 +3964,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:17' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:18', '2023-06-19 14:37:18', NULL, 'hÅ≈`¨®I˘±5¬´ä\\P', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
@@ -4006,7 +3989,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = 'hÅ≈`¨®I˘±5¬´ä\\P' AND group_id = 1;
@@ -4133,7 +4115,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:19' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:19', '2023-06-19 14:37:19', NULL, 'ØŸiÙ.I∞ì>Wy\r^”5', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
@@ -4160,7 +4141,6 @@ COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'ØŸiÙ.I∞ì>Wy\r^”5';
 INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (5, 'ØŸiÙ.I∞ì>Wy\r^”5');
@@ -4294,7 +4274,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:20' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:20', '2023-06-19 14:37:20', NULL, '\n«ù¯HaIûÖ€Âî≈ü|', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
@@ -4320,7 +4299,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '\n«ù¯HaIûÖ€Âî≈ü|';
 INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (5, '\n«ù¯HaIûÖ€Âî≈ü|');
@@ -4451,7 +4429,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:21' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:21', '2023-06-19 14:37:21', NULL, 'Iò|%NVÄ¢]-VövŒ', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'Iò|%NVÄ¢]-VövŒ';
@@ -4477,7 +4454,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'Iò|%NVÄ¢]-VövŒ';
 INSERT INTO pim_catalog_association (association_type_id, owner_uuid) VALUES (5, 'Iò|%NVÄ¢]-VövŒ');
@@ -4608,7 +4584,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:22' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:22', '2023-06-19 14:37:22', NULL, '\'©Wm[%FÊ¢Ö´ÛCxVà', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
@@ -4634,7 +4609,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
 UPDATE pim_catalog_product SET is_enabled = 0 WHERE uuid = '\'©Wm[%FÊ¢Ö´ÛCxVà';
@@ -4763,7 +4737,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:23' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:23', '2023-06-19 14:37:23', NULL, '|πˇµ∞GTõõ˛[Ì ˇ®', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
@@ -4789,7 +4762,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®';
 DELETE FROM pim_catalog_group_product WHERE product_uuid = '|πˇµ∞GTõõ˛[Ì ˇ®' AND group_id = 1;
@@ -4916,7 +4888,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:24' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:24', '2023-06-19 14:37:24', NULL, 'ò”¿MÅë¥U”f–ß', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ò”¿MÅë¥U”f–ß';
@@ -4942,7 +4913,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5052,7 +5022,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:25' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:25', '2023-06-19 14:37:25', NULL, '∫mÛ%Ø‚A⁄åô?‡,wN', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
@@ -5087,7 +5056,6 @@ INSERT INTO akeneo_file_storage_file_info (file_key, original_filename, mime_typ
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = '∫mÛ%Ø‚A⁄åô?‡,wN';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('∫mÛ%Ø‚A⁄åô?‡,wN', 2);
@@ -5214,7 +5182,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:26' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:26', '2023-06-19 14:37:26', NULL, 'f8n€Ø¡Kë ó≠X∂fk', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'f8n€Ø¡Kë ó≠X∂fk';
@@ -5249,7 +5216,6 @@ INSERT INTO akeneo_file_storage_file_info (file_key, original_filename, mime_typ
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'f8n€Ø¡Kë ó≠X∂fk';
 INSERT INTO pim_catalog_group_product (product_uuid, group_id) VALUES ('f8n€Ø¡Kë ó≠X∂fk', 2);
@@ -5376,7 +5342,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:27' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:27', '2023-06-19 14:37:27', NULL, 'ÏMÑ™´ÇM ØôtﬂL¡y›', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ÏMÑ™´ÇM ØôtﬂL¡y›';
@@ -5402,7 +5367,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -5514,7 +5478,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:28' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:28', '2023-06-19 14:37:28', NULL, 'õŸVøÁ¯Gæ´´dX´€Bê', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'õŸVøÁ¯Gæ´´dX´€Bê';
@@ -5540,7 +5503,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
@@ -5650,7 +5612,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:29' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:29', '2023-06-19 14:37:29', NULL, 'ZDçâÊNARº≈P…„t', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = 'ZDçâÊNARº≈P…„t';
@@ -5676,7 +5637,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 SELECT t0.id AS id_1, t0.raw_data AS raw_data_2, t0.product_uuid AS product_uuid_3, t0.attribute_id AS attribute_id_4 FROM pim_catalog_product_unique_data t0 WHERE t0.product_uuid = 'ZDçâÊNARº≈P…„t';
 UPDATE pim_catalog_product SET product_model_id = 3 WHERE uuid = 'ZDçâÊNARº≈P…„t';
@@ -5803,7 +5763,6 @@ UPDATE pim_catalog_product_model SET updated = '2023-06-19 14:37:30' WHERE id = 
 COMMIT;
 SELECT BIN_TO_UUID(uuid) as uuid, identifier FROM pim_catalog_product WHERE identifier in ('apollon_optionb_false');
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 START TRANSACTION;
 INSERT INTO pim_catalog_product (id, is_enabled, identifier, raw_values, created, updated, quantified_associations, uuid, family_id, product_model_id, family_variant_id) VALUES (NULL, 1, 'apollon_optionb_false', '{\"sku\":{\"<all_channels>\":{\"<all_locales>\":\"apollon_optionb_false\"}},\"a_yes_no\":{\"<all_channels>\":{\"<all_locales>\":false}}}', '2023-06-19 14:37:30', '2023-06-19 14:37:30', NULL, '·GaπÓŒJ”üÉÅ‹˚ G', 1, 2, 1);
 SELECT id FROM pim_catalog_product WHERE uuid = '·GaπÓŒJ”üÉÅ‹˚ G';
@@ -5829,7 +5788,6 @@ INSERT INTO pim_api_client (random_id, redirect_uris, secret, allowed_grant_type
 COMMIT;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
 SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier_3, t0.raw_values AS raw_values_4, t0.created AS created_5, t0.updated AS updated_6, t0.quantified_associations AS quantified_associations_7, t0.uuid AS uuid_8, t0.family_id AS family_id_9, t0.product_model_id AS product_model_id_10, t0.family_variant_id AS family_variant_id_11 FROM pim_catalog_product t0 WHERE t0.identifier = 'apollon_optionb_false' LIMIT 1;
-SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'apollon_optionb_false';
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
