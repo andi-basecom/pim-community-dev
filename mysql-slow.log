@@ -1541,7 +1541,6 @@ INSERT INTO pim_catalog_attribute (sort_order, useable_as_grid_filter, max_chara
 UPDATE pim_catalog_attribute_group SET updated = '2023-06-19 14:36:50' WHERE id = 1;
 UPDATE pim_catalog_attribute SET updated = '2023-06-19 14:36:50' WHERE id = 1;
 COMMIT;
-SELECT EXISTS(     SELECT * FROM pim_catalog_attribute WHERE main_identifier IS TRUE );
 UPDATE pim_catalog_attribute SET main_identifier = 1 WHERE attribute_type = 'pim_catalog_identifier' LIMIT 1;
 START TRANSACTION;
 INSERT INTO pim_catalog_channel (code, conversionUnits, category_id) VALUES ('ecommerce', 'a:0:{}', 1);
