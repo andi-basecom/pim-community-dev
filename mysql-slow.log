@@ -37,7 +37,6 @@ CREATE TABLE pim_catalog_category (id INT AUTO_INCREMENT NOT NULL, parent_id INT
 CREATE TABLE acl_classes (id INT UNSIGNED AUTO_INCREMENT NOT NULL, class_type VARCHAR(200) NOT NULL, UNIQUE INDEX UNIQ_69DD750638A36066 (class_type), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_security_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, identifier VARCHAR(200) NOT NULL, username TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_8835EE78772E836AF85E0677 (identifier, username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_object_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, parent_object_identity_id INT UNSIGNED DEFAULT NULL, class_id INT UNSIGNED NOT NULL, object_identifier VARCHAR(100) NOT NULL, entries_inheriting TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_9407E5494B12AD6EA000B10 (object_identifier, class_id), INDEX IDX_9407E54977FA751A (parent_object_identity_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
-CREATE TABLE acl_object_identity_ancestors (object_identity_id INT UNSIGNED NOT NULL, ancestor_id INT UNSIGNED NOT NULL, INDEX IDX_825DE2993D9AB4A6 (object_identity_id), INDEX IDX_825DE299C671CEA1 (ancestor_id), PRIMARY KEY(object_identity_id, ancestor_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 ALTER TABLE pim_catalog_channel ADD CONSTRAINT FK_E07E932A12469DE2 FOREIGN KEY (category_id) REFERENCES pim_catalog_category (id);
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68472F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68438248176 FOREIGN KEY (currency_id) REFERENCES pim_catalog_currency (id) ON DELETE CASCADE;
@@ -81,8 +80,6 @@ ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B917B6E62EFA
 ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B91772F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_category ADD CONSTRAINT FK_350D8339727ACA70 FOREIGN KEY (parent_id) REFERENCES pim_catalog_category (id) ON DELETE SET NULL;
 ALTER TABLE acl_object_identities ADD CONSTRAINT FK_9407E54977FA751A FOREIGN KEY (parent_object_identity_id) REFERENCES acl_object_identities (id);
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE2993D9AB4A6 FOREIGN KEY (object_identity_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE299C671CEA1 FOREIGN KEY (ancestor_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator (     `uuid` binary(16) PRIMARY KEY,     `code` VARCHAR(100) NOT NULL,     `conditions` JSON NOT NULL DEFAULT ('{}'),     `structure` JSON NOT NULL DEFAULT ('{}'),     `labels` JSON NOT NULL DEFAULT ('{}') ,     `target_id` INT NOT NULL,     `options` JSON NOT NULL DEFAULT('{}'),     `sort_order` SMALLINT UNSIGNED NOT NULL DEFAULT 0,     UNIQUE INDEX unique_identifier_generator_code (code),     KEY `target_id` (`target_id`),     CONSTRAINT `pim_catalog_identifier_generator_ibfk_1` FOREIGN KEY (`target_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_prefixes (     `product_uuid` binary(16) NOT NULL,     `attribute_id` INT NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_PRODUCTUUID` FOREIGN KEY (`product_uuid`) REFERENCES `pim_catalog_product` (`uuid`) ON DELETE CASCADE,     CONSTRAINT `FK_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     INDEX index_identifier_generator_prefixes (`attribute_id`, `prefix`, `number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_sequence (     `attribute_id` INT NOT NULL,     `identifier_generator_uuid` binary(16) NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `last_allocated_number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_SEQ_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     CONSTRAINT `FK_SEQ_IDENTIFIERGENERATORUUID` FOREIGN KEY (`identifier_generator_uuid`) REFERENCES `pim_catalog_identifier_generator` (`uuid`) ON DELETE CASCADE,     UNIQUE INDEX sequence_attribute_identifier_prefix (attribute_id, identifier_generator_uuid, prefix),     INDEX index_identifier_generator_sequence (`attribute_id`, `identifier_generator_uuid`, `prefix`, `last_allocated_number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -662,22 +659,15 @@ COMMIT;
 START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (1, 1);
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_ADMINISTRATOR', 0);
 INSERT INTO acl_classes (class_type) VALUES ('pim_enrich_job_tracker_view_all_jobs');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (2, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (2, 2);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (3, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (3, 3);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (4, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (4, 4);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (5, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (5, 5);
 INSERT INTO acl_classes (class_type) VALUES ('pim_identifier_generator_manage');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (6, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (6, 6);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'entity', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (7, 7);
 COMMIT;
 START TRANSACTION;
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_CATALOG_MANAGER', 0);
@@ -688,7 +678,6 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -745,7 +734,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,7,'action',1),(9,NULL,8,'action',1),(10,NULL,9,'action',1),(11,NULL,10,'action',1),(12,NULL,11,'action',1),(13,NULL,12,'action',1),(14,NULL,7,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(3,'ROLE_USER',0);
 INSERT INTO `akeneo_file_storage_file_info` (`id`, `file_key`, `original_filename`, `mime_type`, `size`, `extension`, `hash`, `storage`) VALUES (1,'4/d/f/d/4dfd4594c607caff99ec1edbec67ca20eb65a00c_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(2,'b/7/f/0/b7f013e58c49ae3062380b1770e3d827bca2f30a_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(3,'4/f/e/e/4feed15f9b566405f34770b24abf37b63602e6ec_athena.jpg','athena.jpg','image/jpeg',3069,'jpg','b6755067610e1f1f61e751e51bf2c239e4ca382e','catalogStorage'),(4,'a/e/b/1/aeb1fb48593f67d45f4fff7c2d8625387031243d_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(5,'7/2/5/3/725374be51bad64c7144ebb0d57563ca41fe53be_climbingshoe.jpg','climbingshoe.jpg','image/jpeg',220576,'jpg','81ae71912fe1b542c18ae3caf1f856e4fc2573cc','catalogStorage'),(6,'c/4/9/f/c49f085858f8ed213174ba5da69e07ba3a07eba6_feet_1842328_960_720.jpg','feet-1842328_960_720.jpg','image/jpeg',106764,'jpg','76e92c4632104d54fe1acfbfc7cff1d87585cdf6','catalogStorage'),(7,'8/4/3/9/8439048b00b326e2ce5d7ad3072cd557f6c9d717_converse_932667_960_720.jpg','converse-932667_960_720.jpg','image/jpeg',145973,'jpg','9bbc27b1809440ad5af70c23c9241f19f11be4c9','catalogStorage'),(8,'3/d/f/2/3df23ddfe8f71743f064d470e4a6fcd84d7f306a_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(9,'e/d/0/d/ed0dce4fd4a9db68968b8c6a83a63a34a52d173a_dressshoe.jpg','dressshoe.jpg','image/jpeg',110913,'jpg','208b61824df1b7105a0d3aaea6d2927451f9d69f','catalogStorage'),(10,'b/7/7/6/b776200f57154d5783b3a997ba4d177665f2226d_elegance.jpg','elegance.jpg','image/jpeg',54617,'jpg','3a45dd1a88626adeb1bee70a58306885f1e1de0f','catalogStorage'),(11,'4/d/3/8/4d384d8f9a51014e17e90c164403192015294c02_stilleto.jpg','stilleto.jpg','image/jpeg',161085,'jpg','a6a5be39830778a6b02f63619b170a638ba436b8','catalogStorage'),(12,'7/a/a/2/7aa2b19a2b44b38c8971803767bb1b68792e0110_terminus.jpg','terminus.jpg','image/jpeg',9104,'jpg','53691d76449c37fdd9c74b76ab39301703107df9','catalogStorage'),(13,'e/8/4/5/e845951b6fed7421be100ead10ea5a803771ebbb_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage'),(14,'c/3/3/c/c33c10fbec8400cb45189e1348f2a8240bad9404_braided_hat.jpg','braided-hat.jpg','image/jpeg',106830,'jpg','0c89622f4facb33b5cdbb2c9e4da35beae47b9b0','catalogStorage'),(15,'b/8/0/0/b8004bd865af3a4b6640374b4a2aa46965411e23_unique_size.jpg','unique-size.jpg','image/jpeg',261678,'jpg','4e0da048a66100f2dec8f4cf1227ce6b96d6d4ab','catalogStorage'),(16,'1/b/6/7/1b672f0b6f9780fcc8758e2bfad2e120966b5c43_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(17,'c/b/f/9/cbf90d86d4cfd48f2ccbd3a7b51794c9fa2e955f_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(18,'2/b/4/9/2b49bad20d2cdd82f5f9c9b180ad66123ad2643e_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(19,'7/4/8/3/7483007c4f8ca060555f2495aa7f73655ee4c167_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(20,'b/a/d/2/bad27fd700c89eb2ac575a23372728b709c9c172_t_shirt_marron.png','t-shirt-marron.png','image/png',297069,'png','97aa15a07489eb831fcb0905e51d3edd366a3800','catalogStorage'),(21,'1/b/f/a/1bfac4a95216480d860d4fb63304597e733d0cf9_t_shirt_green.jpg','t-shirt-green.jpg','image/jpeg',54279,'jpg','d06e45212f20b889cde41d9a372e085d9073cbd3','catalogStorage'),(22,'2/9/6/e/296e68baad4a70d4e90d7ac9fe951286adbe52ab_plain_red.jpg','plain_red.jpg','image/jpeg',219214,'jpg','cd6964b878c75c0f862b6650928c053944c4a53f','catalogStorage'),(23,'1/6/2/a/162a4c85fb2702146e12fa98dd9ac6f270e31868_blue.png','blue.png','image/png',1714929,'png','3e46d0f46fcc4e4bda19e13795d4d8efca7f06b4','catalogStorage'),(24,'7/e/0/8/7e0864d9fd78ed9998218dca90b797baf75828e8_grey.png','grey.png','image/png',1521660,'png','6e4d5696e37335117b97fd9250f6e37556175a63','catalogStorage'),(25,'7/d/c/6/7dc62a6571b74f0973e4567297b9c0a909746463_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage');
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
@@ -788,8 +776,6 @@ SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insig
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, e.result FROM pim_data_quality_insights_product_criteria_evaluation e     JOIN pim_catalog_product p ON p.uuid = e.product_uuid WHERE p.uuid IN ('íyŒóN9î\Zk*O’{¢', '‹M[j≠DúÉyp¨2ò“I', 'øêL’»<A˛µπ@ÏÁI|“', '*øÇÅäKˆÅ\n\Zı˘KßG', ',é,˛ypD@ñmôâeÉ™', 'ã¨\nï¬ÁC∂öÂ]¶-‚A‡', 'W?◊îŒEzë-Â9#6\rÑ', 's¯i;0I◊´ˇ@Bç”r1', '•ÉSªD;Æ´Í=◊Oò$', 'ïà√-!HKü€ù*Ö\r9«', ')Ï‘Ku¡Kä§<„ƒ&<', 'ÏvÈﬂAπÑ˘XwRWÅ', '7W∞ôπXOˇõ_`^1b|‡', '+–ÂÕ‡C‡ì¸Ú%8¿Ñ', '#l\ZZ@\"â√:Ê‹%6Y', 'è,¸N∆àÕ◊…ˆñ•', '4)ñ ”@Ní⁄ºWjuK', '§ü.PõBFÖ¥èÚÍ(§Ñr', 'VŸl„VŒICñíÊÂ‡ˆ', '‡ÚJR%@ùû◊«\"', '‘`cÀúH±qZè¬Ò', '{OÅí—ûFíq(§–ØàÖ', 'ö1–p®ÅDPâˆ!Æµ≥', 'ÉrJsmxEóØì\0ÎÃ4Ò', 'U\r⁄√Nﬁ@ê∏ïü;´qÓ', 'Lˇ∑?eM⁄ê$~líVÆ{', '–ŸÅTIHëeﬂ◊ñ£/¯', '*„®8…O“¨óxD\n¥r', 'w¸\ZÇFıôa:œå´', 'LîêNN!@$ûÛIæiµ8', '˚Æ}–CJ≤R¨>W	', '\\Ì˙Ÿ‚>Fbµø) Ì\\ ', 'U◊Ó]N/ø©Ω-2\ZRt', '5Iﬂ€Ω≥B√àì=…Ñ≈{', '¬”ì?÷AùÉÅF˙W™^¸', '~.a{êßGÏ•}»˜∂≤µ', '¬é<<R&N∞ÇB¥j\'∞„', '~Ω{õsÛAOá™X?Ï!ÿë', '◊é⁄ˇG≤í™Ùa,ÈÊ“', 'Gµ]¶“Iﬂè^µﬂ˘ıö`', 'ö\0ÁD‹AH°≥VıRC}ï', '¸\n˚O˜KÃú%ãÓÂzı', 'Aoª˚±KFâæ“Ê˘', '\Zò˘⁄¬E@pô˚sV*»à', '°ÁázäCÌòø∑˚c', 'z\Z∆ÿÓDmÇ£?tû7Ë', 'É[Ä†uM‹úŸΩCƒ^1', '®cS§@;ù$Ÿ˘‹TD', '¯ÁÅyÈ¨AﬁïpN#u£é', '–Ò©aÌMñ©\'å∆úµ', '\réµËíOIüA)g{', 'Öãd?FgΩT\'Ö“zª∞', '§ovœÄA€™|Ì93©v', '&|≠ßöH.ÅfNâ€∏–', 'Ä`-NÇN?ûíê\\ìf', '-«P9¬¿D0∏ß ÂÍµ•X', 'éÙYf∫ÈGëlTü¿ÇÜ', 'œ¶,0}TO¬õ˛Q#˝6Øπ', '…ªSØÒˆAá∑{aˆàù@¿', 'ÿ`\n∏]CwóVY‰M≈D÷', 'N~ ıvEK®Ê‡⁄@AáÈ', ';:—ãDIÆ•≤Y;µíºô', '|P\r¬F∆ø\nç:û·L', 'h˛}†qsN	º@‘º≠\'ºÎ', 'c´íï¢LÍùyùŒö•!', 'uBNR–J¨êö1uÚ˚Ñ', 'A,›±@]≤sêx4ú§è', '9±\"˚&KJÅòdI«˙≤°', '0c—ûoCC™›\0Ö6‡¿µ', 'Q]∏+*Ez¢◊˘I˝∏lˇ', 'û¨‚-óÿK⁄µ¥åg¡-çm', '—s÷˘uN∑@?Jóú«j', '^¨∞¿{M™µ8âs±)¯Ê', 'Âd**oLwÑt2µÃ', 'Â†\0güBQµJ≤˛?V_5', 'ÌPª˛ö‰E@ÅL¡˛ãÌ', 'µåKÂ,KMçãbˆO¥’o', 'q\',ú’’MX®ñ·ÛrU$P', 'Ø®£°»ıES∫ævc%sÅ', 'ÖπOF¡ A¯åÄ.Å(û', '·≠·‘8vG)É••Ûû`R0', 'RhtlÔMõüG\r«—˘', 'R‚ﬂò>åBﬂπC—ë·>É-', 'äø_/ŸB\r°øêæ$Ú', '_[^Ÿe%OÁ¢–ZE≠∞U', '¥‚Z∂\"\"N\r°b|ΩcOïq', 'Z–}Û‡EàÇ®o_›Eí', 'at™B/9HW∏áìñ4˘', '‡Ñ’L‘æOk†îﬂ·ˇ‹πÛ', 'z\"%Bv*MŒñ÷Îãjb˛k', 'Ç`:2¿âEª\'≠®xåÿ5', '¡V\Z£N`∞Ò‘O–Còñ', 'T$Ñ-5Iòá∫·öë]9ˆ', 'ê–sÆªîD`πDtØÖˆ', 'gG¢÷‡O;Çß¥tËÙ', ') ∏Ç:LªïÄ¯∑Ê±{', 'j|Wñ<ZGÀØ‚1ƒÂ?7k', '§ÍÖ˝2H∑§!GŸ3Èu', '‘„¡´∆@Üã+êa¡%Ô', '‘	Fq+¿HqõÖ©Ht⁄©', 'K;íõM‡îd˛J=s≤', ' û˙_ßA∞©àåﬁr,', 'WEbZrxJ¶£~HXüÀ', 's*nZ˚C®yËlı.ˇ', 'ÃÎÆ∑*0O≠B≥~Ê‘', 'ÔbzpN◊î`|\rªå\\O', ' ÍØÕ°ÅKô∞°r˘±s#|', 'Å…àÏe±K(Ç¡»\0\nhIn', '‡à§@¶®æ\'kE<a', 'ÕØ©ÿÀG´ûïœKä|D', '±≤Ï)›”JîGÈ`=Á˛T', 'p¨Â(&aO⁄´µü‚á¿Ô', '3‚\"¨·ÈFàƒf<ˇd', '4ÕùrÖCK™FÆ>ùÆ	å', '®ß;ñÂïH:†∫ÛÌôr_z', '‘>LUºrFy¨Æì•∂<', '-åw›‰E≈ÅC3:˛ıw', 'QIîÌXO]áß‰∏0Æ[É', '¿ºÖ√ÕKD∑\nK˜£éH4', '¨Å¿‚ÿKÂß∫∫)qP»', 'i„6<QDÜè»«îF·æÈ', '{ã4ÂRJç≠Ú…≥I’YÛ', '± ’¯L,Joç9œpˆ	K', 'ˇÒJ\"îN≤∑◊Îﬂº/', 'Yc∑G¢Ì”ÅåÉ¥', ';-øsd´N?î^5êP*à', 'ÀÒ≤1ÅÅMÖ¸˜Ö˘', '◊	,óS\nN-ôdI -Qu', '>Ä˘%pD„≥jf;Öüty', 'Ù#æùJöæƒÖÚ∑ÕIÕ', 'ºSNûÛ¶Ov®wrGG81', 'Á∆ºX]ûFRµ≈6D2›', ' UsÕóOAò èïLÌù\0', 'Àà\r‹Ü+@>ö—>ydig÷', '™µÒ0@OénÕ©AHi', 'u%uê¨+@qÖ¸˚PsNU', 'P∏e¶ÿvMQòOÅò\nn@', '3\"\\≈¶Gqí†•ê;ﬂok', '`´vA,I∏ñ‚°\Z N', 'OTbâz\rOçªK„ ≠ˆÅ≥', '∆+`∞ôD⁄π\'mÂiñ', 'Ã\ríH*EÌÖ?Æ¢hˇ≠≤', 'bVº∂vO«òOËÈ@ˆ(', 'CüØ}N–õm·$âÒ≠¢', 'n§¸ ì@í∞—U3zÃ', 'ˇtNéØM<à∫w®HgÔ«', 'ÒòëzåE–†åŒﬁâp', '—•´@“Æ<@W´˝sï', '\"œ<=°óI;öÅD≤$Ñ†', '?ÂQ±/ÍE\0¨H√”Áç]', 'Â\'Úmû\rJäü¢jço’ï', 'HqÚ°òDEj†;ŒcπW∫', 'ı∑~ÁN,ØÚ‚˜º®ñÓ', 'º˝÷(\"Dúôo ˆPT', 'ÌÏœ™]C∆ßK·˜Ñ·ôÊ', '˛¸;œ6Gâó^…õZat}', '3_RÒD≈üb‰¢ö˝˛A', ':zl^F åjW\r,§êÉ', '/kÙ¬ÑÅFX¨˚≥«Ì˙:†', '\'Ñ\Z\Zß@ö≥ú˛ïÛBÈñ', '˙Ï%[îgJ¨9k\"o›W’', 'Ìó≤2zπF≤ÅbéUû', 'Ö~˜AG·î›M¶]ßC', '¢Àπ\'øØMPºèEh>L\r„', ';∆E0ØöB_ñ:ó7È\'’j', '˝”®Ä_ÊD—´n∑Ï¸…\Z', '≠∆\0˝ãœG5ñ˝ÈÈ¢ V', 'Á\ZçT_MãHƒòéå', 'y=ËÇ¸\\L\n§ÃvôvAaı', 'u√“ËåHJ†ØãÛîÌÑ ', '>µ◊∏R¨C-ù5\nDs=W', '≥øà∫≠ÿL\'¥.ÏŒ°˛', '^?π¢∑0Bú@˜ã+C…', 'e÷@ÇCm§™·ı\r‘¥˛', 'Gﬁ·oµF¥Û©o»Kñ¨', 'JÊSsƒ,Ff£ﬂ›ØÏ¯çß', '≤≥ÈÙBr§©∫ˆ∞’Œπ', 'Á˛ÿ-ÕDÌô˘“+éf»˘', 's^|{OJê\0ÁıÚûtw', 'Û‡(ç£íK≈®Ú)õGµ', 'Ç$~‰D4¶@≤%uû≤', '7oN±iïHB†‘·Á∫v·', '[‹Aª”!HØT“:_k›', ' Å :ØN5ùÙ˙·ò◊á»', 'ó	Ù˛ÄNéRÈßq.Ò', '_[^[\ZL=ç@´≠–ﬂ', '¥ª—˘âC&òß¨ó‘P®', '4Z ›ì\rIJÑØü∫ó/Lõ', 'πØ¥`}L9å±w◊\ZÒ', 'ò≥÷6¬RC∞x0™»‡Én', '˝|SÆûÜJ8ÅÁN;èˇÏ–', 'Û-+\Z|ó@Ç£—	⁄∫', 'ÀÈÖê*®E\Z§?Ñ˙˝8', '≠ﬁ˙†¨N¨ø≤y\Z„·|', 'ˇŸ\'-≤B5•é\'1jMò', '_∏≈sÏÔILã»æD|950', 'N=ÿ®VÈG\rö<õª*‚†\0', ')Z∑¥±H˝≤ˆ f∏‹?', 'GÍ,ï¿Dä(Õ!íC', 'úÔêCä∂nHÑ5/§Ò', 'ô:èÚuqKÅ\rQn˜,k', 'π‘©Æ˝m@	®h´”¥1Ë‹', 'îÃ6\r„áCñòü1V»Tq', 'í7Åc@EbÄ\Zı∫kﬂ\Z∂', 'Îë‡Ö\ndIöæ	ISF®æ', ' ~Tí%C£pôuÈ', '}–÷éÃôB¿Ñ∏Ω1Êqå#', '¥u=`CˇHœÄu$«fÿ“J', '‹0◊0dD˜Æ‡Ê‘ÒΩè', 'ÖÎÏÕò≈C|îáz€ﬁMá€', 'Ã§R±\'TA†äs+£ì(≥', '\r‡+\nˆuA’©O©GŸó6', 'Pâ{°˙ΩBuÇâ`^†ºœA', 'âÙïªﬂNdòÆõQÈ?', 'ñ8_·\"†FéºãÑˇU|ıU', '˛ºVRB´åhZå¸ßO/', '∑¥z^ ‡Dƒ©9©|¢0™', '¶m¿\'&F=®BrÛ#€', 'Ëã6≠NRû“TÜ˛ $⁄', '5hhâÎÛMìè∞~(Ò˘YŸ', 'ÉˇZÜúãC¬°^Í”©ƒáê', 'Ò’4ÆˆÊD)ó øÁLé}¿', '~eÛe◊F@#¢çÏåq˜A', 'Ì=†\'NL\Z≤∂àkÖ~', '¸hÏ◊œyBB¢…©îí;‹`', '9ú⁄Ë(,EhÄÉ‰≠ [', 'πfƒn∏LÜÅ®ëDq ', '!Ω∞ÉYÚM üΩÀí¸Ei<', '\nQ≥-µiBD£gÆ¥2zÛ', '”bÌ;„L9ªùısR', 'I)l£VåN]üÇsÌÂLn', '\0Ö) çâ@,ò≈GîCJK)', 'ü¢Aal√LB¢b8\'Ä', 'ûU5MèB ªÖôÅß^£˜', 'π	82<ªOäè˝àÒvoü', 'qæÌ¥`\rD;†ÛD¸Ä…Y', '™î9ª@É¶D;b-XPπ', '{2e[©F…Ö8M•Œ$', '^Äú∆ÎœN™ó´≤ƒﬁ~', 'dü^ÑpC^ï+•◊‹\"2', '◊qÉŸ8LÊÉ§î‹ÚÔn', '¢®{¶FI¢≥äìnGR') AND e.criterion_code = 'completeness_of_non_required_attributes';
 SELECT BIN_TO_UUID(p.uuid) AS product_uuid, JSON_EXTRACT(e.result, '$."2"') AS rates FROM pim_catalog_product p     JOIN pim_data_quality_insights_product_criteria_evaluation e ON e.product_uuid = p.uuid WHERE p.uuid IN ('íyŒóN9î\Zk*O’{¢', '‹M[j≠DúÉyp¨2ò“I', 'øêL’»<A˛µπ@ÏÁI|“', '*øÇÅäKˆÅ\n\Zı˘KßG', ',é,˛ypD@ñmôâeÉ™', 'ã¨\nï¬ÁC∂öÂ]¶-‚A‡', 'W?◊îŒEzë-Â9#6\rÑ', 's¯i;0I◊´ˇ@Bç”r1', '•ÉSªD;Æ´Í=◊Oò$', 'ïà√-!HKü€ù*Ö\r9«', ')Ï‘Ku¡Kä§<„ƒ&<', 'ÏvÈﬂAπÑ˘XwRWÅ', '7W∞ôπXOˇõ_`^1b|‡', '+–ÂÕ‡C‡ì¸Ú%8¿Ñ', '#l\ZZ@\"â√:Ê‹%6Y', 'è,¸N∆àÕ◊…ˆñ•', '4)ñ ”@Ní⁄ºWjuK', '§ü.PõBFÖ¥èÚÍ(§Ñr', 'VŸl„VŒICñíÊÂ‡ˆ', '‡ÚJR%@ùû◊«\"', '‘`cÀúH±qZè¬Ò', '{OÅí—ûFíq(§–ØàÖ', 'ö1–p®ÅDPâˆ!Æµ≥', 'ÉrJsmxEóØì\0ÎÃ4Ò', 'U\r⁄√Nﬁ@ê∏ïü;´qÓ', 'Lˇ∑?eM⁄ê$~líVÆ{', '–ŸÅTIHëeﬂ◊ñ£/¯', '*„®8…O“¨óxD\n¥r', 'w¸\ZÇFıôa:œå´', 'LîêNN!@$ûÛIæiµ8', '˚Æ}–CJ≤R¨>W	', '\\Ì˙Ÿ‚>Fbµø) Ì\\ ', 'U◊Ó]N/ø©Ω-2\ZRt', '5Iﬂ€Ω≥B√àì=…Ñ≈{', '¬”ì?÷AùÉÅF˙W™^¸', '~.a{êßGÏ•}»˜∂≤µ', '¬é<<R&N∞ÇB¥j\'∞„', '~Ω{õsÛAOá™X?Ï!ÿë', '◊é⁄ˇG≤í™Ùa,ÈÊ“', 'Gµ]¶“Iﬂè^µﬂ˘ıö`', 'ö\0ÁD‹AH°≥VıRC}ï', '¸\n˚O˜KÃú%ãÓÂzı', 'Aoª˚±KFâæ“Ê˘', '\Zò˘⁄¬E@pô˚sV*»à', '°ÁázäCÌòø∑˚c', 'z\Z∆ÿÓDmÇ£?tû7Ë', 'É[Ä†uM‹úŸΩCƒ^1', '®cS§@;ù$Ÿ˘‹TD', '¯ÁÅyÈ¨AﬁïpN#u£é', '–Ò©aÌMñ©\'å∆úµ', '\réµËíOIüA)g{', 'Öãd?FgΩT\'Ö“zª∞', '§ovœÄA€™|Ì93©v', '&|≠ßöH.ÅfNâ€∏–', 'Ä`-NÇN?ûíê\\ìf', '-«P9¬¿D0∏ß ÂÍµ•X', 'éÙYf∫ÈGëlTü¿ÇÜ', 'œ¶,0}TO¬õ˛Q#˝6Øπ', '…ªSØÒˆAá∑{aˆàù@¿', 'ÿ`\n∏]CwóVY‰M≈D÷', 'N~ ıvEK®Ê‡⁄@AáÈ', ';:—ãDIÆ•≤Y;µíºô', '|P\r¬F∆ø\nç:û·L', 'h˛}†qsN	º@‘º≠\'ºÎ', 'c´íï¢LÍùyùŒö•!', 'uBNR–J¨êö1uÚ˚Ñ', 'A,›±@]≤sêx4ú§è', '9±\"˚&KJÅòdI«˙≤°', '0c—ûoCC™›\0Ö6‡¿µ', 'Q]∏+*Ez¢◊˘I˝∏lˇ', 'û¨‚-óÿK⁄µ¥åg¡-çm', '—s÷˘uN∑@?Jóú«j', '^¨∞¿{M™µ8âs±)¯Ê', 'Âd**oLwÑt2µÃ', 'Â†\0güBQµJ≤˛?V_5', 'ÌPª˛ö‰E@ÅL¡˛ãÌ', 'µåKÂ,KMçãbˆO¥’o', 'q\',ú’’MX®ñ·ÛrU$P', 'Ø®£°»ıES∫ævc%sÅ', 'ÖπOF¡ A¯åÄ.Å(û', '·≠·‘8vG)É••Ûû`R0', 'RhtlÔMõüG\r«—˘', 'R‚ﬂò>åBﬂπC—ë·>É-', 'äø_/ŸB\r°øêæ$Ú', '_[^Ÿe%OÁ¢–ZE≠∞U', '¥‚Z∂\"\"N\r°b|ΩcOïq', 'Z–}Û‡EàÇ®o_›Eí', 'at™B/9HW∏áìñ4˘', '‡Ñ’L‘æOk†îﬂ·ˇ‹πÛ', 'z\"%Bv*MŒñ÷Îãjb˛k', 'Ç`:2¿âEª\'≠®xåÿ5', '¡V\Z£N`∞Ò‘O–Còñ', 'T$Ñ-5Iòá∫·öë]9ˆ', 'ê–sÆªîD`πDtØÖˆ', 'gG¢÷‡O;Çß¥tËÙ', ') ∏Ç:LªïÄ¯∑Ê±{', 'j|Wñ<ZGÀØ‚1ƒÂ?7k', '§ÍÖ˝2H∑§!GŸ3Èu', '‘„¡´∆@Üã+êa¡%Ô', '‘	Fq+¿HqõÖ©Ht⁄©', 'K;íõM‡îd˛J=s≤', ' û˙_ßA∞©àåﬁr,', 'WEbZrxJ¶£~HXüÀ', 's*nZ˚C®yËlı.ˇ', 'ÃÎÆ∑*0O≠B≥~Ê‘', 'ÔbzpN◊î`|\rªå\\O', ' ÍØÕ°ÅKô∞°r˘±s#|', 'Å…àÏe±K(Ç¡»\0\nhIn', '‡à§@¶®æ\'kE<a', 'ÕØ©ÿÀG´ûïœKä|D', '±≤Ï)›”JîGÈ`=Á˛T', 'p¨Â(&aO⁄´µü‚á¿Ô', '3‚\"¨·ÈFàƒf<ˇd', '4ÕùrÖCK™FÆ>ùÆ	å', '®ß;ñÂïH:†∫ÛÌôr_z', '‘>LUºrFy¨Æì•∂<', '-åw›‰E≈ÅC3:˛ıw', 'QIîÌXO]áß‰∏0Æ[É', '¿ºÖ√ÕKD∑\nK˜£éH4', '¨Å¿‚ÿKÂß∫∫)qP»', 'i„6<QDÜè»«îF·æÈ', '{ã4ÂRJç≠Ú…≥I’YÛ', '± ’¯L,Joç9œpˆ	K', 'ˇÒJ\"îN≤∑◊Îﬂº/', 'Yc∑G¢Ì”ÅåÉ¥', ';-øsd´N?î^5êP*à', 'ÀÒ≤1ÅÅMÖ¸˜Ö˘', '◊	,óS\nN-ôdI -Qu', '>Ä˘%pD„≥jf;Öüty', 'Ù#æùJöæƒÖÚ∑ÕIÕ', 'ºSNûÛ¶Ov®wrGG81', 'Á∆ºX]ûFRµ≈6D2›', ' UsÕóOAò èïLÌù\0', 'Àà\r‹Ü+@>ö—>ydig÷', '™µÒ0@OénÕ©AHi', 'u%uê¨+@qÖ¸˚PsNU', 'P∏e¶ÿvMQòOÅò\nn@', '3\"\\≈¶Gqí†•ê;ﬂok', '`´vA,I∏ñ‚°\Z N', 'OTbâz\rOçªK„ ≠ˆÅ≥', '∆+`∞ôD⁄π\'mÂiñ', 'Ã\ríH*EÌÖ?Æ¢hˇ≠≤', 'bVº∂vO«òOËÈ@ˆ(', 'CüØ}N–õm·$âÒ≠¢', 'n§¸ ì@í∞—U3zÃ', 'ˇtNéØM<à∫w®HgÔ«', 'ÒòëzåE–†åŒﬁâp', '—•´@“Æ<@W´˝sï', '\"œ<=°óI;öÅD≤$Ñ†', '?ÂQ±/ÍE\0¨H√”Áç]', 'Â\'Úmû\rJäü¢jço’ï', 'HqÚ°òDEj†;ŒcπW∫', 'ı∑~ÁN,ØÚ‚˜º®ñÓ', 'º˝÷(\"Dúôo ˆPT', 'ÌÏœ™]C∆ßK·˜Ñ·ôÊ', '˛¸;œ6Gâó^…õZat}', '3_RÒD≈üb‰¢ö˝˛A', ':zl^F åjW\r,§êÉ', '/kÙ¬ÑÅFX¨˚≥«Ì˙:†', '\'Ñ\Z\Zß@ö≥ú˛ïÛBÈñ', '˙Ï%[îgJ¨9k\"o›W’', 'Ìó≤2zπF≤ÅbéUû', 'Ö~˜AG·î›M¶]ßC', '¢Àπ\'øØMPºèEh>L\r„', ';∆E0ØöB_ñ:ó7È\'’j', '˝”®Ä_ÊD—´n∑Ï¸…\Z', '≠∆\0˝ãœG5ñ˝ÈÈ¢ V', 'Á\ZçT_MãHƒòéå', 'y=ËÇ¸\\L\n§ÃvôvAaı', 'u√“ËåHJ†ØãÛîÌÑ ', '>µ◊∏R¨C-ù5\nDs=W', '≥øà∫≠ÿL\'¥.ÏŒ°˛', '^?π¢∑0Bú@˜ã+C…', 'e÷@ÇCm§™·ı\r‘¥˛', 'Gﬁ·oµF¥Û©o»Kñ¨', 'JÊSsƒ,Ff£ﬂ›ØÏ¯çß', '≤≥ÈÙBr§©∫ˆ∞’Œπ', 'Á˛ÿ-ÕDÌô˘“+éf»˘', 's^|{OJê\0ÁıÚûtw', 'Û‡(ç£íK≈®Ú)õGµ', 'Ç$~‰D4¶@≤%uû≤', '7oN±iïHB†‘·Á∫v·', '[‹Aª”!HØT“:_k›', ' Å :ØN5ùÙ˙·ò◊á»', 'ó	Ù˛ÄNéRÈßq.Ò', '_[^[\ZL=ç@´≠–ﬂ', '¥ª—˘âC&òß¨ó‘P®', '4Z ›ì\rIJÑØü∫ó/Lõ', 'πØ¥`}L9å±w◊\ZÒ', 'ò≥÷6¬RC∞x0™»‡Én', '˝|SÆûÜJ8ÅÁN;èˇÏ–', 'Û-+\Z|ó@Ç£—	⁄∫', 'ÀÈÖê*®E\Z§?Ñ˙˝8', '≠ﬁ˙†¨N¨ø≤y\Z„·|', 'ˇŸ\'-≤B5•é\'1jMò', '_∏≈sÏÔILã»æD|950', 'N=ÿ®VÈG\rö<õª*‚†\0', ')Z∑¥±H˝≤ˆ f∏‹?', 'GÍ,ï¿Dä(Õ!íC', 'úÔêCä∂nHÑ5/§Ò', 'ô:èÚuqKÅ\rQn˜,k', 'π‘©Æ˝m@	®h´”¥1Ë‹', 'îÃ6\r„áCñòü1V»Tq', 'í7Åc@EbÄ\Zı∫kﬂ\Z∂', 'Îë‡Ö\ndIöæ	ISF®æ', ' ~Tí%C£pôuÈ', '}–÷éÃôB¿Ñ∏Ω1Êqå#', '¥u=`CˇHœÄu$«fÿ“J', '‹0◊0dD˜Æ‡Ê‘ÒΩè', 'ÖÎÏÕò≈C|îáz€ﬁMá€', 'Ã§R±\'TA†äs+£ì(≥', '\r‡+\nˆuA’©O©GŸó6', 'Pâ{°˙ΩBuÇâ`^†ºœA', 'âÙïªﬂNdòÆõQÈ?', 'ñ8_·\"†FéºãÑˇU|ıU', '˛ºVRB´åhZå¸ßO/', '∑¥z^ ‡Dƒ©9©|¢0™', '¶m¿\'&F=®BrÛ#€', 'Ëã6≠NRû“TÜ˛ $⁄', '5hhâÎÛMìè∞~(Ò˘YŸ', 'ÉˇZÜúãC¬°^Í”©ƒáê', 'Ò’4ÆˆÊD)ó øÁLé}¿', '~eÛe◊F@#¢çÏåq˜A', 'Ì=†\'NL\Z≤∂àkÖ~', '¸hÏ◊œyBB¢…©îí;‹`', '9ú⁄Ë(,EhÄÉ‰≠ [', 'πfƒn∏LÜÅ®ëDq ', '!Ω∞ÉYÚM üΩÀí¸Ei<', '\nQ≥-µiBD£gÆ¥2zÛ', '”bÌ;„L9ªùısR', 'I)l£VåN]üÇsÌÂLn', '\0Ö) çâ@,ò≈GîCJK)', 'ü¢Aal√LB¢b8\'Ä', 'ûU5MèB ªÖôÅß^£˜', 'π	82<ªOäè˝àÒvoü', 'qæÌ¥`\rD;†ÛD¸Ä…Y', '™î9ª@É¶D;b-XPπ', '{2e[©F…Ö8M•Œ$', '^Äú∆ÎœN™ó´≤ƒﬁ~', 'dü^ÑpC^ï+•◊‹\"2', '◊qÉŸ8LÊÉ§î‹ÚÔn', '¢®{¶FI¢≥äìnGR') AND e.criterion_code = 'enrichment_image';
 ALTER TABLE acl_object_identities DROP FOREIGN KEY FK_9407E54977FA751A;
-ALTER TABLE acl_object_identity_ancestors DROP FOREIGN KEY FK_825DE2993D9AB4A6;
-ALTER TABLE acl_object_identity_ancestors DROP FOREIGN KEY FK_825DE299C671CEA1;
 ALTER TABLE pim_catalog_association DROP FOREIGN KEY FK_CC27100147D93336;
 ALTER TABLE pim_catalog_association DROP FOREIGN KEY FK_CC271001B1E1C39;
 ALTER TABLE pim_catalog_association_group DROP FOREIGN KEY FK_E91414DDEFB9C8A5;
@@ -847,7 +833,6 @@ ALTER TABLE pim_catalog_variant_attribute_set_has_axes DROP FOREIGN KEY FK_69650
 ALTER TABLE pim_data_quality_insights_product_criteria_evaluation DROP FOREIGN KEY FK_dqi_product_uuid_criteria_evaluation;
 DROP TABLE acl_classes;
 DROP TABLE acl_object_identities;
-DROP TABLE acl_object_identity_ancestors;
 DROP TABLE acl_security_identities;
 DROP TABLE akeneo_file_storage_file_info;
 DROP TABLE migration_versions;
@@ -929,7 +914,6 @@ CREATE TABLE pim_catalog_category (id INT AUTO_INCREMENT NOT NULL, parent_id INT
 CREATE TABLE acl_classes (id INT UNSIGNED AUTO_INCREMENT NOT NULL, class_type VARCHAR(200) NOT NULL, UNIQUE INDEX UNIQ_69DD750638A36066 (class_type), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_security_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, identifier VARCHAR(200) NOT NULL, username TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_8835EE78772E836AF85E0677 (identifier, username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_object_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, parent_object_identity_id INT UNSIGNED DEFAULT NULL, class_id INT UNSIGNED NOT NULL, object_identifier VARCHAR(100) NOT NULL, entries_inheriting TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_9407E5494B12AD6EA000B10 (object_identifier, class_id), INDEX IDX_9407E54977FA751A (parent_object_identity_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
-CREATE TABLE acl_object_identity_ancestors (object_identity_id INT UNSIGNED NOT NULL, ancestor_id INT UNSIGNED NOT NULL, INDEX IDX_825DE2993D9AB4A6 (object_identity_id), INDEX IDX_825DE299C671CEA1 (ancestor_id), PRIMARY KEY(object_identity_id, ancestor_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 ALTER TABLE pim_catalog_channel ADD CONSTRAINT FK_E07E932A12469DE2 FOREIGN KEY (category_id) REFERENCES pim_catalog_category (id);
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68472F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68438248176 FOREIGN KEY (currency_id) REFERENCES pim_catalog_currency (id) ON DELETE CASCADE;
@@ -973,8 +957,6 @@ ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B917B6E62EFA
 ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B91772F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_category ADD CONSTRAINT FK_350D8339727ACA70 FOREIGN KEY (parent_id) REFERENCES pim_catalog_category (id) ON DELETE SET NULL;
 ALTER TABLE acl_object_identities ADD CONSTRAINT FK_9407E54977FA751A FOREIGN KEY (parent_object_identity_id) REFERENCES acl_object_identities (id);
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE2993D9AB4A6 FOREIGN KEY (object_identity_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE299C671CEA1 FOREIGN KEY (ancestor_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator (     `uuid` binary(16) PRIMARY KEY,     `code` VARCHAR(100) NOT NULL,     `conditions` JSON NOT NULL DEFAULT ('{}'),     `structure` JSON NOT NULL DEFAULT ('{}'),     `labels` JSON NOT NULL DEFAULT ('{}') ,     `target_id` INT NOT NULL,     `options` JSON NOT NULL DEFAULT('{}'),     `sort_order` SMALLINT UNSIGNED NOT NULL DEFAULT 0,     UNIQUE INDEX unique_identifier_generator_code (code),     KEY `target_id` (`target_id`),     CONSTRAINT `pim_catalog_identifier_generator_ibfk_1` FOREIGN KEY (`target_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_prefixes (     `product_uuid` binary(16) NOT NULL,     `attribute_id` INT NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_PRODUCTUUID` FOREIGN KEY (`product_uuid`) REFERENCES `pim_catalog_product` (`uuid`) ON DELETE CASCADE,     CONSTRAINT `FK_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     INDEX index_identifier_generator_prefixes (`attribute_id`, `prefix`, `number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_sequence (     `attribute_id` INT NOT NULL,     `identifier_generator_uuid` binary(16) NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `last_allocated_number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_SEQ_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     CONSTRAINT `FK_SEQ_IDENTIFIERGENERATORUUID` FOREIGN KEY (`identifier_generator_uuid`) REFERENCES `pim_catalog_identifier_generator` (`uuid`) ON DELETE CASCADE,     UNIQUE INDEX sequence_attribute_identifier_prefix (attribute_id, identifier_generator_uuid, prefix),     INDEX index_identifier_generator_sequence (`attribute_id`, `identifier_generator_uuid`, `prefix`, `last_allocated_number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1554,22 +1536,15 @@ COMMIT;
 START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (1, 1);
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_ADMINISTRATOR', 0);
 INSERT INTO acl_classes (class_type) VALUES ('pim_enrich_job_tracker_view_all_jobs');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (2, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (2, 2);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (3, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (3, 3);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (4, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (4, 4);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (5, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (5, 5);
 INSERT INTO acl_classes (class_type) VALUES ('pim_identifier_generator_manage');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (6, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (6, 6);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'entity', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (7, 7);
 COMMIT;
 START TRANSACTION;
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_CATALOG_MANAGER', 0);
@@ -1580,7 +1555,6 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -1637,7 +1611,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,7,'action',1),(9,NULL,8,'action',1),(10,NULL,9,'action',1),(11,NULL,10,'action',1),(12,NULL,11,'action',1),(13,NULL,12,'action',1),(14,NULL,7,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(3,'ROLE_USER',0);
 INSERT INTO `akeneo_file_storage_file_info` (`id`, `file_key`, `original_filename`, `mime_type`, `size`, `extension`, `hash`, `storage`) VALUES (1,'4/d/f/d/4dfd4594c607caff99ec1edbec67ca20eb65a00c_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(2,'b/7/f/0/b7f013e58c49ae3062380b1770e3d827bca2f30a_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(3,'4/f/e/e/4feed15f9b566405f34770b24abf37b63602e6ec_athena.jpg','athena.jpg','image/jpeg',3069,'jpg','b6755067610e1f1f61e751e51bf2c239e4ca382e','catalogStorage'),(4,'a/e/b/1/aeb1fb48593f67d45f4fff7c2d8625387031243d_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(5,'7/2/5/3/725374be51bad64c7144ebb0d57563ca41fe53be_climbingshoe.jpg','climbingshoe.jpg','image/jpeg',220576,'jpg','81ae71912fe1b542c18ae3caf1f856e4fc2573cc','catalogStorage'),(6,'c/4/9/f/c49f085858f8ed213174ba5da69e07ba3a07eba6_feet_1842328_960_720.jpg','feet-1842328_960_720.jpg','image/jpeg',106764,'jpg','76e92c4632104d54fe1acfbfc7cff1d87585cdf6','catalogStorage'),(7,'8/4/3/9/8439048b00b326e2ce5d7ad3072cd557f6c9d717_converse_932667_960_720.jpg','converse-932667_960_720.jpg','image/jpeg',145973,'jpg','9bbc27b1809440ad5af70c23c9241f19f11be4c9','catalogStorage'),(8,'3/d/f/2/3df23ddfe8f71743f064d470e4a6fcd84d7f306a_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(9,'e/d/0/d/ed0dce4fd4a9db68968b8c6a83a63a34a52d173a_dressshoe.jpg','dressshoe.jpg','image/jpeg',110913,'jpg','208b61824df1b7105a0d3aaea6d2927451f9d69f','catalogStorage'),(10,'b/7/7/6/b776200f57154d5783b3a997ba4d177665f2226d_elegance.jpg','elegance.jpg','image/jpeg',54617,'jpg','3a45dd1a88626adeb1bee70a58306885f1e1de0f','catalogStorage'),(11,'4/d/3/8/4d384d8f9a51014e17e90c164403192015294c02_stilleto.jpg','stilleto.jpg','image/jpeg',161085,'jpg','a6a5be39830778a6b02f63619b170a638ba436b8','catalogStorage'),(12,'7/a/a/2/7aa2b19a2b44b38c8971803767bb1b68792e0110_terminus.jpg','terminus.jpg','image/jpeg',9104,'jpg','53691d76449c37fdd9c74b76ab39301703107df9','catalogStorage'),(13,'e/8/4/5/e845951b6fed7421be100ead10ea5a803771ebbb_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage'),(14,'c/3/3/c/c33c10fbec8400cb45189e1348f2a8240bad9404_braided_hat.jpg','braided-hat.jpg','image/jpeg',106830,'jpg','0c89622f4facb33b5cdbb2c9e4da35beae47b9b0','catalogStorage'),(15,'b/8/0/0/b8004bd865af3a4b6640374b4a2aa46965411e23_unique_size.jpg','unique-size.jpg','image/jpeg',261678,'jpg','4e0da048a66100f2dec8f4cf1227ce6b96d6d4ab','catalogStorage'),(16,'1/b/6/7/1b672f0b6f9780fcc8758e2bfad2e120966b5c43_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(17,'c/b/f/9/cbf90d86d4cfd48f2ccbd3a7b51794c9fa2e955f_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(18,'2/b/4/9/2b49bad20d2cdd82f5f9c9b180ad66123ad2643e_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(19,'7/4/8/3/7483007c4f8ca060555f2495aa7f73655ee4c167_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(20,'b/a/d/2/bad27fd700c89eb2ac575a23372728b709c9c172_t_shirt_marron.png','t-shirt-marron.png','image/png',297069,'png','97aa15a07489eb831fcb0905e51d3edd366a3800','catalogStorage'),(21,'1/b/f/a/1bfac4a95216480d860d4fb63304597e733d0cf9_t_shirt_green.jpg','t-shirt-green.jpg','image/jpeg',54279,'jpg','d06e45212f20b889cde41d9a372e085d9073cbd3','catalogStorage'),(22,'2/9/6/e/296e68baad4a70d4e90d7ac9fe951286adbe52ab_plain_red.jpg','plain_red.jpg','image/jpeg',219214,'jpg','cd6964b878c75c0f862b6650928c053944c4a53f','catalogStorage'),(23,'1/6/2/a/162a4c85fb2702146e12fa98dd9ac6f270e31868_blue.png','blue.png','image/png',1714929,'png','3e46d0f46fcc4e4bda19e13795d4d8efca7f06b4','catalogStorage'),(24,'7/e/0/8/7e0864d9fd78ed9998218dca90b797baf75828e8_grey.png','grey.png','image/png',1521660,'png','6e4d5696e37335117b97fd9250f6e37556175a63','catalogStorage'),(25,'7/d/c/6/7dc62a6571b74f0973e4567297b9c0a909746463_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage');
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
@@ -1685,8 +1658,6 @@ select id, BIN_TO_UUID(uuid) as uuid from pim_catalog_product where id > '0' ord
 select id, BIN_TO_UUID(uuid) as uuid from pim_catalog_product where id > '100' order by id asc LIMIT 100;
 select id, BIN_TO_UUID(uuid) as uuid from pim_catalog_product where id > '200' order by id asc LIMIT 100;
 ALTER TABLE acl_object_identities DROP FOREIGN KEY FK_9407E54977FA751A;
-ALTER TABLE acl_object_identity_ancestors DROP FOREIGN KEY FK_825DE2993D9AB4A6;
-ALTER TABLE acl_object_identity_ancestors DROP FOREIGN KEY FK_825DE299C671CEA1;
 ALTER TABLE pim_catalog_association DROP FOREIGN KEY FK_CC27100147D93336;
 ALTER TABLE pim_catalog_association DROP FOREIGN KEY FK_CC271001B1E1C39;
 ALTER TABLE pim_catalog_association_group DROP FOREIGN KEY FK_E91414DDEFB9C8A5;
@@ -1744,7 +1715,6 @@ ALTER TABLE pim_catalog_variant_attribute_set_has_axes DROP FOREIGN KEY FK_69650
 ALTER TABLE pim_data_quality_insights_product_criteria_evaluation DROP FOREIGN KEY FK_dqi_product_uuid_criteria_evaluation;
 DROP TABLE acl_classes;
 DROP TABLE acl_object_identities;
-DROP TABLE acl_object_identity_ancestors;
 DROP TABLE acl_security_identities;
 DROP TABLE akeneo_file_storage_file_info;
 DROP TABLE migration_versions;
@@ -1826,7 +1796,6 @@ CREATE TABLE pim_catalog_category (id INT AUTO_INCREMENT NOT NULL, parent_id INT
 CREATE TABLE acl_classes (id INT UNSIGNED AUTO_INCREMENT NOT NULL, class_type VARCHAR(200) NOT NULL, UNIQUE INDEX UNIQ_69DD750638A36066 (class_type), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_security_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, identifier VARCHAR(200) NOT NULL, username TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_8835EE78772E836AF85E0677 (identifier, username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 CREATE TABLE acl_object_identities (id INT UNSIGNED AUTO_INCREMENT NOT NULL, parent_object_identity_id INT UNSIGNED DEFAULT NULL, class_id INT UNSIGNED NOT NULL, object_identifier VARCHAR(100) NOT NULL, entries_inheriting TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_9407E5494B12AD6EA000B10 (object_identifier, class_id), INDEX IDX_9407E54977FA751A (parent_object_identity_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
-CREATE TABLE acl_object_identity_ancestors (object_identity_id INT UNSIGNED NOT NULL, ancestor_id INT UNSIGNED NOT NULL, INDEX IDX_825DE2993D9AB4A6 (object_identity_id), INDEX IDX_825DE299C671CEA1 (ancestor_id), PRIMARY KEY(object_identity_id, ancestor_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
 ALTER TABLE pim_catalog_channel ADD CONSTRAINT FK_E07E932A12469DE2 FOREIGN KEY (category_id) REFERENCES pim_catalog_category (id);
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68472F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_channel_currency ADD CONSTRAINT FK_5B55C68438248176 FOREIGN KEY (currency_id) REFERENCES pim_catalog_currency (id) ON DELETE CASCADE;
@@ -1870,8 +1839,6 @@ ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B917B6E62EFA
 ALTER TABLE pim_catalog_attribute_requirement ADD CONSTRAINT FK_B494B91772F5A1AA FOREIGN KEY (channel_id) REFERENCES pim_catalog_channel (id) ON DELETE CASCADE;
 ALTER TABLE pim_catalog_category ADD CONSTRAINT FK_350D8339727ACA70 FOREIGN KEY (parent_id) REFERENCES pim_catalog_category (id) ON DELETE SET NULL;
 ALTER TABLE acl_object_identities ADD CONSTRAINT FK_9407E54977FA751A FOREIGN KEY (parent_object_identity_id) REFERENCES acl_object_identities (id);
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE2993D9AB4A6 FOREIGN KEY (object_identity_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE acl_object_identity_ancestors ADD CONSTRAINT FK_825DE299C671CEA1 FOREIGN KEY (ancestor_id) REFERENCES acl_object_identities (id) ON UPDATE CASCADE ON DELETE CASCADE;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator (     `uuid` binary(16) PRIMARY KEY,     `code` VARCHAR(100) NOT NULL,     `conditions` JSON NOT NULL DEFAULT ('{}'),     `structure` JSON NOT NULL DEFAULT ('{}'),     `labels` JSON NOT NULL DEFAULT ('{}') ,     `target_id` INT NOT NULL,     `options` JSON NOT NULL DEFAULT('{}'),     `sort_order` SMALLINT UNSIGNED NOT NULL DEFAULT 0,     UNIQUE INDEX unique_identifier_generator_code (code),     KEY `target_id` (`target_id`),     CONSTRAINT `pim_catalog_identifier_generator_ibfk_1` FOREIGN KEY (`target_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_prefixes (     `product_uuid` binary(16) NOT NULL,     `attribute_id` INT NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_PRODUCTUUID` FOREIGN KEY (`product_uuid`) REFERENCES `pim_catalog_product` (`uuid`) ON DELETE CASCADE,     CONSTRAINT `FK_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     INDEX index_identifier_generator_prefixes (`attribute_id`, `prefix`, `number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS pim_catalog_identifier_generator_sequence (     `attribute_id` INT NOT NULL,     `identifier_generator_uuid` binary(16) NOT NULL,     `prefix` VARCHAR(255) NOT NULL,     `last_allocated_number` BIGINT UNSIGNED NOT NULL,     CONSTRAINT `FK_SEQ_ATTRIBUTEID` FOREIGN KEY (`attribute_id`) REFERENCES `pim_catalog_attribute` (`id`) ON DELETE CASCADE,     CONSTRAINT `FK_SEQ_IDENTIFIERGENERATORUUID` FOREIGN KEY (`identifier_generator_uuid`) REFERENCES `pim_catalog_identifier_generator` (`uuid`) ON DELETE CASCADE,     UNIQUE INDEX sequence_attribute_identifier_prefix (attribute_id, identifier_generator_uuid, prefix),     INDEX index_identifier_generator_sequence (`attribute_id`, `identifier_generator_uuid`, `prefix`, `last_allocated_number`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2451,22 +2418,15 @@ COMMIT;
 START TRANSACTION;
 INSERT INTO acl_classes (class_type) VALUES ('(root)');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (1, 1);
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_ADMINISTRATOR', 0);
 INSERT INTO acl_classes (class_type) VALUES ('pim_enrich_job_tracker_view_all_jobs');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (2, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (2, 2);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (3, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (3, 3);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (4, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (4, 4);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (5, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (5, 5);
 INSERT INTO acl_classes (class_type) VALUES ('pim_identifier_generator_manage');
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (6, 'action', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (6, 6);
 INSERT INTO acl_object_identities (class_id, object_identifier, entries_inheriting)               VALUES (1, 'entity', 1);
-INSERT INTO acl_object_identity_ancestors (object_identity_id, ancestor_id) VALUES (7, 7);
 COMMIT;
 START TRANSACTION;
 INSERT INTO acl_security_identities (identifier, username) VALUES ('ROLE_CATALOG_MANAGER', 0);
@@ -2477,7 +2437,6 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -2534,7 +2493,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -2634,7 +2592,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -2691,7 +2648,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -2789,7 +2745,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -2846,7 +2801,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -2926,7 +2880,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -2983,7 +2936,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3062,7 +3014,6 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3119,7 +3070,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3201,7 +3151,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3258,7 +3207,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3340,7 +3288,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3397,7 +3344,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3479,7 +3425,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3536,7 +3481,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3635,7 +3579,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3692,7 +3635,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3791,7 +3733,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -3848,7 +3789,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -3949,7 +3889,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4006,7 +3945,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4106,7 +4044,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4163,7 +4100,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4271,7 +4207,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4328,7 +4263,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4432,7 +4366,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4489,7 +4422,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4593,7 +4525,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4650,7 +4581,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4752,7 +4682,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4809,7 +4738,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -4909,7 +4837,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -4966,7 +4893,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5048,7 +4974,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5105,7 +5030,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5214,7 +5138,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5271,7 +5194,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5380,7 +5302,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5437,7 +5358,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5521,7 +5441,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5578,7 +5497,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5660,7 +5578,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5717,7 +5634,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5817,7 +5733,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -5874,7 +5789,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,24,'action',1),(9,NULL,23,'action',1),(10,NULL,9,'action',1),(11,NULL,20,'action',1),(12,NULL,19,'action',1),(13,NULL,8,'action',1),(14,NULL,11,'action',1),(15,NULL,10,'action',1),(16,NULL,13,'action',1),(17,NULL,12,'action',1),(18,NULL,22,'action',1),(19,NULL,14,'action',1),(20,NULL,21,'action',1),(21,NULL,17,'action',1),(22,NULL,15,'action',1),(23,NULL,25,'action',1),(24,NULL,16,'action',1),(25,NULL,18,'action',1),(26,NULL,7,'action',1),(39,NULL,26,'action',1),(40,NULL,27,'action',1),(41,NULL,28,'action',1),(42,NULL,29,'action',1),(43,NULL,30,'action',1),(44,NULL,31,'action',1),(45,NULL,26,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(4,'ROLE_TRAINEE',0),(3,'ROLE_USER',0);
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
 INSERT INTO `oro_access_role` (`id`, `role`, `label`, `type`) VALUES (4,'ROLE_ADMINISTRATOR','Administrator','default'),(5,'ROLE_CATALOG_MANAGER','Catalog manager','default'),(6,'ROLE_USER','User','default'),(7,'ROLE_TRAINEE','Trainee','default');
@@ -5956,7 +5870,6 @@ SELECT BIN_TO_UUID(uuid) AS uuid FROM pim_catalog_product WHERE identifier = 'ap
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -6013,7 +5926,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,7,'action',1),(9,NULL,8,'action',1),(10,NULL,9,'action',1),(11,NULL,10,'action',1),(12,NULL,11,'action',1),(13,NULL,12,'action',1),(14,NULL,7,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(3,'ROLE_USER',0);
 INSERT INTO `akeneo_file_storage_file_info` (`id`, `file_key`, `original_filename`, `mime_type`, `size`, `extension`, `hash`, `storage`) VALUES (1,'4/d/f/d/4dfd4594c607caff99ec1edbec67ca20eb65a00c_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(2,'b/7/f/0/b7f013e58c49ae3062380b1770e3d827bca2f30a_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(3,'4/f/e/e/4feed15f9b566405f34770b24abf37b63602e6ec_athena.jpg','athena.jpg','image/jpeg',3069,'jpg','b6755067610e1f1f61e751e51bf2c239e4ca382e','catalogStorage'),(4,'a/e/b/1/aeb1fb48593f67d45f4fff7c2d8625387031243d_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(5,'7/2/5/3/725374be51bad64c7144ebb0d57563ca41fe53be_climbingshoe.jpg','climbingshoe.jpg','image/jpeg',220576,'jpg','81ae71912fe1b542c18ae3caf1f856e4fc2573cc','catalogStorage'),(6,'c/4/9/f/c49f085858f8ed213174ba5da69e07ba3a07eba6_feet_1842328_960_720.jpg','feet-1842328_960_720.jpg','image/jpeg',106764,'jpg','76e92c4632104d54fe1acfbfc7cff1d87585cdf6','catalogStorage'),(7,'8/4/3/9/8439048b00b326e2ce5d7ad3072cd557f6c9d717_converse_932667_960_720.jpg','converse-932667_960_720.jpg','image/jpeg',145973,'jpg','9bbc27b1809440ad5af70c23c9241f19f11be4c9','catalogStorage'),(8,'3/d/f/2/3df23ddfe8f71743f064d470e4a6fcd84d7f306a_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(9,'e/d/0/d/ed0dce4fd4a9db68968b8c6a83a63a34a52d173a_dressshoe.jpg','dressshoe.jpg','image/jpeg',110913,'jpg','208b61824df1b7105a0d3aaea6d2927451f9d69f','catalogStorage'),(10,'b/7/7/6/b776200f57154d5783b3a997ba4d177665f2226d_elegance.jpg','elegance.jpg','image/jpeg',54617,'jpg','3a45dd1a88626adeb1bee70a58306885f1e1de0f','catalogStorage'),(11,'4/d/3/8/4d384d8f9a51014e17e90c164403192015294c02_stilleto.jpg','stilleto.jpg','image/jpeg',161085,'jpg','a6a5be39830778a6b02f63619b170a638ba436b8','catalogStorage'),(12,'7/a/a/2/7aa2b19a2b44b38c8971803767bb1b68792e0110_terminus.jpg','terminus.jpg','image/jpeg',9104,'jpg','53691d76449c37fdd9c74b76ab39301703107df9','catalogStorage'),(13,'e/8/4/5/e845951b6fed7421be100ead10ea5a803771ebbb_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage'),(14,'c/3/3/c/c33c10fbec8400cb45189e1348f2a8240bad9404_braided_hat.jpg','braided-hat.jpg','image/jpeg',106830,'jpg','0c89622f4facb33b5cdbb2c9e4da35beae47b9b0','catalogStorage'),(15,'b/8/0/0/b8004bd865af3a4b6640374b4a2aa46965411e23_unique_size.jpg','unique-size.jpg','image/jpeg',261678,'jpg','4e0da048a66100f2dec8f4cf1227ce6b96d6d4ab','catalogStorage'),(16,'1/b/6/7/1b672f0b6f9780fcc8758e2bfad2e120966b5c43_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(17,'c/b/f/9/cbf90d86d4cfd48f2ccbd3a7b51794c9fa2e955f_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(18,'2/b/4/9/2b49bad20d2cdd82f5f9c9b180ad66123ad2643e_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(19,'7/4/8/3/7483007c4f8ca060555f2495aa7f73655ee4c167_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(20,'b/a/d/2/bad27fd700c89eb2ac575a23372728b709c9c172_t_shirt_marron.png','t-shirt-marron.png','image/png',297069,'png','97aa15a07489eb831fcb0905e51d3edd366a3800','catalogStorage'),(21,'1/b/f/a/1bfac4a95216480d860d4fb63304597e733d0cf9_t_shirt_green.jpg','t-shirt-green.jpg','image/jpeg',54279,'jpg','d06e45212f20b889cde41d9a372e085d9073cbd3','catalogStorage'),(22,'2/9/6/e/296e68baad4a70d4e90d7ac9fe951286adbe52ab_plain_red.jpg','plain_red.jpg','image/jpeg',219214,'jpg','cd6964b878c75c0f862b6650928c053944c4a53f','catalogStorage'),(23,'1/6/2/a/162a4c85fb2702146e12fa98dd9ac6f270e31868_blue.png','blue.png','image/png',1714929,'png','3e46d0f46fcc4e4bda19e13795d4d8efca7f06b4','catalogStorage'),(24,'7/e/0/8/7e0864d9fd78ed9998218dca90b797baf75828e8_grey.png','grey.png','image/png',1521660,'png','6e4d5696e37335117b97fd9250f6e37556175a63','catalogStorage'),(25,'7/d/c/6/7dc62a6571b74f0973e4567297b9c0a909746463_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage');
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
@@ -6078,7 +5990,6 @@ SELECT t0.id AS id_1, t0.is_enabled AS is_enabled_2, t0.identifier AS identifier
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM acl_classes ;
 DELETE FROM acl_object_identities ;
-DELETE FROM acl_object_identity_ancestors ;
 DELETE FROM akeneo_file_storage_file_info ;
 DELETE FROM migration_versions ;
 DELETE FROM oro_access_role ;
@@ -6135,7 +6046,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 INSERT INTO `acl_object_identities` (`id`, `parent_object_identity_id`, `class_id`, `object_identifier`, `entries_inheriting`) VALUES (8,NULL,7,'action',1),(9,NULL,8,'action',1),(10,NULL,9,'action',1),(11,NULL,10,'action',1),(12,NULL,11,'action',1),(13,NULL,12,'action',1),(14,NULL,7,'entity',1);
-INSERT INTO `acl_object_identity_ancestors` (`object_identity_id`, `ancestor_id`) VALUES (8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14);
 INSERT INTO `acl_security_identities` (`id`, `identifier`, `username`) VALUES (1,'ROLE_ADMINISTRATOR',0),(2,'ROLE_CATALOG_MANAGER',0),(3,'ROLE_USER',0);
 INSERT INTO `akeneo_file_storage_file_info` (`id`, `file_key`, `original_filename`, `mime_type`, `size`, `extension`, `hash`, `storage`) VALUES (1,'4/d/f/d/4dfd4594c607caff99ec1edbec67ca20eb65a00c_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(2,'b/7/f/0/b7f013e58c49ae3062380b1770e3d827bca2f30a_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(3,'4/f/e/e/4feed15f9b566405f34770b24abf37b63602e6ec_athena.jpg','athena.jpg','image/jpeg',3069,'jpg','b6755067610e1f1f61e751e51bf2c239e4ca382e','catalogStorage'),(4,'a/e/b/1/aeb1fb48593f67d45f4fff7c2d8625387031243d_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(5,'7/2/5/3/725374be51bad64c7144ebb0d57563ca41fe53be_climbingshoe.jpg','climbingshoe.jpg','image/jpeg',220576,'jpg','81ae71912fe1b542c18ae3caf1f856e4fc2573cc','catalogStorage'),(6,'c/4/9/f/c49f085858f8ed213174ba5da69e07ba3a07eba6_feet_1842328_960_720.jpg','feet-1842328_960_720.jpg','image/jpeg',106764,'jpg','76e92c4632104d54fe1acfbfc7cff1d87585cdf6','catalogStorage'),(7,'8/4/3/9/8439048b00b326e2ce5d7ad3072cd557f6c9d717_converse_932667_960_720.jpg','converse-932667_960_720.jpg','image/jpeg',145973,'jpg','9bbc27b1809440ad5af70c23c9241f19f11be4c9','catalogStorage'),(8,'3/d/f/2/3df23ddfe8f71743f064d470e4a6fcd84d7f306a_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(9,'e/d/0/d/ed0dce4fd4a9db68968b8c6a83a63a34a52d173a_dressshoe.jpg','dressshoe.jpg','image/jpeg',110913,'jpg','208b61824df1b7105a0d3aaea6d2927451f9d69f','catalogStorage'),(10,'b/7/7/6/b776200f57154d5783b3a997ba4d177665f2226d_elegance.jpg','elegance.jpg','image/jpeg',54617,'jpg','3a45dd1a88626adeb1bee70a58306885f1e1de0f','catalogStorage'),(11,'4/d/3/8/4d384d8f9a51014e17e90c164403192015294c02_stilleto.jpg','stilleto.jpg','image/jpeg',161085,'jpg','a6a5be39830778a6b02f63619b170a638ba436b8','catalogStorage'),(12,'7/a/a/2/7aa2b19a2b44b38c8971803767bb1b68792e0110_terminus.jpg','terminus.jpg','image/jpeg',9104,'jpg','53691d76449c37fdd9c74b76ab39301703107df9','catalogStorage'),(13,'e/8/4/5/e845951b6fed7421be100ead10ea5a803771ebbb_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage'),(14,'c/3/3/c/c33c10fbec8400cb45189e1348f2a8240bad9404_braided_hat.jpg','braided-hat.jpg','image/jpeg',106830,'jpg','0c89622f4facb33b5cdbb2c9e4da35beae47b9b0','catalogStorage'),(15,'b/8/0/0/b8004bd865af3a4b6640374b4a2aa46965411e23_unique_size.jpg','unique-size.jpg','image/jpeg',261678,'jpg','4e0da048a66100f2dec8f4cf1227ce6b96d6d4ab','catalogStorage'),(16,'1/b/6/7/1b672f0b6f9780fcc8758e2bfad2e120966b5c43_apollon.jpg','apollon.jpg','image/jpeg',6144,'jpg','292ef2cb9f1051736e5b6bfd5e2aec6de2abe0c5','catalogStorage'),(17,'c/b/f/9/cbf90d86d4cfd48f2ccbd3a7b51794c9fa2e955f_artemis.jpg','artemis.jpg','image/jpeg',5013,'jpg','0bc54325ef7e5a1ca8d54fc64026e6032e7264ce','catalogStorage'),(18,'2/b/4/9/2b49bad20d2cdd82f5f9c9b180ad66123ad2643e_bacchus.jpg','bacchus.jpg','image/jpeg',8918,'jpg','6e9475ba2071331523a9cefeea267510f2ba0c4a','catalogStorage'),(19,'7/4/8/3/7483007c4f8ca060555f2495aa7f73655ee4c167_diana2.jpg','diana2.jpg','image/jpeg',63869,'jpg','1d2e0b1d3d1e1982995e172d84ee9635f7ad1cec','catalogStorage'),(20,'b/a/d/2/bad27fd700c89eb2ac575a23372728b709c9c172_t_shirt_marron.png','t-shirt-marron.png','image/png',297069,'png','97aa15a07489eb831fcb0905e51d3edd366a3800','catalogStorage'),(21,'1/b/f/a/1bfac4a95216480d860d4fb63304597e733d0cf9_t_shirt_green.jpg','t-shirt-green.jpg','image/jpeg',54279,'jpg','d06e45212f20b889cde41d9a372e085d9073cbd3','catalogStorage'),(22,'2/9/6/e/296e68baad4a70d4e90d7ac9fe951286adbe52ab_plain_red.jpg','plain_red.jpg','image/jpeg',219214,'jpg','cd6964b878c75c0f862b6650928c053944c4a53f','catalogStorage'),(23,'1/6/2/a/162a4c85fb2702146e12fa98dd9ac6f270e31868_blue.png','blue.png','image/png',1714929,'png','3e46d0f46fcc4e4bda19e13795d4d8efca7f06b4','catalogStorage'),(24,'7/e/0/8/7e0864d9fd78ed9998218dca90b797baf75828e8_grey.png','grey.png','image/png',1521660,'png','6e4d5696e37335117b97fd9250f6e37556175a63','catalogStorage'),(25,'7/d/c/6/7dc62a6571b74f0973e4567297b9c0a909746463_red.png','red.png','image/png',1485051,'png','384fb142d7d98bafe1e344654c5f81b332814e24','catalogStorage');
 INSERT INTO `oro_access_group` (`id`, `name`, `default_permissions`, `type`) VALUES (1,'IT support',NULL,'default'),(2,'Manager',NULL,'default'),(3,'Redactor',NULL,'default'),(4,'All',NULL,'default');
