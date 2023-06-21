@@ -1,0 +1,83 @@
+SET @@cte_max_recursion_depth := 10000;
+CREATE TABLE pim_catalog_product_model (
+    id INT AUTO_INCREMENT NOT NULL,
+    parent_id INT DEFAULT NULL,
+    code VARCHAR(255) NOT NULL,
+    UNIQUE INDEX UNIQ_5943911E77153098 (code),
+    INDEX IDX_5943911E727ACA70 (parent_id),
+    PRIMARY KEY(id)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
+
+CREATE TABLE pim_catalog_product_unique_data (
+  id INT AUTO_INCREMENT NOT NULL,
+  product_uuid BINARY(16) NOT NULL COMMENT '(DC2Type:uuid_binary)',
+  attribute_id INT NOT NULL,
+  raw_data VARCHAR(255) NOT NULL,
+  INDEX IDX_E0768BA35C977207 (product_uuid),
+  INDEX IDX_E0768BA3B6E62EFA (attribute_id),
+  UNIQUE INDEX unique_value_idx (attribute_id, raw_data),
+  PRIMARY KEY(id)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
+
+INSERT INTO pim_catalog_product_model (id, parent_id, code) VALUES
+    (1, null, 'product_model1'),
+    (2, 1, 'product_model2'),
+    (3, 1, 'product_model3');
+
+CREATE TABLE pim_catalog_product (
+    uuid BINARY(16) NOT NULL COMMENT '(DC2Type:uuid_binary)',
+    id INT AUTO_INCREMENT NOT NULL,
+    product_model_id INT DEFAULT NULL,
+    UNIQUE INDEX UNIQ_91CD19C0BF396750 (id),
+    PRIMARY KEY(uuid),
+    INDEX IDX_91CD19C0B2C5DD70 (product_model_id)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB ROW_FORMAT = DYNAMIC;
+
+ALTER TABLE pim_catalog_product_model ADD CONSTRAINT FK_5943911E727ACA70 FOREIGN KEY (parent_id) REFERENCES pim_catalog_product_model (id) ON DELETE CASCADE;
+ALTER TABLE pim_catalog_product ADD CONSTRAINT FK_91CD19C0B2C5DD70 FOREIGN KEY (product_model_id) REFERENCES pim_catalog_product_model (id) ON DELETE CASCADE;
+ALTER TABLE pim_catalog_product_unique_data ADD CONSTRAINT FK_E0768BA35C977207 FOREIGN KEY (product_uuid) REFERENCES pim_catalog_product (uuid) ON DELETE CASCADE;
+
+INSERT INTO pim_catalog_product (uuid, id, product_model_id)
+WITH RECURSIVE cte AS (
+    SELECT UUID_TO_BIN(UUID()) as uuid, 1 as id
+    UNION ALL
+    SELECT UUID_TO_BIN(UUID()) as uuid, 1 + id as id FROM cte WHERE id < @@cte_max_recursion_depth
+)
+SELECT uuid, id, 3 FROM cte ORDER BY id;
+
+CREATE TABLE IF NOT EXISTS pim_catalog_product_identifiers(
+     product_uuid BINARY(16) NOT NULL PRIMARY KEY,
+     identifiers JSON NOT NULL DEFAULT (JSON_ARRAY()),
+     CONSTRAINT pim_catalog_product_identifiers_pim_catalog_product_uuid_fk FOREIGN KEY (product_uuid) REFERENCES pim_catalog_product (uuid)
+     ON DELETE CASCADE,
+     INDEX idx_identifiers ( (CAST(identifiers AS CHAR(511) ARRAY)) )
+);
+
+INSERT INTO pim_catalog_product_identifiers (product_uuid, identifiers)
+WITH RECURSIVE product_ids AS (
+    SELECT 1 id
+    UNION ALL
+    SELECT 1 + id FROM product_ids WHERE id < @@cte_max_recursion_depth
+)
+SELECT uuid, JSON_ARRAY(
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED),
+          CAST(@seed := (@seed * 73127 + 36671) % 99053 AS UNSIGNED)
+)
+FROM product_ids
+JOIN pim_catalog_product on product_ids.id = pim_catalog_product.id
+WHERE (@seed := 0) = 0
+ORDER BY 1;
+
+START TRANSACTION;
+DELETE FROM pim_catalog_product_unique_data WHERE id = 471;
+DELETE FROM pim_catalog_product_unique_data WHERE id = 472;
+DELETE FROM pim_catalog_product WHERE id IN (1, 2, 3);
+COMMIT;
