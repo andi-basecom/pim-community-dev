@@ -3,9 +3,13 @@
 namespace Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Field;
 
 use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidOperatorException;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FieldFilterHelper;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FieldFilterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
+use Akeneo\Pim\Structure\Component\AttributeTypes;
+use Akeneo\Pim\Structure\Component\Query\PublicApi\Attribute\GetMainIdentifierAttributeCode;
 use Akeneo\Tool\Component\Elasticsearch\QueryString;
 use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
 
@@ -21,12 +25,13 @@ class IdentifierFilter extends AbstractFieldFilter implements FieldFilterInterfa
     const IDENTIFIER_KEY = 'identifier';
 
     /**
-     * @param array $supportedFields
-     * @param array $supportedOperators
+     * @param array<string> $supportedFields
+     * @param array<string> $supportedOperators
      */
     public function __construct(
         array $supportedFields = [],
-        array $supportedOperators = []
+        array $supportedOperators = [],
+        private readonly GetMainIdentifierAttributeCode $getMainIdentifierAttributeCode
     ) {
         $this->supportedFields = $supportedFields;
         $this->supportedOperators = $supportedOperators;
@@ -77,105 +82,293 @@ class IdentifierFilter extends AbstractFieldFilter implements FieldFilterInterfa
      */
     protected function applyFilter($field, $operator, $value)
     {
+        $productDocumentType = str_replace('\\', '\\\\', ProductInterface::class);
+        $productModelDocumentType = str_replace('\\', '\\\\', ProductModelInterface::class);
+
+        $mainIdentifierAttributeCode = ($this->getMainIdentifierAttributeCode)();
+        $productIdentifierField = \sprintf('values.%s-%s.<all_channels>.<all_locales>',
+            $mainIdentifierAttributeCode,
+            AttributeTypes::BACKEND_TYPE_TEXT
+        );
+        $productModelIdentifierField = self::IDENTIFIER_KEY;
+
         switch ($operator) {
             case Operators::STARTS_WITH:
-                $clause = [
-                    'query_string' => [
-                        'default_field' => $field,
-                        'query'         => QueryString::escapeValue($value) . '*',
-                    ],
-                ];
-                $this->searchQueryBuilder->addFilter($clause);
+                $this->searchQueryBuilder->addFilter(
+                    $this->buildIdentifierSearchFilter(
+                        QueryString::escapeValue($value) . '*',
+                        $productDocumentType,
+                        $productIdentifierField,
+                        $productModelDocumentType,
+                        $productModelIdentifierField
+                    )
+                );
+
                 break;
 
             case Operators::CONTAINS:
-                $clause = [
-                    'query_string' => [
-                        'default_field' => $field,
-                        'query'         => '*' . QueryString::escapeValue($value) . '*',
-                    ],
-                ];
-                $this->searchQueryBuilder->addFilter($clause);
+                $this->searchQueryBuilder->addFilter(
+                    $this->buildIdentifierSearchFilter(
+                        '*' . QueryString::escapeValue($value) . '*',
+                        $productDocumentType,
+                        $productIdentifierField,
+                        $productModelDocumentType,
+                        $productModelIdentifierField
+                    )
+                );
+
                 break;
 
             case Operators::DOES_NOT_CONTAIN:
-                $mustNotClause = [
-                    'query_string' => [
-                        'default_field' => $field,
-                        'query'         => '*' . QueryString::escapeValue($value) . '*',
-                    ],
-                ];
-
-                $filterClause = [
-                    'exists' => ['field' => $field],
-                ];
-
-                $this->searchQueryBuilder->addMustNot($mustNotClause);
-                $this->searchQueryBuilder->addFilter($filterClause);
+                $this->searchQueryBuilder->addMustNot($this->buildIdentifierSearchFilter(
+                    '*' . QueryString::escapeValue($value) . '*',
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
+                $this->searchQueryBuilder->addFilter($this->buildFieldShouldExistClause(
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             case Operators::EQUALS:
-                $clause = [
-                    'term' => [
-                        $field => $value,
-                    ],
-                ];
-                $this->searchQueryBuilder->addFilter($clause);
+                $this->searchQueryBuilder->addFilter(
+                    $this->buildIdentifierSearchFilter(
+                        QueryString::escapeValue($value),
+                        $productDocumentType,
+                        $productIdentifierField,
+                        $productModelDocumentType,
+                        $productModelIdentifierField
+                    )
+                );
                 break;
 
             case Operators::NOT_EQUAL:
-                $mustNotClause = [
-                    'term' => [
-                        $field => $value,
-                    ],
-                ];
-
-                $filterClause = [
-                    'exists' => [
-                        'field' => $field,
-                    ],
-                ];
-                $this->searchQueryBuilder->addMustNot($mustNotClause);
-                $this->searchQueryBuilder->addFilter($filterClause);
+                $this->searchQueryBuilder->addMustNot(
+                    $this->buildIdentifierSearchFilter(
+                        QueryString::escapeValue($value),
+                        $productDocumentType,
+                        $productIdentifierField,
+                        $productModelDocumentType,
+                        $productModelIdentifierField
+                    )
+                );
+                $this->searchQueryBuilder->addFilter($this->buildFieldShouldExistClause(
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             case Operators::IN_LIST:
-                $clause = [
-                    'terms' => [
-                        $field => $value,
-                    ],
-                ];
-
-                $this->searchQueryBuilder->addFilter($clause);
+                $this->searchQueryBuilder->addFilter($this->buildIdentifierTermsFilter(
+                    $value,
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             case Operators::NOT_IN_LIST:
-                $clause = [
-                    'terms' => [
-                        $field => $value,
-                    ],
-                ];
-
-                $this->searchQueryBuilder->addMustNot($clause);
+                $this->searchQueryBuilder->addMustNot($this->buildIdentifierTermsFilter(
+                    $value,
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
+                $this->searchQueryBuilder->addFilter($this->buildFieldShouldExistClause(
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             case Operators::IS_EMPTY:
-                $clause = [
-                    'exists' => ['field' => $field,],
-                ];
-
-                $this->searchQueryBuilder->addMustNot($clause);
+                $this->searchQueryBuilder->addMustNot($this->buildFieldShouldExistClause(
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             case Operators::IS_NOT_EMPTY:
-                $clause = [
-                    'exists' => ['field' => $field],
-                ];
-                $this->searchQueryBuilder->addFilter($clause);
+                $this->searchQueryBuilder->addFilter($this->buildFieldShouldExistClause(
+                    $productDocumentType,
+                    $productIdentifierField,
+                    $productModelDocumentType,
+                    $productModelIdentifierField
+                ));
                 break;
 
             default:
                 throw InvalidOperatorException::notSupported($operator, static::class);
         }
+    }
+
+    private function buildIdentifierSearchFilter(
+        string $searchString,
+        string $productDocumentType,
+        string $productIdentifierField,
+        string $productModelDocumentType,
+        string $productModelIdentifierField
+    ): array
+    {
+        $productClause = [
+            'bool' => [
+                'should' => [
+                    [
+                        'query_string' => [
+                            'default_field' => $productIdentifierField,
+                            'query'         => $searchString,
+                        ],
+                    ],
+                    [
+                        'query_string' => [
+                            'default_field' => 'document_type',
+                            'query'         => $productDocumentType,
+                        ],
+                    ],
+                ],
+                'minimum_should_match' => 2,
+            ],
+        ];
+
+        $productModelClause = [
+            'bool' => [
+                'should' => [
+                    [
+                        'query_string' => [
+                            'default_field' => $productModelIdentifierField,
+                            'query'         => $searchString,
+                        ],
+                    ],
+                    [
+                        'query_string' => [
+                            'default_field' => 'document_type',
+                            'query'         => $productModelDocumentType,
+                        ],
+                    ],
+                ],
+                'minimum_should_match' => 2,
+            ],
+        ];
+
+        return [
+            'bool' => [
+                'should' => [$productClause, $productModelClause],
+                'minimum_should_match' => 1,
+            ],
+        ];
+    }
+
+    private function buildIdentifierTermsFilter(
+        array $value,
+        string $productDocumentType,
+        string $productIdentifierField,
+        string $productModelDocumentType,
+        string $productModelIdentifierField
+    ): array
+    {
+        $productClause = [
+            'bool' => [
+                'should' => [
+                    [
+                        'terms' => [
+                            $productIdentifierField => $value,
+                        ],
+                    ],
+                    [
+                        'query_string' => [
+                            'default_field' => 'document_type',
+                            'query'         => $productDocumentType,
+                        ],
+                    ],
+                ],
+                'minimum_should_match' => 2,
+            ],
+        ];
+
+        $productModelClause = [
+            'bool' => [
+                'should' => [
+                    [
+                        'terms' => [
+                            $productModelIdentifierField => $value,
+                        ],
+                    ],
+                    [
+                        'query_string' => [
+                            'default_field' => 'document_type',
+                            'query'         => $productModelDocumentType,
+                        ],
+                    ],
+                ],
+                'minimum_should_match' => 2,
+            ],
+        ];
+
+        return [
+            'bool' => [
+                'should' => [$productClause, $productModelClause],
+                'minimum_should_match' => 1,
+            ],
+        ];
+    }
+
+    private function buildFieldShouldExistClause(
+        string $productDocumentType,
+        string $productIdentifierField,
+        string $productModelDocumentType,
+        string $productModelIdentifierField
+    ): array
+    {
+        return [
+            'bool' => [
+                'should' => [
+                    [
+                        'bool' => [
+                            'should' => [
+                                [
+                                    'exists' => ['field' => $productIdentifierField],
+                                ],
+                                [
+                                    'query_string' => [
+                                        'default_field' => 'document_type',
+                                        'query'         => $productDocumentType,
+                                    ],
+                                ]
+                            ],
+                            'minimum_should_match' => 2,
+                        ],
+                    ],
+                    [
+                        'bool' => [
+                            'should' => [
+                                [
+                                    'exists' => ['field' => $productModelIdentifierField],
+                                ],
+                                [
+                                    'query_string' => [
+                                        'default_field' => 'document_type',
+                                        'query'         => $productModelDocumentType,
+                                    ],
+                                ]
+                            ],
+                            'minimum_should_match' => 2,
+                        ],
+                    ],
+                ],
+                'minimum_should_match' => 1,
+            ],
+        ];
     }
 }

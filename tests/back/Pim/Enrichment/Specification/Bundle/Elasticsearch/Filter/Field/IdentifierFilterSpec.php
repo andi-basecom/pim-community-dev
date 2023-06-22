@@ -2,18 +2,22 @@
 
 namespace Specification\Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Field;
 
-use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
-use PhpSpec\ObjectBehavior;
 use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Field\IdentifierFilter;
 use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\SearchQueryBuilder;
 use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidOperatorException;
-use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FieldFilterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Pim\Structure\Component\Query\PublicApi\Attribute\GetMainIdentifierAttributeCode;
+use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use LogicException;
+use PhpSpec\ObjectBehavior;
 
 class IdentifierFilterSpec extends ObjectBehavior
 {
-    function let()
+    function let(
+        GetMainIdentifierAttributeCode $getMainIdentifierAttributeCode
+    )
     {
         $this->beConstructedWith(
             ['identifier'],
@@ -27,8 +31,11 @@ class IdentifierFilterSpec extends ObjectBehavior
                 'NOT IN LIST',
                 'EMPTY',
                 'NOT EMPTY'
-            ]
+            ],
+            $getMainIdentifierAttributeCode
         );
+
+        $getMainIdentifierAttributeCode->__invoke()->willReturn('sku');
     }
 
     function it_is_initializable()
@@ -70,13 +77,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_starts_with(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'query_string' => [
-                    'default_field' => 'identifier',
-                    'query'         => 'sku\-*',
-                ],
-            ]
-        )->shouldBeCalled();
+            ["bool" => ["should" => [["bool" => ["should" => [["query_string" => ["default_field" => "values.sku-text.<all_channels>.<all_locales>", "query" => "sku\-*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["query_string" => ["default_field" => "identifier", "query" => "sku\-*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]        )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
         $this->addFieldFilter('identifier', Operators::STARTS_WITH, 'sku-', null, null, []);
@@ -85,12 +86,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_contains(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'query_string' => [
-                    'default_field' => 'identifier',
-                    'query'         => '*001*',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["query_string" => ["default_field" => "values.sku-text.<all_channels>.<all_locales>", "query" => "*001*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["query_string" => ["default_field" => "identifier", "query" => "*001*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -100,20 +96,11 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_not_contains(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'exists' => [
-                    'field' => 'identifier',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["exists" => ["field" => "values.sku-text.<all_channels>.<all_locales>"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["exists" => ["field" => "identifier"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $sqb->addMustNot(
-            [
-                'query_string' => [
-                    'default_field' => 'identifier',
-                    'query'         => '*001*',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["query_string" => ["default_field" => "values.sku-text.<all_channels>.<all_locales>", "query" => "*001*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["query_string" => ["default_field" => "identifier", "query" => "*001*"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -123,11 +110,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_equals(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'term' => [
-                    'identifier' => 'sku-001',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["query_string" => ["default_field" => "values.sku-text.<all_channels>.<all_locales>", "query" => "sku\-001"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["query_string" => ["default_field" => "identifier", "query" => "sku\-001"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -137,19 +120,11 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_not_equal(SearchQueryBuilder $sqb)
     {
         $sqb->addMustNot(
-            [
-                'term' => [
-                    'identifier' => 'sku-001',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["query_string" => ["default_field" => "values.sku-text.<all_channels>.<all_locales>", "query" => "sku\-001"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["query_string" => ["default_field" => "identifier", "query" => "sku\-001"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $sqb->addFilter(
-            [
-                'exists' => [
-                    'field' => 'identifier',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["exists" => ["field" => "values.sku-text.<all_channels>.<all_locales>"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["exists" => ["field" => "identifier"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -159,11 +134,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_in_list(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'terms' => [
-                    'identifier' => ['sku-001'],
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["terms" => ["values.sku-text.<all_channels>.<all_locales>" => ["sku-001"]]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["terms" => ["identifier" => ["sku-001"]]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -173,11 +144,11 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_not_in_list(SearchQueryBuilder $sqb)
     {
         $sqb->addMustNot(
-            [
-                'terms' => [
-                    'identifier' => ['sku-001'],
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["terms" => ["values.sku-text.<all_channels>.<all_locales>" => ["sku-001"]]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["terms" => ["identifier" => ["sku-001"]]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
+        )->shouldBeCalled();
+
+        $sqb->addFilter(
+            ["bool" => ["should" => [["bool" => ["should" => [["exists" => ["field" => "values.sku-text.<all_channels>.<all_locales>"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["exists" => ["field" => "identifier"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]],
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -187,11 +158,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_empty(SearchQueryBuilder $sqb)
     {
         $sqb->addMustNot(
-            [
-                'exists' => [
-                    'field' => 'identifier',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["exists" => ["field" => "values.sku-text.<all_channels>.<all_locales>"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["exists" => ["field" => "identifier"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -201,11 +168,7 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_adds_a_field_filter_with_operator_not_empty(SearchQueryBuilder $sqb)
     {
         $sqb->addFilter(
-            [
-                'exists' => [
-                    'field' => 'identifier',
-                ],
-            ]
+            ["bool" => ["should" => [["bool" => ["should" => [["exists" => ["field" => "values.sku-text.<all_channels>.<all_locales>"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductInterface"]]], "minimum_should_match" => 2]], ["bool" => ["should" => [["exists" => ["field" => "identifier"]], ["query_string" => ["default_field" => "document_type", "query" => "Akeneo\\\\Pim\\\\Enrichment\\\\Component\\\\Product\\\\Model\\\\ProductModelInterface"]]], "minimum_should_match" => 2]]], "minimum_should_match" => 1]]
         )->shouldBeCalled();
 
         $this->setQueryBuilder($sqb);
@@ -215,13 +178,14 @@ class IdentifierFilterSpec extends ObjectBehavior
     function it_throws_an_exception_when_the_search_query_builder_is_not_initialized(AttributeInterface $sku)
     {
         $this->shouldThrow(
-            new \LogicException('The search query builder is not initialized in the filter.')
-        )->during('addFieldFilter', ['identifier', Operators::EQUALS, 'sku-001', null,  null, []]);
+            new LogicException('The search query builder is not initialized in the filter.')
+        )->during('addFieldFilter', ['identifier', Operators::EQUALS, 'sku-001', null, null, []]);
     }
 
     function it_throws_an_exception_when_the_given_value_is_not_a_string_with_unsupported_operator_for_field_filter(
         SearchQueryBuilder $sqb
-    ) {
+    )
+    {
         $this->setQueryBuilder($sqb);
 
         $this->shouldThrow(
@@ -235,7 +199,8 @@ class IdentifierFilterSpec extends ObjectBehavior
 
     function it_throws_an_exception_when_the_given_value_is_null(
         SearchQueryBuilder $sqb
-    ) {
+    )
+    {
         $this->setQueryBuilder($sqb);
 
         $this->shouldThrow(
@@ -249,7 +214,8 @@ class IdentifierFilterSpec extends ObjectBehavior
 
     function it_throws_an_exception_when_the_given_value_is_not_an_array_with_unsupported_operator_for_field_filter(
         SearchQueryBuilder $sqb
-    ) {
+    )
+    {
         $this->setQueryBuilder($sqb);
 
         $this->shouldThrow(
@@ -263,7 +229,8 @@ class IdentifierFilterSpec extends ObjectBehavior
 
     function it_throws_an_exception_when_the_given_value_is_not_an_array_of_strings(
         SearchQueryBuilder $sqb
-    ) {
+    )
+    {
         $this->setQueryBuilder($sqb);
 
         $this->shouldThrow(

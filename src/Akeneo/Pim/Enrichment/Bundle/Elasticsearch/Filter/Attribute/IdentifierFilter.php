@@ -175,6 +175,14 @@ class IdentifierFilter extends AbstractAttributeFilter implements AttributeFilte
                 break;
 
             case Operators::NOT_IN_LIST:
+                $filterClause = [
+                    'exists' => [
+                        'field' => $attributePath,
+                    ],
+                ];
+
+                $this->searchQueryBuilder->addFilter($filterClause);
+
                 $clause = [
                     'terms' => [
                         $attributePath => $value,
