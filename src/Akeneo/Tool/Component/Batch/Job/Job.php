@@ -148,7 +148,7 @@ class Job implements JobInterface, StoppableJobInterface, JobWithStepsInterface,
 
             $this->dispatchJobExecutionEvent(EventInterface::AFTER_JOB_EXECUTION, $jobExecution);
 
-            if ($jobExecution->getStatus()->getValue() !== BatchStatus::PAUSED) {
+            if (!$jobExecution->getStatus()->isPaused()) {
                 $jobExecution->setEndTime(new \DateTime());
             }
             $this->jobRepository->updateJobExecution($jobExecution);
