@@ -119,7 +119,9 @@ class Job implements JobInterface, StoppableJobInterface, JobWithStepsInterface,
             $this->dispatchJobExecutionEvent(EventInterface::BEFORE_JOB_EXECUTION, $jobExecution);
 
             if ($jobExecution->getStatus()->getValue() !== BatchStatus::STOPPING) {
-                $jobExecution->setStartTime(new \DateTime());
+                if ($jobExecution->getStatus()->getValue() !== BatchStatus::PAUSED) {
+                    $jobExecution->setStartTime(new \DateTime());
+                }
                 $this->updateStatus($jobExecution, BatchStatus::STARTED);
                 $this->jobRepository->updateJobExecution($jobExecution);
 
@@ -146,7 +148,9 @@ class Job implements JobInterface, StoppableJobInterface, JobWithStepsInterface,
 
             $this->dispatchJobExecutionEvent(EventInterface::AFTER_JOB_EXECUTION, $jobExecution);
 
-            $jobExecution->setEndTime(new \DateTime());
+            if ($jobExecution->getStatus()->getValue() !== BatchStatus::PAUSED) {
+                $jobExecution->setEndTime(new \DateTime());
+            }
             $this->jobRepository->updateJobExecution($jobExecution);
         } catch (JobInterruptedException $e) {
             $jobExecution->setExitStatus($this->getDefaultExitStatusForFailure($e));
