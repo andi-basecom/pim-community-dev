@@ -1,3 +1,4 @@
+SET global debug="+d,ib_purge_virtual_index_callback";
 SET @@cte_max_recursion_depth := 10000;
 CREATE TABLE pim_catalog_product_model (
     id INT AUTO_INCREMENT NOT NULL,
@@ -45,6 +46,9 @@ WITH RECURSIVE cte AS (
 )
 SELECT uuid, id, 3 FROM cte ORDER BY id;
 
+SELECT *
+FROM pim_catalog_product;
+
 CREATE TABLE IF NOT EXISTS pim_catalog_product_identifiers(
      product_uuid BINARY(16) NOT NULL PRIMARY KEY,
      identifiers JSON NOT NULL DEFAULT (JSON_ARRAY()),
@@ -76,8 +80,15 @@ JOIN pim_catalog_product on product_ids.id = pim_catalog_product.id
 WHERE (@seed := 0) = 0
 ORDER BY 1;
 
+
+SELECT *
+FROM pim_catalog_product_identifiers;
+
 START TRANSACTION;
 DELETE FROM pim_catalog_product_unique_data WHERE id = 471;
 DELETE FROM pim_catalog_product_unique_data WHERE id = 472;
-DELETE FROM pim_catalog_product WHERE id IN (1, 2, 3);
+DELETE FROM pim_catalog_product WHERE id IN (1, 2, @@cte_max_recursion_depth - 100);
 COMMIT;
+
+DELETE FROM pim_catalog_product WHERE id IN (1, 2, @@cte_max_recursion_depth - 100);
+DELETE FROM pim_catalog_product_model WHERE id IN (1, 2, @@cte_max_recursion_depth - 100);
