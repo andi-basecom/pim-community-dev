@@ -8,3 +8,6 @@ services:
         class: 'Akeneo\Pim\Structure\Bundle\Manager\AttributeCodeBlacklister'
         arguments:
             - '@database_connection'
+
+    Akeneo\Pim\Structure\Component\Clock:
+        class: Akeneo\Pim\Structure\Bundle\SystemClock

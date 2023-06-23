@@ -120,3 +120,10 @@ services:
             - '@database_connection'
         tags:
             - { name: kernel.event_subscriber }
+
+    Akeneo\Pim\Structure\Bundle\EventSubscriber\DispatchAttributeWereCreatedOrUpdatedSubscriber:
+        arguments:
+            - '@messenger.bus.default'
+            - '@Akeneo\Pim\Structure\Component\Clock'
+        tags:
+            - { name: kernel.event_subscriber }
