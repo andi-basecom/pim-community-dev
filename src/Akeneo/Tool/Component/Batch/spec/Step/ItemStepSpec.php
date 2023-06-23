@@ -61,7 +61,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->getValue()->willReturn(BatchStatus::STARTING);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
 
         // first batch
@@ -114,7 +113,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->getValue()->willReturn(BatchStatus::STARTING);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
 
         // first batch
@@ -172,7 +170,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->getValue()->willReturn(BatchStatus::STARTING);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
         $jobStopper->isStopping($execution)->willReturn(false);
         $jobStopper->isPausing($execution)->willReturn(false);
@@ -222,7 +219,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->getValue()->willReturn(BatchStatus::STARTING);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
         $jobStopper->isStopping($execution)->willReturn(false);
         $jobStopper->isPausing($execution)->willReturn(false);
@@ -269,7 +265,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->getValue()->willReturn(BatchStatus::STARTING);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
         $jobStopper->isStopping($execution)->willReturn(false);
         $jobStopper->isPausing($execution)->willReturn(false);
@@ -320,7 +315,6 @@ class ItemStepSpec extends ObjectBehavior
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION_RESUME)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldNotBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
 
         // first batch
@@ -374,8 +368,6 @@ class ItemStepSpec extends ObjectBehavior
         $status->isPaused()->willReturn(true);
 
         $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION)->shouldBeCalled();
-//        $dispatcher->dispatch(Argument::any(), EventInterface::BEFORE_STEP_EXECUTION_RESUME)->shouldBeCalled();
-        $execution->setStartTime(Argument::any())->shouldBeCalled();
         $execution->setStatus(Argument::any())->shouldBeCalled();
 
         // first batch
