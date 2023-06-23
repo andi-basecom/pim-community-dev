@@ -60,8 +60,6 @@ abstract class AbstractProduct implements ProductInterface
 
     protected Collection $completenesses;
 
-    protected ?string $identifier = null;
-
     protected Collection $uniqueData;
 
     protected ?ProductModelInterface $parent = null;
@@ -244,7 +242,7 @@ abstract class AbstractProduct implements ProductInterface
      */
     public function getIdentifier()
     {
-        return $this->identifier;
+        return $this->getValue('sku')?->getData() ?? null;
     }
 
     /**
@@ -252,11 +250,6 @@ abstract class AbstractProduct implements ProductInterface
      */
     public function setIdentifier(?string $identifierValue): ProductInterface
     {
-        if ($identifierValue !== $this->identifier) {
-            $this->identifier = $identifierValue;
-            $this->dirty = true;
-        }
-
         return $this;
     }
 

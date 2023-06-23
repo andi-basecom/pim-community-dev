@@ -19,17 +19,6 @@ Akeneo\Pim\Enrichment\Component\Product\Model\Product:
     properties:
         uuid:
             - Akeneo\Pim\Enrichment\Component\Product\Validator\Constraints\IsUuid4: ~
-        identifier:
-            - Regex:
-                pattern: '/^(?!\s)[^,;]+(?<!\s)$/'
-                message: 'regex.comma_or_semicolon_or_surrounding_space.message'
-            - Regex:
-                pattern: '/[\r\n]/'
-                message: 'regex.line_break.message'
-                match: false
-            - Akeneo\Pim\Enrichment\Component\Product\Validator\Constraints\Length:
-                max: 255
-                attributeCode: 'identifier'
         associations:
             - Symfony\Component\Validator\Constraints\All:
                 - Akeneo\Pim\Enrichment\Component\Product\Validator\Constraints\AssociationTypeIsNotQuantified: ~
